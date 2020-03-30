@@ -1,0 +1,37 @@
+CS2D 1.0.1.1 Logfile - 30 Mar 2020, 00:34:05
+
+[00:34:05] Steam: Not logged in
+[00:34:07] UDP socket initialized using port 53967
+[00:34:08] U.S.G.N.: Your game version is up to date!
+[00:34:31] Starting server...
+[00:34:34] UDP socket initialized using port 36963
+[00:34:36] load map 'awp_grey'
+[00:35:05] ----- Server started -----
+[00:35:06] [Server] sys/lua/Control Core/Language/portuguese.txt carregado
+[00:35:06] [Server] sys/lua/Control Core/Data/stream.dat carregado
+[00:35:06] [Server] sys/lua/Control Core/Data/os.dat carregado
+[00:35:06] [Server] sys/lua/Control Core/Data/functions.dat carregado
+[00:35:06] [Server] sys/lua/Control Core/Data/commands.dat carregado
+[00:35:07] Lua: Adding function 'cc_global.sayteam' to hook 'sayteam'
+[00:35:07] Lua: Adding function 'cc_global.team' to hook 'team'
+[00:35:07] Lua: Adding function 'cc_global.join' to hook 'join'
+[00:35:07] Lua: Adding function 'cc_global.leave' to hook 'leave'
+[00:35:07] Lua: Adding function 'cc_global.say' to hook 'say'
+[00:35:07] [Server] sys/lua/Control Core/Data/hooks.dat carregado
+[00:35:07] Lua: Adding function 'advertise.join' to hook 'join'
+[00:35:07] Lua: Adding function 'advertise.minute' to hook 'minute'
+[00:35:07] [Server] sys/lua/Control Core/Modules/addon_advertise.lua carregado
+[00:35:07] [Server] S-Admin criado: 35283
+[00:35:07] [Server] Todos os sistemas carregados.
+[00:35:07]  [Server] Control Core Ultimate
+[00:35:07] [Server] Bem vindo, Player!
+[00:35:07] [Server] Sua USGN está autenticada como Visitante!
+[00:35:07] [Server] O usuário 35283 foi criado com sucesso.
+[00:35:11] U.S.G.N.: Server added to serverlist
+[00:35:13] [Info] Perdido? Digite !help para ver os comandos ou !help <comando> para um comando específico!
+[00:35:59] Player aliou-se a Equipe Contra-Terrorista
+[00:36:09] U.S.G.N.: Serverlist entry updated
+[00:36:13] [Info] Caso queira falar em publico enquanto estiver no espectador, utilize !broadcast <mensagem>.
+[00:36:35] Desligamento
+[00:36:37] U.S.G.N.: Server removed from serverlist
+[00:36:38] ----- Disconnected -----

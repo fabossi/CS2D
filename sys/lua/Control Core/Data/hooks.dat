@@ -1,0 +1,86 @@
+--------------------------------------------------
+--                      Hooks                   --
+--------------------------------------------------
+addhook("sayteam","cc_global.sayteam")
+addhook("team","cc_global.team")
+addhook("join","cc_global.join")
+addhook("leave","cc_global.leave")
+addhook("say","cc_global.say")
+--------------------------------------------------
+--                  Team Lock	                --
+--------------------------------------------------
+function cc_global.team(id,team)
+	if not cc_global.teamchange then
+		if team == 1 and cc_global.tlock then
+			msg2(id,get_color("err")..l41..".")
+			return 1
+		elseif team == 2 and cc_global.ctlock then
+			msg2(id,get_color("err")..l41..".")
+			return 1
+		end
+	else
+		cc_global.teamchange=false
+		return 0
+	end
+end
+--------------------------------------------------
+--             Welcome Message                  --
+--------------------------------------------------
+function cc_global.join(uid)
+	-- Funções de controle de usuarios
+	set_flags(uid)
+	check_banned(uid)
+
+	-- Mensagem de boas vindas
+	msg2(uid,get_color("sv").."[Server] "..l89..", "..get_name(uid).."!")
+		
+	if cc_config.auto_login then
+		auth_user(uid)
+	end
+end
+
+function cc_global.leave(uid)
+	if #cc_global.recentplayers == 10 then
+		table.remove(cc_global.recentplayers,10)
+	end	
+	table.insert(cc_global.recentplayers,1,get_name(uid).." [IP: "..get_ip(uid).." - USGN: "..get_usgn(uid).."]")
+end
+--------------------------------------------------
+--                Command Input                 --
+--------------------------------------------------
+function cc_global.say(uid,message)
+	-- Verifica se a mensagem é "rank"
+	if message == "rank" then return 0 end
+	-- Anula mensagens indesejadas no centro.
+	if message:sub(-2)=="@C" then return 1 end
+	-- Verifica se o jogador está mutado
+	if is_muted(uid) then
+		return 1
+	end
+	-- Verifica se é comando ou texto.
+	if is_command(message) then
+		command_init(uid,message)
+		return 1
+	end
+	-- Se não é comando, então entra em modo mensagem.
+	-- Se o say alive estiver ativado, então apenas use o say quando estiver vivo
+	if p_color[uid]==0 then
+		return 0
+	end
+	if not cc_config.say_dead and not is_alive(uid) then
+		return 0
+	end
+	-- Verifica se o jogador tem level suficiente para falar com cargo.
+	if cc_config.say_auto and p_level[uid] > 0 then
+		c_say(uid,message)
+		return 1
+	end
+	-- Se nada disso está alcançável, retorna normalmente
+end
+
+function cc_global.sayteam(uid,message)
+	-- Verifica se o jogador está mutado
+	 if is_muted(uid) then
+		return 1
+	 end
+end

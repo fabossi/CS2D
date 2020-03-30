@@ -1,0 +1,15 @@
+©255204051El Dorado - Bomb/Defuse
+
+©050150255Counter-Terrorists:
+©110130150Prevent Terrorists from bombing El Dorado
+
+©202000000Terrorists:
+©150110100The Terrorist carrying the C4 must bomb El Dorado
+
+©204204204Other Notes:
+There are two bombspots on the map, they are marked with blue and red X's
+
+©255025000Map by Claude
+©2042042042012
+
+

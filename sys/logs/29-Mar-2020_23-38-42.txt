@@ -1,0 +1,105 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:38:42
+
+[23:38:42] #######################################################
+[23:38:42] Unreal Software's CS2D Dedicated Server
+[23:38:42] > visit www.CS2D.com for info and updates <
+[23:38:42] Game Version: 1.0.1.1
+[23:38:42] Server Build for 1.0.1.1: 1.0
+[23:38:42] System Time: 29 Mar 2020 - 23:38:42
+[23:38:42] Operating System: Microsoft Windows
+[23:38:42] #######################################################
+[23:38:42] UDP socket initialized using port 36963
+[23:38:42] U.S.G.N.: Your game version is up to date!
+[23:38:42] Starting server...
+[23:38:42] load map 'awp_grey'
+[23:38:42] ----- Server started -----
+[23:38:43] U.S.G.N.: Server added to serverlist
+[23:39:29] U.S.G.N.: Serverlist entry updated
+[23:39:31] U.S.G.N.: oF |  kwSK (177.30.105.102) joining with U.S.G.N. ID #28538 - verifying...
+[23:39:32] U.S.G.N.: 177.30.105.102 is using U.S.G.N. ID #28538
+[23:39:32] oF |  kwSK is using IP 177.30.105.102:59679, U.S.G.N. ID #28538 and no Steam
+[23:39:32] JOIN FAILURE: oF |  kwSK (177.30.105.102:59679) can't join (map differs)
+[23:39:33] U.S.G.N.: oF |  kwSK (177.30.105.102) joining with U.S.G.N. ID #28538 - verifying...
+[23:39:34] U.S.G.N.: 177.30.105.102 is using U.S.G.N. ID #28538
+[23:39:34] oF |  kwSK is using IP 177.30.105.102:59679, U.S.G.N. ID #28538 and no Steam
+[23:39:38] oF |  kwSK: top
+[23:39:38] Player is using IP 172.31.3.197:60299, no U.S.G.N. ID and no Steam
+[23:39:49] Player: ta safe
+[23:39:52] oF |  kwSK: top
+[23:39:55] oF |  kwSK: top top
+[23:39:55] Player: achei q tava lag
+[23:39:58] oF |  kwSK: so bota script
+[23:40:02] Player: raven aq
+[23:40:05] Player: po vdd
+[23:40:08] Player: perai
+[23:40:11] oF |  kwSK: é seu sv?
+[23:40:14] Player: esqueci pqp kkkkk
+[23:40:15] U.S.G.N.: Serverlist entry updated
+[23:40:17] oF |  kwSK: é seu ?
+[23:40:18] Player: o monge passou a vps
+[23:40:19] oF |  kwSK: ou do krkn?
+[23:40:20] Player: pra eu arrumar
+[23:40:21] oF |  kwSK: ata
+[23:40:24] Player: perai
+[23:40:50] U.S.G.N.: oF |  kwSK (177.30.105.102) joining with U.S.G.N. ID #28538 - verifying...
+[23:40:51] U.S.G.N.: 177.30.105.102 is using U.S.G.N. ID #28538
+[23:40:51] oF |  kwSK is using IP 177.30.105.102:59679, U.S.G.N. ID #28538 and no Steam
+[23:40:51] JOIN FAILURE: oF |  kwSK (177.30.105.102:59679) can't join (map differs)
+[23:40:53] U.S.G.N.: oF |  kwSK (177.30.105.102) joining with U.S.G.N. ID #28538 - verifying...
+[23:40:53] U.S.G.N.: 177.30.105.102 is using U.S.G.N. ID #28538
+[23:40:53] oF |  kwSK is using IP 177.30.105.102:59679, U.S.G.N. ID #28538 and no Steam
+[23:40:59] Player: kd ele
+[23:41:02] U.S.G.N.: Serverlist entry updated
+[23:41:08] oF |  kwSK: os ticks
+[23:41:09] oF |  kwSK: tão ruim
+[23:41:14] Player: s [e pq to no jogo
+[23:41:18] oF |  kwSK: ?
+[23:41:20] Player: tem q ser so decitad
+[23:41:22] Player: dedicated
+[23:41:27] oF |  kwSK: como assim
+[23:41:29] oF |  kwSK: vc ta no jogo?
+[23:41:33] Player *DEAD*: sim to aq
+[23:41:42] Player: to no jogo pela vps
+[23:41:44] oF |  kwSK: MDS
+[23:41:45] Player: mata n fdp
+[23:41:46] oF |  kwSK: kkkkkkkkkkkkkkkkkkkkk
+[23:41:48] oF |  kwSK: abre logo
+[23:41:50] U.S.G.N.: Serverlist entry updated
+[23:41:52] oF |  kwSK: pelo dedicated
+[23:41:52] Player: entrei so pra ver se tava on
+[23:41:55] Player: ja ta
+[23:42:04] Player: mas ta caindo tick pq ta consumindo memoria
+[23:42:07] oF |  kwSK: sim
+[23:42:09] oF |  kwSK: então sai 
+[23:42:10] Player: vou botar script
+[23:42:11] oF |  kwSK: antes que pifa
+[23:42:13] oF |  kwSK: a maquina
+[23:42:15] oF |  kwSK: ok
+[23:42:16] Player: vai pifar n fi
+[23:42:37] U.S.G.N.: Serverlist entry updated
+[23:43:24] "  (1x)
+[23:43:42] generating stats...
+[23:43:42] stats generated in 4 ms!
+[23:44:10] U.S.G.N.: Serverlist entry updated
+[23:45:04] "  (1x)
+[23:45:51] "  (1x)
+[23:46:40] "  (1x)
+[23:47:28] "  (1x)
+[23:48:15] "  (1x)
+[23:48:43] generating stats...
+[23:48:44] stats generated in 46 ms!
+[23:49:01] U.S.G.N.: Serverlist entry updated
+[23:49:53] "  (1x)
+[23:50:56] "  (1x)
+[23:51:54] "  (1x)
+[23:52:52] "  (1x)
+[23:53:44] "  (1x)
+[23:53:48] generating stats...
+[23:53:48] stats generated in 1223 ms!
+[23:54:35] U.S.G.N.: Serverlist entry updated
+[23:55:23] "  (1x)
+[23:56:47] "  (1x)
+[23:58:03] "  (1x)
+[23:58:49] generating stats...
+[23:58:49] stats generated in 39 ms!
+[23:58:58] U.S.G.N.: Serverlist entry updated

@@ -1,0 +1,447 @@
+--------------------------------------------------
+--               Functions                      --
+--------------------------------------------------
+function string_split(str,pattern)
+	local entry = {}
+	for str in string.gmatch(str,pattern) do
+		if str ~= "" then
+			table.insert(entry,str)
+		end
+	end 
+	return entry
+end	
+
+function load_string(str) 
+	local func,err = loadstring(str)
+	return pcall(func)
+end
+
+function get_item(menu_id,button)
+	local menu = t_menu[menu_id]
+	if type(menu) == "string"  then
+		local item	 	= string_split(menu,"[^,]*")
+		local caption	= string_split(item[button],"[^|]*")
+		
+		return caption[1],caption[2]
+	elseif type(menu) == "table" then
+		if (button > 7) then return nil end
+		
+		local item 		= 7*(menu_page - 1) + button
+		local caption	= string_split(menu[item],"[^|]*")
+		
+		return caption[1],caption[2]
+	end
+end
+
+function show_page(uid,table,page)
+	local length = math.ceil(#table/10)
+	local screen = tonumber(page) or 1
+	if length == 0 then
+		return msg2(uid,get_color("sv")..l1)
+	end
+	if screen > length then
+		return msg2(uid,get_color("sv")..l2)
+	end
+	msg2(uid,get_color("sv").."[Server] "..l_page.." - ["..screen.."/"..length.."]:")
+	for	i = 10 * screen - 9, 10 * screen do
+		--msg2(uid,get_color("info")..i..") "..table[i])
+		msg2(uid,get_color("info")..table[i])
+	end
+end
+
+function show_menu(uid, title, page)
+	menu_id = title
+	menu_page = page or 1
+	if type(t_menu[menu_id]) == "string" then
+		return menu(uid,menu_id..","..t_menu[menu_id])
+	end
+	if type(t_menu[menu_id]) == "nil" then
+		return msg2(uid,l3)
+	end
+	
+	local data = t_menu[menu_id]
+	local length = math.ceil(#data/ 7)
+	local content = menu_id..": "..l_page.." "..menu_page
+	
+	if menu_page < 1 then 
+		menu_page = length 
+	elseif menu_page > length then 
+		menu_page = 1 
+	end
+	for	i = 7 * menu_page - 6, 7 * menu_page do
+		if data[i] 
+		then content = content ..','.. data[i] 
+		else content = content ..',' 
+		end
+	end
+	
+	if menu_page == length 
+	then content = content ..',('..l_next..')'
+	else content = content ..','..l_next..'|'..l_page..' '..menu_page+1 
+	end
+	
+	if menu_page == 1 
+	then content = content ..',('..l_previous..')' 
+	else content = content ..','..l_previous..'|'..l_page..' '..menu_page-1  
+	end
+	
+	menu(uid, content)
+end
+
+
+function get_color(name)
+	if t_color[name] ~= nil then
+		return t_symbol["copyright"]..t_color[name]
+	end
+end
+
+function get_position(uid)
+	return player(uid,"x"),player(uid,"y"),player(uid,"tilex"),player(uid,"tiley")
+end
+
+function get_name(uid)
+	return player(uid,"name")
+end
+
+function get_usgn(uid)
+	return player(uid,"usgn")
+end
+
+function get_ip(uid)
+	return player(uid,"ip")
+end
+
+function get_days(days)
+	if days>0 then return (60*60*24*days)+os.time() else return 0 end
+end
+
+function hudtxt(id,text,x,y,align)
+	parse("hudtxt "..id.." \""..text.."\" "..x.." "..y.." "..align)
+end
+
+function hudtxt2(uid,id,text,x,y,align)
+	parse("hudtxt2 "..uid.." "..id.." \""..text.."\" "..x.." "..y.." "..align)
+end
+
+function msg3(text,delay)
+	if delay == nil then
+		timer(1000,"msg",text)
+	else
+		timer(delay,"msg",text)
+	end
+end
+
+function set_flags(uid)
+	p_rank[uid]		= l_guest
+	p_color[uid]	= "0"
+	p_level[uid]	= 0
+	p_mute[uid] 	= 0
+	p_god[uid] 		= 0
+	p_cloak[uid] 	= 0
+end
+
+function create_report(report)
+	if not is_file(cc_reports_folder..os.date("%d %b %Y")..".txt") then 
+		file=io.open(cc_reports_folder..os.date("%d %b %Y")..".txt", "w")
+		file:write(l4..": "..os.date("%d %b %Y | %I:%M %p").."\n")
+		file:write(l5..":\n\n")
+		file:close()
+	end 
+	file=io.open(cc_reports_folder..os.date("%d %b %Y")..".txt", "a+") 
+	file:write("["..os.date("%I:%M %p").."] "..report.."\n")
+	file:close()
+end
+
+function delete_user(usgn)
+	local path = cc_users_folder..usgn
+	if is_file(path) then
+		os.remove(path)
+		msg3(get_color("sv").."[Server] "..l6.." "..usgn.." "..l7..".",1000)
+	else
+		msg3(get_color("sv").."[Server] "..l9..".",1000)
+	end
+end
+
+function create_user(usgn,rank)
+	local level,color,cloak,god = t_rank[rank].level,t_rank[rank].color,t_rank[rank].cloak,t_rank[rank].god
+	local validate = get_days(t_rank[rank].validate)
+	local path = cc_users_folder..usgn
+	local file = OverWriteStream(path)
+	-------------------------------------------
+	WriteByte(file,level) 
+	WriteByte(file,cloak) 
+	WriteByte(file,god)
+	WriteString(file,rank) 
+	WriteString(file,color)
+	WriteInt(file,validate)
+	-------------------------------------------
+	CloseStream(file)
+	msg3(get_color("sv").."[Server] "..l6.." "..usgn.." "..l8..".",1000)
+end
+
+function save_user(uid)
+	local usgn = get_usgn(uid)
+	local path = cc_users_folder..usgn
+	local file = OverWriteStream(path)
+	-------------------------------------------
+	WriteByte(file,p_level[uid])
+	WriteByte(file,p_cloak[uid])
+	WriteByte(file,p_god[uid])
+	WriteString(file,p_rank[uid])
+	WriteString(file,p_color[uid])
+	WriteInt(file,p_validate[uid])
+	-------------------------------------------
+	CloseStream(file)
+	msg2(uid,get_color("sv").."[Server] "..l10..".")
+end
+
+function auth_user(uid)
+	local usgn = get_usgn(uid)
+	local path = cc_users_folder..usgn
+	if is_file(path) then
+		local file=ReadStream(path)
+		-------------------------------------------
+		p_level[uid]	= ReadByte(file)
+		p_cloak[uid]	= ReadByte(file)
+		p_god[uid]		= ReadByte(file)
+		p_rank[uid]		= ReadString(file)
+		p_color[uid]	= ReadString(file)
+		p_validate[uid]	= ReadInt(file)
+		CloseStream(file)
+		-------------------------------------------
+	end
+	
+	if p_validate[uid]==0 then
+		-- Nada.
+	elseif p_validate[uid] > os.time() then
+		msg2(uid,get_color("sv").."[Server] "..l11.." "..os.date("%d/%m/%Y",p_validate[uid])..".")
+	else
+		msg2(uid,get_color("sv").."[Server] "..l12..".")
+		delete_user(usgn)
+		set_flags(uid)
+	end
+	msg2(uid,get_color("sv").."[Server] "..l13.." "..p_rank[uid].."!")	
+end
+
+function check_banned(uid)
+	-- Organizar informações
+	local ip = get_ip(uid)
+	local usgn = get_usgn(uid)
+	local name = get_name(uid)
+	-- Caminho do arquivo
+	local path={
+		[1] = cc_banned_folder..usgn;
+		[2] = cc_banned_folder..name;
+		[3] = cc_banned_folder..ip;
+	}
+	
+	for _,i in ipairs(path) do
+		if is_file(i) then
+			local file=ReadStream(i)
+			local length=ReadInt(file)
+			local reason=ReadString(file)
+			
+			CloseStream(file)
+			if length > os.time() or length==0 then
+				msg(get_color("sv").."[Server] "..get_name(uid).." [IP: "..get_ip(uid).." - USGN: "..get_usgn(uid).."] foi banido do servidor.")
+				timer(100,"parse","kick "..uid.." \"[Server] "..l14..".\n"..l14_2..": "..reason.."\"")
+			else
+				os.remove(i)
+				msg2(uid,get_color("sv").."[Server] "..l15..".")
+			end
+			break	
+		end	
+	end
+end
+
+function is_muted(uid)
+	if p_mute[uid] > os.time() then
+		local waittime = p_mute[uid] - os.time() 
+		if waittime > 1 then
+			msg2(uid,get_color("err")..l18.." "..waittime.." "..l_seconds..".")
+		else
+			msg2(uid,get_color("err")..l19.." "..waittime.." "..l_second..".")
+		end
+		return true
+	end
+end
+
+function unban_user(entry)
+	-- Caminho do arquivo
+	local path = cc_banned_folder..entry
+	-- Verifica o arquivo na pasta
+	if is_file(path) then
+		os.remove(path)
+		msg3(get_color("sv").."[Server] "..l20.." "..entry.." "..l21..".")
+	else
+		msg3(get_color("sv").."[Server] "..l22..".")
+	end
+end
+
+function ban_user(entry,days,reason)
+	local path=cc_banned_folder..entry
+	local days=days or 1
+	local length=get_days(days)
+	local reason=reason or l24
+	if is_file(path) then
+		return msg(get_color("sv").."[Server] "..l20.." "..entry.." "..l22..".")
+	end
+	if days==0 then length=0 end
+	local file=WriteStream(path)
+	WriteInt(file,length)
+	WriteString(file,reason)
+	CloseStream(file)
+end
+
+function get_args(start,finish)
+	local str = ""
+	local s = start or 1
+	local f = finish or #t_args
+	for x=s,f do
+		if x == f then
+			str = str..t_args[x]
+		else
+			str = str..t_args[x].." "
+		end	
+	end
+	return str
+end
+
+function command_init(uid,args)
+	-------------------------------------------
+	t_args 		= string_split(args,"%S+")
+	v_cmd 		= table.remove(t_args,1):lower()
+	v_argsall	= table.concat(t_args," ")
+	v_me 		= uid
+	-------------------------------------------
+	if t_shortcut[v_cmd] then
+		v_cmd = t_shortcut[v_cmd]
+	end
+	if not(command[v_cmd]) then
+		return msg2(uid,get_color("err")..l25.." "..v_cmd.." "..l26..".")
+	end
+	if is_disabled[v_cmd] then
+		return msg2(uid,get_color("err")..l27.." "..v_cmd.." "..l28..".")
+	end
+	-------------------------------------------
+	local t_flag 	= string_split(command[v_cmd],"[^|]*")
+	local t_type 	= string_split(t_flag[5],"%a+")
+	-------------------------------------------
+	local v_time 	= tonumber(t_flag[1])
+	local v_level 	= tonumber(t_flag[2])
+	local v_args	= tonumber(t_flag[3])
+	local v_hide	= tonumber(t_flag[4])
+	-------------------------------------------
+	local v_syntax 	= t_flag[6]
+	local v_event	= t_flag[7]
+	-------------------------------------------	
+	if v_level > p_level[v_me] then
+		return msg2(uid,get_color("err")..l29.." "..v_cmd..".")
+	end
+	if p_countdown[v_me][v_cmd] ~= nil and p_level[v_me] < 4 then
+		local waittime = p_countdown[v_me][v_cmd] - os.time() 
+		if waittime > 1 then
+			return msg2(uid,get_color("err")..l30.." "..v_cmd.." "..l31.." "..waittime.." "..l_seconds..".")
+		elseif waittime == 1 then
+			return msg2(uid,get_color("err")..l30.." "..v_cmd.." "..l32.." "..waittime.." "..l_second..".")
+		end
+	end
+	if #t_args < v_args and t_type[1] ~= "nil" then
+		return msg2(uid,get_color("err")..l33..": "..v_syntax)
+	end
+	for i = 1,#t_type do
+		local entry = tonumber(t_args[i])
+		if t_type[i] == "nil" or t_args[i] == nil then break end
+		if t_type[i] == "switch" then
+			if t_args[i] ~= "off" and t_args[i] ~= "on"  then
+				return msg2(uid,get_color("err")..l33..": "..v_syntax)
+			end
+		elseif t_type[i] == "number" then
+			if entry == nil then
+				return msg2(uid,get_color("err")..l34..' "'..t_args[i]..'" '..l36..'.')
+			elseif entry < 0 then
+				return msg2(uid,get_color("err")..l34..' "'..t_args[i]..'" '..l37..'.')
+			end
+			t_args[i] = entry
+		elseif t_type[i] == "integer" then
+			if entry == nil then
+				return msg2(uid,get_color("err")..l34..' "'..t_args[i]..'" '..l36..'.')
+			end
+			t_args[i] = entry
+		elseif t_type[i] == "id" then
+			if entry == nil then
+				return msg2(uid,get_color("err")..l34..' "'..t_args[i]..'" '..l36..'.')
+			elseif player(t_args[i],"exists") == false then
+				return msg2(uid,get_color("err")..l35.." "..t_args[i].." "..l38..".")
+			end
+			t_args[i] = entry
+		elseif t_type[i] == "sid" then
+			if entry == nil then
+				return msg2(uid,get_color("err")..l34..' "'..t_args[i]..'" '..l36..'.')
+			elseif player(t_args[i],"exists") == false then
+				return msg2(uid,get_color("err")..l35.." "..t_args[i].." "..l38..".")
+			elseif entry == v_me then
+				return msg2(uid,get_color("err")..l39..".")
+			elseif p_level[entry] >= p_level[v_me] then
+				return msg2(uid,get_color("err")..l35.." "..get_name(t_args[i]).." "..l40..".")
+			end
+			t_args[i] = entry
+		end
+	end
+	if v_hide==0 and p_cloak[v_me]==0 then
+		if t_type[1]== "id" or t_type[1]=="sid" then
+			v_message=get_color("cmd")..get_name(uid).." "..l_used.." "..v_cmd.." "..l_at.." "..get_name(t_args[1]).."."
+		elseif t_type[1]=="switch" then
+			if t_args[1]=="off" then
+				v_message=get_color("cmd")..get_name(uid).." "..l_desactived.." "..v_cmd.."."
+			end	
+			if t_args[1]=="on" then
+				v_message=get_color("cmd")..get_name(uid).." "..l_actived.." "..v_cmd.."."
+			end
+		else
+			v_message=get_color("cmd")..get_name(uid).." "..l_used.." "..v_cmd.."."
+		end
+	end
+	
+	if cc_config.auto_log and t_log[v_cmd] then
+		if t_type[1]=="id" or t_type[1]=="sid" then
+			create_report('"'..get_name(uid)..'" [IP:'..get_ip(uid)..":::USGN:"..get_usgn(uid).."] "..l_used.." "..v_cmd..' '..l_at..' "'..get_name(t_args[1])..'" [IP:'..get_ip(t_args[1])..":::USGN:"..get_usgn(t_args[1]).."].")
+		else
+			create_report('"'..get_name(uid)..'" [IP:'..get_ip(uid)..":::USGN:"..get_usgn(uid).."] "..l_used.." "..v_cmd..".")
+		end
+	end
+	load_string(v_event)
+	if v_error then
+		msg2(uid,get_color("err")..v_error)
+		v_error=nil
+		return	
+	end
+	if v_message then
+		msg(v_message)
+		v_message=nil
+	end
+	p_countdown[v_me][v_cmd]=os.time()+v_time
+end	
+
+function error(reason)
+	v_error = reason
+end
+
+function is_host(uid)
+	if player(uid,"ping") == 0 then return true end
+end
+
+function is_alive(uid)
+	if player(uid,"health") == 0 then
+		return false
+	end
+	return true
+end
+
+function is_command(command)
+	for name,symbol in pairs(t_symbol) do
+		if command : sub(1,1) == symbol then
+			return true
+		end
+	end
+end

@@ -1,0 +1,14 @@
+©255255255Industrial (Version 3) - Fight Yard
+
+©255255000official CS2D Map Kiffer-Opa
+
+
+©255255000Play this map in Deathmatch mode (recommended). 
+This map has some triggers. To use the triggers, press the use key (usually E) in front of it. The triggers only work if there is a green light above it, otherwise you have to wait a bit.
+
+©255017000Red triggers fire a deadly laser barrier 
+©150110100for 1 second which kills everyone who runs into it. The laser needs 30 seconds to reload.
+©050255255Blue triggers open and close doors.
+©110150150Closing doors squish everyone who are in the door.
+©000255000Green triggers open toxic gas pipelines
+©100150100for 30 seconds which emit toxic gas out of the grilles. The gas tank needs 90 seconds to refill.

@@ -1,0 +1,37 @@
+©255255255- U.S.G.N. - Unreal Software Gaming Network -
+The U.S.G.N. is a service by Unreal Software and can be compared with systems like Steam or Battlenet. Its major task is to provide the serverlist. Without the U.S.G.N. you would not see any servers in your serverlist at all. CS2D automatically connects to the U.S.G.N. when you start the game. It checks if your game version is up to date and loads the latest news. Furthermore the U.S.G.N. handles all user accounts. These accounts can be used to identify players clearly. This makes it possible to find friends or setup permanent bans.
+
+©255255255- How To Get Your Own Account -
+Unreal Software recommends to use an account. You don't have to use one, but some servers will only allow players which use an account. Getting an account is pretty easy and takes just some seconds:
+- Open »www.UnrealSoftware.de/register.php«
+- Submit your data
+- Check your emails and activate your account
+- Start CS2D and click at "Options"
+- Select the "Net"-Tab
+- Enter your account data and click "Okay"
+Done!
+
+©255255255- Login Status -
+You can see your login status in the main menu of CS2D. The color indicates your current mode:
+©000255000Green: logged in
+©255255000Yellow: trying to login / offline
+©255000000Red: failed to login
+
+©255000000Possible problems when your status is red:
+©150100100- You don't have an account
+©150100100- You did not enter your account data in the options
+©150100100- You entered wrong account data
+©150100100- You changed your account/password
+©150100100- Your account has been banned/disabled
+©150100100- The U.S.G.N. is offline
+
+©255255000Possible problems when your status is yellow:
+©150150100- You are not connected to the internet
+©150150100- Your firewall/router/ISP blocks the connection
+©150150100- Other applications are blocking your connection
+©150150100- Your connection or the U.S.G.N. is overloaded
+©150150100- The U.S.G.N. is offline
+
+Visit »www.USGN.de« to check the U.S.G.N. status if you can't connect in CS2D!
+
+»Return«

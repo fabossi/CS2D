@@ -1,0 +1,46 @@
+function os.name()
+	local osname
+	if os.getenv then
+		osname = os.getenv("OS")
+	end
+
+	if not osname then
+		local cmdo = io.popen("ver || uname -s")
+		local win = cmdo:read("*l")
+		local linux = cmdo:read("*l")
+		if not linux then
+			if win == 2 then
+				return "unix/macos/darwin"
+			elseif win == 3 then
+				return "unix/gnu/linux/freebsd"
+			elseif win == 4 then
+				return "unix/sunos"
+			end
+		else
+			return "unix/gnu/linux"
+		end
+	end
+	
+	if not osname then
+		local fh, err = io.popen("uname -o 2>/dev/null","r")
+		if fh then
+			osname = fh:read()
+		end
+	end
+	if osname then return string.lower(osname) end
+	return "unknown"
+end
+
+function os.timestring(rem_time)
+	local days = math.floor(rem_time/86400); rem_time = rem_time - (days*86400)
+	local hours = math.floor(rem_time/3600); rem_time = rem_time - (hours*3600)
+	local mins = math.floor(rem_time/60); rem_time = rem_time - (mins*60)
+	local secs = rem_time
+	
+	local tr_txt = ""
+	if days > 0 then tr_txt = days.." days " end
+	if hours > 0 then tr_txt = tr_txt..hours.." hours " end
+	if mins > 0 then tr_txt = tr_txt..mins.." mins. " end
+	if secs > 0 then tr_txt = tr_txt..secs.." secs." end
+	return tr_txt
+end

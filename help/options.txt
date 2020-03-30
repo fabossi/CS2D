@@ -1,0 +1,89 @@
+©255255255- Player -
+©255255000Player Name
+Your in-game player name.
+©255255000Spraylogo
+Your spraylogo and its color. Left- or rightclick the spraylogo image to select one and choose your color.
+©255255000Mark own Player
+(De-) activate the player marker. It makes it easier to see which player is yours.
+©255255000Lefthanded Players
+Select whether players should be left- or righthanded.
+©255255000Recoil-Animations
+Weapon recoil pushs players backwards or not.
+©255255000Wiggle-Animations
+Player will wiggle while moving when checked.
+
+©255255255- Controls -
+Here you can define the keys you want to use. In addition you have the following options:
+©255255000Movement
+You can either use absolute or relative movement. Absolute movement means that you will move in the direction of the key you press. Relative movement means that you will move to your mouse pointer.
+©255255000HUD Fastswitch
+Check this to switch between different weapons faster.
+©255255000Grenade distance
+You can use a constant throwing range for grenades (like in CS2D 0.1.0.4 and older) or a variable throwing range which depends on the position of your crosshair.
+
+©255255255- Game -
+©255255000Auto-Help
+Display ingame help and clues for unexperienced players.
+©255255000Switch to collected weapon
+You will automatically switch to the weapon you collect if this is checked.
+©255255000Auto Scoreboard Screenshots
+This will automatically take screenshots of the scoreboard at the end of each round. These shots will be saved as images in your CS2D folder.
+©255255000Damage Direction Indicator
+Display red arrows which show you the origin of damage you suffer.
+©255255000Use Images for Death Notices
+Use images instead of weapon names in death notices at the top right corner.
+©255255000Level of Gore
+The amount of blood in the game.
+©255255000Radar
+You can hide the radar completely, draw it transparent or opaque.
+
+©255255255- Graphics -
+©255255000Shadow Intensity
+Changes the darkness of all shadows (0% no shadows - 100% very dark)
+©255255000Map Shadows
+Display shadows casted by walls and obstacles. Attention: Advanced shadows will highly increase the map loading time and are only available on small maps!
+©255255000Lighting
+Some maps contain light entities to make them look better. They are not displayed by default because the light rendering is slow. Enable on fast PCs only! Only available on small maps!
+©255255000Player Shadows
+Display player shadows.
+©255255000Item Shadows
+Display shadows of items which are lying on the ground.
+©255255000Particle Details
+The amount and quality of particles. Select lower details if the game runs too slow.
+©255255000Bullets
+Check this to display bullets.
+©255255000Visible Shots
+Control if shots are visible or not.
+©255255000Tile Animations
+Display animated tiles (map elements). Some maps might need more time to load if this option is activated. Uncheck on slow systems.
+©255255000Fog of War Details
+Select the detail level of the fog of war. High details look better but need a faster pc.
+©255255000Fog of War Alpha
+Select the alpha value (transparency) of the fog of war. 0 means invisible and 100 obscure.
+
+©255255255- Sounds -
+©255255000Sound Volume
+Controls the volume of sounds (0% no sounds, 100% very loud)
+©255255000Play Map Sounds
+Some maps contain background music or ambient-sfx. Check this option if you want to hear these sounds.
+©255255000Sound Mode
+Select mono if you only have one speaker or stereo if you have two or more speakers. In stereo mode you will be able to hear if a sound comes from the left or the right side of the screen.
+©255255000Sound Driver
+Select another sound driver if you have problems with sounds in the game. Attention: You have to restart CS2D to use the new driver.
+
+©255255255- Net -
+©255255000Connection
+Select your connection to optimize your ping and to reduce lags.
+©255255000Local UDP Port
+Enter which port should be used on the local machine. It is recommended to enter just 0. In this case the game will automatically try to find the best port which is available.
+©255255000U.S.G.N. User / U.S.G.N. Password
+Your U.S.G.N. account data. Read the »USGN Info« for details. Click the buttons below if you forgot your password or if you want to create a new U.S.G.N. account!
+©255255000Download Files
+Do you want to download files from the server? Use this setting to set limits and to avoid long download times. Maps and tilesets will be downloaded always, no matter what you select here.
+©255255000Show downloaded Files
+Click this button to open a list of all files you downloaded from servers. You can also use this list to delete certain files or to completely remove all downloaded files.
+
+©255255255- More -
+Here you can change a lot of additional and advanced settings. Click a setting to read details, select/enter a value and click Apply.
+
+»Return«

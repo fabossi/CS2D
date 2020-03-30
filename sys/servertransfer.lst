@@ -1,0 +1,15 @@
+// List additional files for your server here (one file per line)
+// These files will be sent to the clients automatically (if they allow it + don't have the files already)
+// All paths are relative to the CS2D folder (e.g.: gfx/blood.bmp)
+// Only images (bmp,jpg,jpeg,png) and sounds (wav,ogg) are allowed! Other files will be ignored!
+// Please don't add many/large files here because otherwise joining your server will take forever!
+// Attention: Do NOT add tags (like <m> for instance) to the file paths!
+//
+// New since 0.1.1.8: HTTP Downloads
+// You can also host your files on HTTP webservers instead of your game server.
+// Use the following scheme to add HTTP file transfers:
+// scheme: http://www.url.tld/myfile (web URL) > folder/file (local relative path)
+// example: http://www.unrealsoftware.de/img/icons/cs2d.png > gfx/cs2dicon.png
+//
+// Warning: HTTP downloads might freeze the client for a few seconds if the webserver is slow!
+// Warning: It is recommended to use lower case letters in file names and paths only

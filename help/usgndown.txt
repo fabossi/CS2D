@@ -1,0 +1,17 @@
+©255000000- U.S.G.N. - CONNECTION PROBLEMS
+OH NO! CS2D failed to connect to the U.S.G.N.!
+
+- Check your internet connection
+- Check your firewall settings
+- Check the U.S.G.N. state at »www.USGN.de«
+
+©255000000!!! You are not able to login now !!!
+©255000000!!! You can't see the current serverlist now !!!
+©000255000If your connection is ok you can still play online!
+
+©255255000Please try again later if the U.S.G.N. is down.
+©255255000Note that you can only see a cached serverlist saved in your last session. This list probably does not contain all current servers.
+©255255000Sorry for the trouble!
+
+Want to learn more about the U.S.G.N.?
+Click here: »USGN«

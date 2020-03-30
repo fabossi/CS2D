@@ -1,0 +1,76 @@
+©255255255- Server -
+©255255000Server Name
+The name of your server
+©255255000Server Password
+A password which has to be entered to join your server. Leave this field blank to create a server without password protection.
+©255255000RCon Password
+A password for remote server control with the commands "rcon_password" and "rcon". Leave it blank if you don't want to allow remote control.
+©255255000Server Port
+The UDP port you want to use for your server. Make sure that your firewall and router allow traffic on this port. Default is 36963.
+©255255000Max. Players
+The maximum amount of players on your server.
+©255255000Fog of War
+Check it to enable the fog of war which makes it impossible to see what's going on behind walls or behind yourself. Without fog of war you will see everything.
+©255255000Friendly Fire
+You can only hurt teammates when this option is checked.
+©255255000Hide Server (unlisted)
+Other people will not see your server in the U.S.G.N. internet serverlist if this options is checked.
+©255255000Registered U.S.G.N. Users only
+©255000000(does not work offline and in LAN games!)
+You can allow only registered U.S.G.N. users to join your server by checking this. Otherwise everyone will be able to join.
+©255255000Map and File Transfer
+Allow other players to download the map and required sounds/images from your server.
+©255255000Spraylogo Transfer
+Send custom spraylogos of players on your server to other players.
+©255255000Game Mode
+Either use standard to play normal CS2D with teams and rounds or select another mode like deathmatch!
+©255255000Allow to Spectate Nothing/Everything/Own Team only
+Select what players will be able to spectate if they are a spectator or dead.
+
+©255255255- Map -
+In this menu you can select the map you want to play on your server.
+
+©255255255- Settings -
+©255255000Time per Map (Min.)
+Time in minutes before the map will be changed automatically. 0 for no automatic change.
+©255255000Win Limit (Rounds)
+The Score a team has to reach before the map will be changed. 0 for no mapchange by score.
+©255255000Round Limit (Rounds)
+Maximum number of rounds before the map will be changed. 0 for no mapchange by rounds.
+©255255000Time per Round (Min.)
+Maximum duration of a round in minutes.
+©255255000Freeze Time (Sec.)
+At the beginning of each round there is a short freezetime which can be used to purchase weapons and items without being bothered by enemies. In this time the players are not able to move.
+©255255000Buy Time (Min.)
+You can only buy stuff when this time is not expired.
+©255255000Start Money
+The initial amount of money each player will receive.
+©255255000Kick after x Team Kills
+Maximum number of team kills before the killer will be kicked.
+©255255000Kick after x Hostage Kills
+Maximum number of hostage kills before the killer will be kicked.
+©255255000Kill TKer on next Round
+Punishes teamkillers by killing them at the beginning of the next round.
+©255255000Kick Idlers
+Kick players which do not do anything (or perform another action). See also mp_idletime and mp_idleaction (more settings)!
+©255255000Hostages are vulnerable
+Activate this to make hostages vulnerable. Otherwise hostages can not be killed.
+©255255000Auto Teambalance
+The server tries to keep the teams even.
+
+©255255255- Bots -
+©255255000Bot Name Prefix
+A short prefix which will be added to the name of each bot.
+©255255000Bots
+Number of bots you want to have on your server.
+©255255000Join Team
+The team your bots should join. Consider that auto teambalance applies to bots too. Bots will join as spectator if they can't join a team because of auto teambalance.
+©255255000Skills
+Select how good the bots will be.
+©255255000Weapons
+Which weapons are the bots allowed to use?
+
+©255255255- More Settings -
+Here you can change a lot of additional and advanced settings.
+
+»Return«

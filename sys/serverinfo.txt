@@ -1,0 +1,14 @@
+©255255255Welcome on my CS2D Server!
+This is the default server info message. Edit sys/serverinfo.txt to change it.
+Remove the file if you don't want to use a server info message.
+
+©255000000- Don't cheat/hack
+©255000000- Don't spam/flame/flood
+©255000000- Don't teamkill/hostagekill
+©255000000- Don't votekick innocent players
+
+Have fun!
+
+»www.CS2D.com«
+»www.USGN.de«
+»www.UnrealSoftware.de«

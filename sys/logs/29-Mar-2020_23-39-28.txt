@@ -1,0 +1,63 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:39:28
+
+[23:39:28] Steam: Not logged in
+[23:39:28] UDP socket initialized using port 60299
+[23:39:29] U.S.G.N.: Your game version is up to date!
+[23:39:34] Cached servers added to list: 204
+[23:39:34] U.S.G.N.: Received serverlist (servers: 89)
+[23:39:38] Connecting to 172.31.3.197:36963...
+[23:39:38] load map 'awp_grey'
+[23:39:39] receiving physics data (7 b)
+[23:39:40] ----- Server joined -----
+[23:39:44] Player aliou-se a Equipe Terrorista
+[23:39:49] Player: ta safe
+[23:39:52] oF |  kwSK: top
+[23:39:55] oF |  kwSK: top top
+[23:39:55] Player: achei q tava lag
+[23:39:58] oF |  kwSK: so bota script
+[23:40:02] Player: raven aq
+[23:40:05] Player: po vdd
+[23:40:08] Player: perai
+[23:40:11] oF |  kwSK: é seu sv?
+[23:40:14] Player: esqueci pqp kkkkk
+[23:40:18] oF |  kwSK: é seu ?
+[23:40:18] Player: o monge passou a vps
+[23:40:19] oF |  kwSK: ou do krkn?
+[23:40:20] Player: pra eu arrumar
+[23:40:21] oF |  kwSK: ata
+[23:40:24] Player: perai
+[23:40:25] oF |  kwSK deixou o servidor
+[23:40:51] oF |  kwSK conectou-se ao servidor
+[23:40:53] "  (1x)
+[23:40:59] Player: kd ele
+[23:41:06] oF |  kwSK aliou-se a Equipe Contra-Terrorista
+[23:41:08] oF |  kwSK: os ticks
+[23:41:09] oF |  kwSK: tão ruim
+[23:41:14] Player: s [e pq to no jogo
+[23:41:18] oF |  kwSK: ?
+[23:41:20] Player: tem q ser so decitad
+[23:41:22] Player: dedicated
+[23:41:27] oF |  kwSK: como assim
+[23:41:29] oF |  kwSK: vc ta no jogo?
+[23:41:32] oF |  kwSK killed Player with Knife
+[23:41:32] k¦oF |  kwSK¦100¦100
+[23:41:33] Player *MORTO*: sim to aq
+[23:41:42] Player: to no jogo pela vps
+[23:41:44] oF |  kwSK: MDS
+[23:41:45] Player: mata n fdp
+[23:41:46] oF |  kwSK: kkkkkkkkkkkkkkkkkkkkk
+[23:41:48] oF |  kwSK: abre logo
+[23:41:52] oF |  kwSK: pelo dedicated
+[23:41:52] Player: entrei so pra ver se tava on
+[23:41:55] Player: ja ta
+[23:42:04] Player: mas ta caindo tick pq ta consumindo memoria
+[23:42:07] oF |  kwSK: sim
+[23:42:10] oF |  kwSK: então sai 
+[23:42:10] Player: vou botar script
+[23:42:11] oF |  kwSK: antes que pifa
+[23:42:13] oF |  kwSK: a maquina
+[23:42:15] oF |  kwSK: ok
+[23:42:16] Player: vai pifar n fi
+[23:42:19] Player deixou o servidor
+[23:42:19] Disconnect Reason: Client request (Code 0)
+[23:42:19] ----- Disconnected -----

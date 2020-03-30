@@ -1,0 +1,14 @@
+©255255255Cbble - Bomb/Defuse
+
+©255255000official CS2D Map
+
+
+©050150255Counter-Terrorists:
+©110130150Prevent Terrorists from bombing the castle. Team members must defuse any bombs that threaten targeted areas.
+
+©255025000Terrorists:
+©150110100The Terrorist carrying the C4 must destroy the castle.
+
+Other Notes:
+There are 2 bomb sites in the mission. 
+

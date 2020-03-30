@@ -1,0 +1,9 @@
+©255255255CS2D New - Bomb/Defuse
+
+©255255000official CS2D Map by SMN
+
+©050150255Counter-Terrorists:
+©110130150Prevent Terrorists from bombing the "2d". Team members must defuse any bombs that threaten targeted areas.
+
+©255025000Terrorists:
+©150110100The Terrorist carrying the C4 must destroy the "2" or the "d". 

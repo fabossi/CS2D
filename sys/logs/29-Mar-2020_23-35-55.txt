@@ -1,0 +1,7 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:35:55
+
+[23:35:55] Steam: Not logged in
+[23:35:55] LOAD MAP: 'maps/awp_grey.map' does not exist
+[23:35:55] UDP socket initialized using port 60413
+[23:35:56] U.S.G.N.: Transmission cancelled by user. Unable to check version/news
+[23:35:56] U.S.G.N.: Ping/State 'playing'

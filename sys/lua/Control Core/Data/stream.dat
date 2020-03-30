@@ -1,0 +1,243 @@
+-----------------------------------------------
+--------- FILE UTILITY SYSTEM LIBRARY ---------
+-----------------------------------------------
+-- Author: Simonas Kuzmickas (BlazingNote)
+-- Last Edit: November 3 (@ 2012)
+
+function read_dir(dir,readFiles,readFolders,showExtension)
+	local dir_folders={}
+	local dir_files={}
+	
+	if readFiles then
+		os.execute('dir /b /a:-d "'..dir..'" > tmp')
+		for line in io.lines("tmp") do
+			if showExtension then
+				table.insert(dir_files,line)
+			else				
+				local file=string_split(line,"[^.]*")
+				local ext=table.remove(name,#name)
+				local name=table.concat(file,".")
+				table.insert(dir_files,name)
+			end
+		end
+	end
+	if readFolders then
+		os.execute('dir /b /a:d "'..dir..'" > tmp')
+		for line in io.lines("tmp") do
+			table.insert(dir_folders,line)
+		end
+	end
+	os.remove("tmp")
+	return dir_files,dir_folders
+end
+
+function is_file(path)
+  local file = io.open(path, "rb")
+  if file then file:close() end
+  return file ~= nil
+end
+
+function file_length(path)
+	local fh = assert(io.open(path, "rb"))
+	local len = assert(fh:seek("end"))
+	fh:close()
+	return len
+end
+
+function Eof(TStream)
+	local pos = assert(TStream:seek())
+	local len = assert(TStream:seek("end"))
+	return pos==len,assert(TStream:seek("set",pos))
+end
+
+function WriteStream(Path)
+	return(assert(io.open(Path,"wb")))
+end
+
+function OverWriteStream(Path)
+	return(assert(io.open(Path,"wb+")))
+end
+
+function AddWriteStream(Path)
+	return(assert(io.open(Path,"ab")))
+end
+
+function ReadStream(Path)
+	return(io.open(Path,"rb"))
+end
+
+function stream_pos(TStream,pos)
+	return assert(TStream:seek("set",pos))
+end
+
+function CloseStream(TStream)
+	TStream:close()
+end
+
+function WriteLine(TStream,Line)
+	TStream:write(Line.."\n")
+end
+
+function WriteChar(TStream,Char)
+	TStream:write(string.sub(Char,1,1))
+end
+
+function WriteByte(TStream,String)
+	TStream:write(string.char(String))
+end
+
+function WriteShort(TStream,Number)
+	local ShortBits = NumberToBits(Number,CONST_SHORT)
+	WriteByte(TStream,BitsToNumber(ShortBits,CONST_BYTE))
+	WriteByte(TStream,BitsToNumber(PushBits(ShortBits,-CONST_BYTE,CONST_SHORT),CONST_BYTE))
+end
+
+function WriteLongShort(TStream,Number)
+	local LongShortBits = NumberToBits(Number,CONST_LONGSHORT)
+	WriteByte(TStream,BitsToNumber(LongShortBits,CONST_BYTE))
+	WriteByte(TStream,BitsToNumber(PushBits(LongShortBits,-CONST_BYTE,CONST_LONGSHORT),CONST_BYTE))
+	WriteByte(TStream,BitsToNumber(PushBits(LongShortBits,-CONST_BYTE,CONST_LONGSHORT),CONST_BYTE))
+end
+
+function WriteInt(TStream,Number)
+	local IntBits = NumberToBits(Number,CONST_INT)
+	WriteByte(TStream,BitsToNumber(IntBits,CONST_BYTE))
+	WriteByte(TStream,BitsToNumber(PushBits(IntBits,-CONST_BYTE,CONST_INT),CONST_BYTE))
+	WriteByte(TStream,BitsToNumber(PushBits(IntBits,-CONST_BYTE,CONST_INT),CONST_BYTE))
+	WriteByte(TStream,BitsToNumber(PushBits(IntBits,-CONST_BYTE,CONST_INT),CONST_BYTE))
+end
+
+function WriteString(TStream,String, AutoLength)
+	if (AutoLength ~= false) then
+		WriteByte(TStream,tonumber(string.len(String)))
+	end
+	TStream:write(String)
+end
+
+function ReadLine(TStream)
+	return(TStream:read("*line"))
+end
+
+function ReadChar(TStream)
+	return(TStream:read(1))
+end
+
+function ReadByte(TStream)
+	return(string.byte(TStream:read(1)))
+end
+
+function ReadShort(TStream)
+	return(BitsToNumber(SumBits(NumberToBits(ReadByte(TStream),CONST_BYTE),PushBits(NumberToBits(ReadByte(TStream),CONST_BYTE),CONST_BYTE,CONST_SHORT),CONST_SHORT),CONST_SHORT))
+end
+
+function ReadLongShort(TStream)
+	return(BitsToNumber(SumBits(SumBits(NumberToBits(ReadByte(TStream),CONST_LONGSHORT),PushBits(NumberToBits(ReadByte(TStream),CONST_LONGSHORT),CONST_BYTE,CONST_LONGSHORT),CONST_LONGSHORT),PushBits(NumberToBits(ReadByte(TStream),CONST_LONGSHORT),CONST_SHORT,CONST_LONGSHORT),CONST_LONGSHORT),CONST_LONGSHORT))
+end
+
+function ReadInt(TStream)
+	return(BitsToNumber(SumBits(SumBits(NumberToBits(ReadByte(TStream),CONST_INT),PushBits(NumberToBits(ReadByte(TStream),CONST_INT),CONST_BYTE,CONST_INT),32),SumBits(PushBits(NumberToBits(ReadByte(TStream),CONST_INT),CONST_SHORT,CONST_INT),PushBits(NumberToBits(ReadByte(TStream),CONST_INT),CONST_LONGSHORT,CONST_INT),CONST_INT),CONST_INT),CONST_INT))
+end
+
+function ReadString(TStream, Length)
+	local String = ""
+	if (Length == nil) then
+		Length = ReadByte(TStream)
+	end
+	for i = 1, Length do
+		String = String..ReadChar(TStream)
+	end
+	return(String)
+end
+
+-------------------------------------------------------
+--------- Bits Table Library (ZEROS and ONES) ---------
+-------------------------------------------------------
+
+CONST_BYTE = 8
+CONST_SHORT = 16
+CONST_LONGSHORT = 24
+CONST_INT = 32
+CONST_FLOAT = 32
+
+Print = print
+Delete = os.remove
+
+function StateToNumber(State)
+	if State then
+		return(1)
+	else
+		return(0)
+	end
+end
+
+function NumberToState(Value)
+	Table = {[0] = false,[1] = true}
+	return(Table[Value])
+end
+
+function ArgumentsToBits(...)
+	Result = {}
+	for i, v in ipairs(arg) do
+		Result[i - 1] = NumberToState(v)
+	end
+	return(Result)
+end
+
+function NumberToBits(Value,BitCount)
+	Result = {}
+	for i = (BitCount - 1), 0, -1 do
+		Result[i] = (2 ^ i <= Value)
+		Value = (Value - 2 ^ i * StateToNumber(Result[i]))
+	end
+	return(Result)
+end
+
+function BitsToNumber(BitsTable,BitCount)
+	Result = 0
+	for i = (BitCount - 1), 0, -1 do
+		Result = (Result + 2 ^ i * StateToNumber(BitsTable[i]))
+	end
+	return(Result)
+end
+
+function SumBits(BitsTableA,BitsTableB,BitCount)
+	for i = (BitCount - 1), 0, -1 do
+		if BitsTableB[i] then
+			BitsTableA[i] = true
+		end
+	end
+	return(BitsTableA)
+end
+
+function PushBits(BitsTable,Position,BitCount)
+	local LBits = {}
+	for i = (BitCount - 1), 0, -1 do
+		LBits[i + Position] = BitsTable[i]
+	end
+	for i = (BitCount - 1), 0, -1 do
+		BitsTable[i] = LBits[i]
+	end
+	return(BitsTable)
+end
+
+function InvertBits(BitsTable,BitCount)
+	local LBits = {}
+	for i = (BitCount - 1), 0, -1 do
+		LBits[BitCount-i-1] = BitsTable[i]
+	end
+	for i = (BitCount - 1), 0, -1 do
+		BitsTable[i] = LBits[i]
+	end
+	return(BitsTable)
+end
+
+function PrintBits(BitsTable,BitCount)
+	local String = ""
+	for i = 0, (BitCount - 1)  do
+		String = String..StateToNumber(BitsTable[i])
+		if ((i + 1) % 4 == 0) then
+			String = String.." "
+		end
+	end
+	print(String)
+end

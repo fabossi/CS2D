@@ -1,0 +1,39 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:36:17
+
+[23:36:17] Steam: Not logged in
+[23:36:17] LOAD MAP: 'maps/awp_grey.map' does not exist
+[23:36:17] UDP socket initialized using port 60414
+[23:36:17] U.S.G.N.: Your game version is up to date!
+[23:36:55] LOAD MAP: 'maps/awp_grey.map' does not exist
+[23:37:03] Cached servers added to list: 195
+[23:37:03] U.S.G.N.: Received serverlist (servers: 87)
+[23:37:08] Connecting to 179.228.156.85:36963...
+[23:37:08] Checking 'maps/awp_grey.txt': Does not exist. Request transfer!
+[23:37:08] Checking 'gfx/tiles/fruitpapje1.bmp': Already exists.
+[23:37:08] Checking 'maps/awp_grey.map': Does not exist. Request transfer!
+[23:37:08] Requesting 2 files from server...
+[23:37:08] Downloading 'maps/awp_grey.txt' from server...
+[23:37:08] Downloading 'maps/awp_grey.map' from server...
+[23:37:08] load map 'awp_grey'
+[23:37:10] receiving physics data (7 b)
+[23:37:11] ----- Server joined -----
+[23:37:11] nL. Zaid conectou-se ao servidor
+[23:37:11] [Server] Bem vindo, Player 2!
+[23:37:11] [Server] Sua USGN está autenticada como Visitante!
+[23:37:13] fnatic* killed DEADPOOL_BR with AWP
+[23:37:13] nL. aleat! aliou-se a Equipe Terrorista
+[23:37:15] nL. Zaid deixou o servidor
+[23:37:15] malltus *MORTO*: aii tio
+[23:37:18] Player 2 deixou o servidor
+[23:37:18] Disconnect Reason: Client request (Code 0)
+[23:37:18] ----- Disconnected -----
+[23:37:22] Starting server...
+[23:37:23] UDP socket initialized using port 36963
+[23:37:23] load map 'awp_grey'
+[23:37:24] ----- Server started -----
+[23:37:25] U.S.G.N.: Server added to serverlist
+[23:37:28] Player aliou-se a Equipe Contra-Terrorista
+[23:38:11] U.S.G.N.: Serverlist entry updated
+[23:38:37] Desligamento
+[23:38:37] U.S.G.N.: Server removed from serverlist
+[23:38:37] ----- Disconnected -----

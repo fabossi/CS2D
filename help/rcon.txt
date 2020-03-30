@@ -1,0 +1,59 @@
+©255255255- RCon -
+RCon stands for "Remote Control". It allows you to control dedicated servers.
+
+©255255255- Server Setup -
+Before you can use remote control you have to set an rcon password.
+©255000000Servers without rcon password cannot be remotely controlled!
+To set an rcon password you can use the server menu (New Game) or the command "sv_rcon" followed by the password. You can also open sys/server.cfg and enter it there!
+©255000000Use combinations of numbers, letters and special characters as password. Never use passwords which are somehow related with yourself/the server!
+
+©255255255- Using RCon as Client -
+After setting the rcon password you have to do the following:
+- join your server
+- open the console
+- type: rcon_password YOURPW
+- type: rcon YOURCOMMANDS
+You have to replace "YOURPW" with the rcon password you set before. "YOURCOMMANDS" has to be replaced with one or more commands you want to execute on your server.
+
+Please note: You only have to use "rcon_password" ONE time after joining the server! Afterwards you can use "rcon" as often as you like.
+
+©255255255- Using external RCon -
+It is also possible to use RCon without joining a server:
+- find your server in the serverlist
+- rightclick it
+- click "Remote Control"
+- enter the rcon password
+- enter your commands
+- execute with enter
+
+There are other applications which allow CS2D RCon. You can even write your own one (programming knowledge required). This is what you have to send by UDP:
+1 Byte: 1
+1 Byte: 0
+1 Byte: 242
+1 Byte: length of password string (X)
+X Bytes: password string, each char one byte (ASCII)
+2 Bytes (unsigned short): length of command string (X)
+X Bytes: command string, each char one byte (ASCII)
+
+"password string" has to contain the rcon password and "command string" the command(s) you want to execute.
+
+You will then receive answers from the server as UDP packets starting with:
+1 Byte: 1
+1 Byte: 0
+
+Followed by one or more console output lines with the following structure:
+1 Byte: 240
+1 Byte: 0
+1 Byte: 3
+2 Bytes (unsigned short): length of line (X)
+X Bytes: line string, each char one byte (ASCII)
+
+The first 3 bytes are for the message type. 240,0,3 is probably the only type you will receive with external RCon.
+
+©255000000Warning: External RCon is always a security risk when used with an unprotected channel (internet). Password and commands are not encrypted. The transmission is not reliable because plain UDP is used.
+
+A tool for RCon access can be found at
+»www.CS2D.com/download«
+
+»Return«
+

@@ -1,0 +1,53 @@
+©255255255- How To Play CS2D -
+CS2D is a tactical topdown 2D shooter. There are two teams which fight each other: terrorists and counter-terrorists. A team wins as soon as all opponents are killed or a mission (depending on the map) is accomplished. Both teams can buy weapons. To do this they have to earn money by killing enemies or by performing tasks.
+
+©255255255- How To Control -
+You control the game with your mouse and your keyboard. The keyboard is used for movement and other actions and the mouse for aiming and shooting. Your character will always look at your mousepointer.
+
+©255255255- Starting A Game -
+You can either start your own game or join an existing one. If you want to start a new game you have to click at "New Game" in the main menu. If you want to join a game you have to click at "Find Servers".
+
+©255255255- Map Briefing -
+After starting/joining a game you might see a little briefing which tells something about the map. If you play this map for the first time you should read this briefing. Click okay in the window of the briefing to proceed. Please notice that not every map has a briefing.
+
+©255255255- Selecting A Team -
+Now you have to select your team and your look. Both teams have the same attributes. They only differ in look and missions (more about missions later). Furthermore some weapons and items are only available for terrorists and some only for counter-terrorists. The look is just a visual thing and does not affect gameplay. You can choose your team with your mouse or with the numeric keys of your keyboard. Select "Spectator" if you just want to spectate the game. After selecting your team you might have to wait some seconds or minutes until the current round ends.
+
+©255255255- Buying -
+At the beginning of each round you start at the base of your team. There you can buy weapons and equipment - if you have enough cash. You will see a cart on the left side of your screen if you are at a place where you can buy.
+
+Each player can carry the following equipment:
+- one primary weapon (gun)
+- one secondary weapon(pistol)
+- one melee weapon (knife)
+- different grenades
+- some additional stuff like armor
+
+You will get a knife and a pistol if you do not have any weapons. This is the basic configuration. Everything else has to be bought or collected from other players. Press the buy-key (default B) to open the buy menu and use your mouse or keyboard to buy stuff.
+
+©255255255- Playing -
+After buying your equipment you can start to fight. Move (default W,A,S,D) and try to kill opponents by shooting them (default left mouse button). You will get money for every enemy you kill. Furthermore you can collect weapons of killed players. However be careful that you don't hit your teammates. You will lose money if you kill them.
+At the bottom of the screen you can see your health, armor, the remaining roundtime, your ammo and your money. Try to kill every opponent before the time elapsed to win the round. If you die you will have to wait until the round is over before you can play again.
+
+©255255255- Missions -
+In addition to this teamdeathmatch-style-gaming there are missions on the most maps. Try to accomplish these missions to win a round and to earn some extra cash! The most common missions are the following:
+
+©255255000DE - Maps (Bomb Detonate/Defuse)
+©255025000Terrorists:
+©150110100One terrorist will get a bomb at the start of the round. The aim is to plant the bomb at a certain spot of the map. Most DE-maps have two spots where you can plant the bomb.
+©050150255Counter-Terrorists:
+©110130150They either avoid that the terrorists plant the bomb or they defuse the bomb before it explodes.
+
+©255255000CS - Maps (Hostage Rescue)
+©255025000Terrorists:
+©150110100The terrorists have to protect their hostages.
+©050150255Counter-Terrorists:
+©110130150The counter-terrorist try to rescue the hostages. To do this they have to reach the hostages and afterwards they have to lead them to a rescue zone or to their base.
+
+©255255000AS - Maps (V.I.P. Assassination)
+©255025000Terrorists:
+©150110100They have to kill the V.I.P. before he reaches the escape point.
+©050150255Counter-Terrorists:
+©110130150One of the counter-terrorists will start as V.I.P.! This player can't buy any equipment. He just has a knife, a pistol and extra armor and he has to reach the escape point before the round time elapsed.
+
+»Return«

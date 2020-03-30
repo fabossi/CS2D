@@ -1,0 +1,36 @@
+©255255255- What is Scripting? -
+Scripting allows you to control CS2D. Most script commands change some settings of the game. All settings you make in the options menu are saved as scripts too! Moreover you can create scripts for buying several items with just one key (buyscripts) and so on.
+You can enter your scripts in the console or save them to files and execute these files with CS2D!
+
+©255255255- Alias -
+One general technique of scripting are aliases. Aliases are something like shortcuts. For example the following:
+©000255000alias "getstuff" "m4a1; deagle"
+This will create a new command (alias/shortcut) called "getstuff"! You can use this command like all other commands. As soon as you call it you will buy a M4A1 and a Desert Eagle!
+Another important point here: commands are seperated with ;! You don't have to set ; but it is recommended.
+Another example:
+©000255000alias "lol" "say LOLROFLOMG!"
+This will make you say "LOLROFLOMG!" after entering "lol" in your console!
+
+©255255255- Bind -
+Entering commands in your console is not a good solution if you plan to do it very often. That is the reason why there are binds! You can easily bind commands to keys. It works like this:
+©000255000bind "C" "say COOL"
+Now you will say COOL when you press C.
+
+©255255255- Exec -
+Please note that CS2D does NOT save your binds and aliases. The best solution to keep your aliases and binds is to write them to cfg-files! Use the windows texteditor or other plain ASCII text editors to create these files. Just write a txt-file and rename it to cfg.
+CS2D loads sys/autoexec.cfg automatically whenever you start CS2D. So it is a good idea to save your scripts in this file. Moreover you can also execute scripts in other files:
+©000255000exec sys/mycfg.cfg
+This will execute the cfg-file mycfg.cfg in your sys-folder! All commands in this file will be executed.
+Warning: CS2D automatically creates some cfg-files in the sys-folder to save your settings. You should NOT add new commands to these files because CS2D will overwrites these files automatically and you will lose all added commands! Don't add new commands there:
+©255000000controls.cfg - controls
+©255000000editor.cfg - editor settings
+©255000000filters.cfg - serverlist filter settings
+©255000000mapcycle.cfg - map names only
+©255000000more.cfg - advanced settings
+©255000000server.cfg - server settings
+
+©255255255- More Commands -
+Alias, bind and exec are just three of the most important commands for scripting. There are many other commands. For example commands to move your player, commands to buy equipment, commmands to open menus and commands to change your server settings.
+A full list of all commands is available at »www.CS2D.com/help«!
+
+»Return«

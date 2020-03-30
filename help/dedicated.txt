@@ -1,0 +1,16 @@
+©255255255- Dedicated Server -
+CS2D has dedicated server applications for windows and linux. You can get them at
+»www.CS2D.com/download«
+
+©255255255- How to use? -
+To run your own dedicated server you have to download the full CS2D package and the dedicated server application. Afterwards you have to upload and extract CS2D and the dedicated server on your server (or start it locally).
+You don't have to upload sound and graphic files. However if you have maptransfer enabled you should upload all sounds and graphics which are used in maps.
+Don't forget to chmod cs2d_dedicated (777). Afterwards you can execute it. It will use the configuration files in the "sys"-folder. Use »RCon« to control your dedicated server.
+
+©255255255- Problems? -
+Please contact your server adminstrator if you have problems with running the CS2D dedicated server. You might have to install additional software/libraries to run it. Moreover you have to setup the firewall correctly. Also check the logfiles in "sys/logs" if you experience any problems.
+
+Help for server problems is also available at:
+»www.CS2D.com/faq«
+
+»Return«

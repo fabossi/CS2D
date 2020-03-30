@@ -1,0 +1,14 @@
+©255255255- U.S.G.N. Login Status -
+This is your in-game login status. Read »USGN Info« for details.
+
+»ENTER LOGIN DATA«
+
+The color indicates your current status:
+©000255000Green: logged in
+©255255000Yellow: trying to login / offline
+©255000000Red: failed to login
+
+©255255255- Important Note -
+You don't have to have a green status to play CS2D! However some servers will allow you to join only if you do have a green status. These servers are marked with an U in the serverlist. Read »USGN Info« if you want to get your own account.
+
+»Return«

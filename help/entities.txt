@@ -1,0 +1,129 @@
+©255255255- Entities -
+
+©255255000Info_T
+Terrorist spawnpoint
+You need at least one in each map!
+
+©255255000Info_CT
+Counter-Terrorist spawnpoint
+You need at least one in each map!
+
+©255255000Info_VIP
+V.I.P. spawnpoint (as maps)
+
+©255255000Info_Hostage
+Hostage spawnpoint (cs maps)
+
+©255255000Info_RescuePoint
+Hostage rescue point (cs maps)
+
+©255255000Info_BombSpot
+Bombspot (de maps)
+
+©255255000Info_EscapePoint
+V.I.P. escape point (as maps)
+
+©255255000Info_Animation
+Adds an animation to a certain tile from the tileset
+
+©255255000Info_Strom
+Adds storm which influences particle effects
+
+©255255000Info_TileFX
+Adds an effect/animation to a certain tile from the tileset
+
+©255255000Info_NoBuying
+Disallows buying on this map
+
+©255255000Info_NoWeapons
+Disallows weapons on this map (besides the melee weapon)
+
+©255255000Info_Quake
+Create a quake effect
+
+©255255000Info_CTF_Flag
+Capture the flag flagpoint (ctf maps)
+
+©255255000Info_OldRender
+Old rendermode for compatibility to maps from old CS2D versions (CS2D 0.1.0.4 or older). Only use this entity if you have problems with converting your old maps to the new CS2D version.
+
+©255255000Info_Dom_Point
+Domination flagpoint (dom maps)
+
+©255255000Info_NoBuildings
+Defines an area where building is not possible
+
+©255255000Info_BotNode
+Defines an important spot for the bots (computer AI). Do not set many of those!
+
+©255255000Env_Item
+Adds an item to the map
+
+©255255000Env_Sprite
+Adds a sprite graphic on the map
+
+©255255000Env_Sound
+Adds a sound effect
+
+©255255000Env_Decal
+Adds a decal
+
+©255255000Env_Breakable
+Adds a breakable object
+
+©255255000Env_Explode
+Adds an explosion
+
+©255255000Env_Hurt
+Defines an area which causes damage or heals
+
+©255255000Env_Image
+Adds an image
+
+©255255000Env_Object
+Adds an object like palms or trees
+
+©255255000Gen_Particles
+Adds a particle generator
+
+©255255000Gen_Sprites
+Adds a sprite generator
+
+©255255000Gen_Weather
+Sets weather to rain/snow/fog etc.
+
+©255255000Gen_FX
+Generate effects like waves or smoke
+
+©255255000Func_Teleport
+Adds a teleporter
+
+©255255000Func_DynWall
+Adds a dynamic wall which can be toggled on/off
+
+©255255000Func_Message
+Adds messages
+
+©255255000Func_GameAction
+Adds game actions like round restart or kill players
+
+©255255000Trigger_Start
+Triggers on each roundstart
+
+©255255000Trigger_Move
+Triggers when a player moves over it
+
+©255255000Trigger_Hit
+Triggers when hit (has to be placed on a wall)
+
+©255255000Trigger_Use
+Triggers when used with use-key (E)
+
+©255255000Trigger_Delay
+Triggers in a certain time after being triggered
+
+©255255000Trigger_Once
+Forwards a trigger only once per round
+
+
+»Return«

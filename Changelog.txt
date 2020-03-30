@@ -1,0 +1,2165 @@
+﻿### 1.0.1.1 p1 - 22.12.2019
+
+ [CHANGED] XML Errors are more detailed now
+ [FIXED] 3D floors were not rendered
+ [FIXED] XML crashed when root entiy was empty
+ [FIXED] XML image hover-color
+ [FIXED] XML margin-right attribute was not working properly
+
+
+### 1.0.1.1 - 16.12.2019
+
+ [FIXED] Grenades/projectiles on ground were sometimes rendered with wrong grenade type image
+ [FIXED] Some melee weapons (chainsaw, machete, ...) were dropped even with mp_deathdrop 4
+ [FIXED] Leaderboard window displayed only 99 players instead of 100
+ [ADDED] XML format support for server info
+ [ADDED] Additional damage paramter for Lua hook "shieldhit"
+ [ADDED] "weaponmode" parameter to Lua player command
+ [ADDED] Command "hudtxtclear" (clears all HUD texts efficiently)
+ [ADDED] Lua hook "hostageuse" (when a hostage is used)
+ [ADDED] Lua hook "hostagedamage" (when a hostage is "damaged" by a player)
+ [ADDED] Lua hook "hostagekill" (when a hostage is killed)
+ [ADDED] Server info request response limit (reduces server vulnerability to some attacks a bit)
+
+
+### 1.0.1.0 p1 - 06.11.2019
+
+ [FIXED] Lua addbind did not work anymore at all after 1.0.1.0 update
+
+
+### 1.0.1.0 - 06.11.2019
+
+ [FIXED] hudtxtalphafade and hudtxtmove did not work with IDs >= 50
+ [FIXED] animation tweens (tween_animate) were not sent correctly to players joining after creation
+ [FIXED] SG552/Aug invoked Lua reload hook with mode 0 instead of 1 when reloading while using scope
+ [FIXED] Rendering issues with old maps containing the deprecated Info_OldRender entity
+ [FIXED] Lag compensation did not work at all on dedicated servers
+ [FIXED] Network shot handling for shot packets which arrived too quickly wasn't working correctly
+ [CHANGED] Lua command addbind is no longer case sensitive (e.g. it now works with "a" and "A")
+ [ADDED] Discord link added to main menu
+ [ADDED] Server log now also shows Steam login info when a new player connects
+ [ADDED] "-" prefix for mp_buymenu to disable the visual buy menu silently
+ [ADDED] Lua command removebind (removes a single Lua key)
+ [ADDED] Lua command removeallbinds (removes all Lua key binds)
+ [ADDED] Additional projectileid paramter for Lua hook "projectile"
+ [ADDED] Lua hook "projectile_impact" (when projectiles hit walls/ground)
+ [FIXED] Lua key binds which were added AFTER players connected did not work for these clients
+ [FIXED] It was possible to add the same Lua key binds multiple times, causing follow up issues
+ [REMOVED] Physics checkbox removed from server settings (not enough space, too broken)
+
+
+### 1.0.0.9 - 07.09.2019
+
+ [FIXED] Steam bans were not saved properly & USGN bans were also saved as Steam bans
+ [FIXED] English map voting localization said "sever" instead of "server"
+ [FIXED] Starting a server via commandline set the map to "" when no map was specified in arguments
+ [FIXED] Crash when using Lua "tween_frame" on dedicated servers
+ [FIXED] Crash when using "killplayer" command with no or bad player ID parameter
+ [FIXED] Issues when exceeding string length limit of 255 chars in some commands (new limit: 400 chars)
+ [FIXED] Lua command "tween_rotateconstantly" did not work properly with very low speed values
+ [ADDED] Lua command "tileproperty" (get the property value for a tile frame in the tileset)
+ [ADDED] Lua command "tween_animate" (constant frame animation for spritesheet images)
+ [ADDED] Lua hook "itemfadeout" (when item is being faded out)
+ [ADDED] "maptimeleft" parameter for Lua game command (returns remaining time on map in seconds)
+ [ADDED] "tilesize" parameter for Lua map command (returns size of tiles in current map: 32 or 64)
+ [ADDED] "alpha" parameter for imageparam and object Lua commands (returns alpha transparency)
+ [CHANGED] "name" Lua hook behavior improved for delayed player name changes
+ [CHANGED] hudtxt/hudtxt2 ID limit raised from 50 to 200 (IDs 0-199)
+ [CHANGED] Updated cursors.lua example to use player command instead of deprecated reqcld approach
+
+
+### 1.0.0.8 p2 - 23.03.2019
+
+ [FIXED] Flags in entities (Info_CTF_Flag, Info_Dom_Point) were invisible since 1.0.0.8
+ [FIXED] Leaderboard scrolled one entry too much
+ [FIXED] Scoreboard mute icon overlapped other icons
+
+
+### 1.0.0.8 p1 - 07.03.2019
+
+ [FIXED] Invisible items when joining a server without physics after playing on a server with physics
+ [FIXED] Possible crash when looking at 99th place in leaderboard
+ [FIXED] "rank" did not display assists and mvps for Steam accounts (server version 3.0)
+ [CHANGED] Server filter window now has a 2 column layout
+ [CHANGED] Updated Chinese translation (simplified & traditional)
+ [ADDED] Changelog.txt can now be opened by clicking version number in main menu
+
+
+### 1.0.0.8 - 28.02.2019
+
+ [FIXED] U.S.G.N avatars were not downloaded
+ [FIXED] Tile FX did not work for 64px tilesets
+ [FIXED] MVP and Assists were not saved properly in stats/rank system
+ [FIXED] Mouse spectation disappeared after killcam transition
+ [FIXED] Quake shake effect was too long when having a low frame rate
+ [FIXED] Bullet shells fade out took too long when having a low frame rate
+ [FIXED] Tween duration was capped at 65535 ms for all tweens (cap removed)
+ [FIXED] Some tweens did not work properly when having a huge number of dynamic objects (over 32k)
+ [FIXED] Lua HTTP request stopped working after first failure
+ [FIXED] Server mod cache did not load properly for clients
+ [FIXED] Lighting issues when dynamic objects were updated near light sources
+ [FIXED] Using the last tile in a tileset with settile command did not work
+ [FIXED] Pasting texts with line breaks in editor broke maps (line breaks and tabs are now sripped when pasting)
+ [FIXED] Lua hook "shieldhit" led to crash when shield was hit by turret which was not built by a player
+ [FIXED] Some Gen_FX / Gen_Weather particles were not visible in map editor anymore
+ [FIXED] Decals on walls and obstacles were invisible
+ [FIXED] Map background image was invisible in most cases
+ [FIXED] Command setbackground did not work properly in most cases
+ [FIXED] Map transfer "Overwrite" option not working correctly for clients who disabled downloads completely
+ [FIXED] Clients were sometimes able to use wrong maps - added a second checksum validation (after loading map)
+ [CHANGED] Join hook is now called AFTER map loading (+ new "connect" hook introduced)
+ [CHANGED] "Quick Play" will now prefer servers with at least 3 human players, lower chance to join empty servers
+ [CHANGED] "Quick Play" will now exclude servers with non-standard mode maps (everything not as/cs/de)
+ [CHANGED] Improved "Quick Play" UI
+ [CHANGED] addbind returns true only when it was added succesfully
+ [CHANGED] addbind prints console error if key does not exist
+ [CHANGED] Entity limit in maps increased from 10k to 100k
+ [CHANGED] When changing sv_specmode the new mode is displayed in center of the screen
+ [ADDED] Server leaderboards (in-game top 100 rank list, accessible via ESC-menu)
+ [ADDED] mwheeldown and mwheelup addbind keys
+ [ADDED] ®path text tag (draws image in chat)
+ [ADDED] Chainsaw particles when hitting walls or obstacles
+ [ADDED] Physics with Lua support
+ [ADDED] Command "damagetile"
+ [ADDED] Lua command "raycast"
+ [ADDED] Lua command "inPhysicsObject"
+ [ADDED] Lua command "closeplayers" (get all players inside a certain radius around a point)
+ [ADDED] Lua command "hascloseplayers" (checks if any player is inside a certain radius around a point)
+ [ADDED] Lua hook "onhit"
+ [ADDED] Lua hook "connect" (when a player STARTS to connect, triggered before "join"-hook)
+ [ADDED] Lua hook "clientsetting" (when a player changes settings)
+ [ADDED] Lua hook "oncollision"
+ [ADDED] Lua hook "oncollisionhit"
+ [ADDED] Lua hook "oncollisionenter"
+ [ADDED] Lua hook "oncollisionleave"
+ [ADDED] "micsupport" parameter for Lua player command (does player have microphone support?)
+ [ADDED] "widescreen" parameter for Lua player command (1 if running in widescreen mode, 0 if 4:3 res)
+ [ADDED] "windowed" parameter for Lua player command (does player run game in window?)
+ [ADDED] "language" parameter for Lua player command (language of the player)
+ [ADDED] "language_iso" parameter for Lua player command (ISO code of the language of the player)
+ [ADDED] "ticks" parameter for Lua game command (server tick/refresh rate)
+ [ADDED] "timeleft" parameter for Lua game command (remaining round time in seconds)
+
+
+### 1.0.0.7 p2 - 15.04.2018
+
+ [FIXED] Progress in loading screen sometimes went beyond length of loading bar
+ [FIXED] FPS debug was hidden when loading maps
+ [FIXED] Map preview artifacts
+ [FIXED] Message "U.S.G.N.: Checking Game Version" was shown after being completed
+ [FIXED] Blurry player avatars
+ [FIXED] Sending many chat messages in one frame (via Lua) sometimes broke the server connection
+ [FIXED] When selected map gets deleted, CS2D tried to load a map type category instead of the first map
+ [FIXED] Missing map tileset sometimes wasn't transferred properly to clients
+ [FIXED] Melee weapon attack sounds were not played
+ [CHANGED] Improved performance when using OpenGL in windowed mode and VSync enabled
+ [CHANGED] Improved anti_clock support with additional strength settings
+
+
+### 1.0.0.7 p1 - 07.04.2018
+
+ [FIXED] "has downloads"-filter did not work
+ [FIXED] Error when unloading mods with HD skins
+
+
+### 1.0.0.7 - 07.04.2018
+
+ [FIXED] "-nointro" command line parameter led to crash
+ [FIXED] Memory leak in chat system (leak was introduced with 1.0.0.6)
+ [FIXED] Steam version offered auto update instead of updating via Steam only
+ [FIXED] Chat/radio icon over player heads was covered by map shadows
+ [FIXED] Turret does not shoot in wrong direction anymore
+ [FIXED] "Auto-Select" random player image wasn't always scaled correctly in HUD menu
+ [FIXED] IP banning in scoreboard context menu did not work properly with all IPs
+ [FIXED] Bug which led to corrupted player score values in score/rank system
+ [CHANGED] Console now supports multicolored printing (same as chat)
+ [CHANGED] Bullet synchronization between server and client
+ [CHANGED] Improved bullet particles graphics
+ [CHANGED] Reorganized "More (Settings)"-tabs with more categories for better overview
+ [CHANGED] "U" icon for U.S.G.N. login in main menu instead of padlock icon
+ [CHANGED] Improved Steam login logic
+ [CHANGED] Better handling of long texts in some UI elements (less overlapping)
+ [CHANGED] Max transfer file size limit (for "all", "images only", "sounds only" settings) lowered from 100 mb to 16 mb
+ [CHANGED] Improved Env_Decal in-game rendering performance (editor rendering performance not affected)
+ [CHANGED] More aggressive avatar caching / less avatar update/download socket connections
+ [CHANGED] Only 1 avatar download at a time instead of 2
+ [CHANGED] Error message in console when executing an unknown command is now a single line only instead of 3 
+ [ADDED] Steam support (login & achievements) for Linux and MacOS
+ [ADDED] Full support for client-side and server-side mods
+ [ADDED] Client mod selection menu in main menu (these mods will be activated locally)
+ [ADDED] Server mod selection menu in "New Game"-menu (these mods will be enabled for everyone on the server)
+ [ADDED] New server filter and status icon to filter/sort servers depending on custom transfers/downloads
+ [ADDED] "Is decoration" setting for Env_Sprite & Env_Image entities
+ [ADDED] Ukrainian translation, thanks to Maxor (U.S.G.N. #125571)
+ [ADDED] Off-Screen damage option (when disabled you can't get damaged by players outside your visible screen area)
+ [ADDED] Some visual additions & improvements in buy menu
+ [ADDED] Kill cam (when own or spectated player gets killed camera smoothly scrolls to killer)
+ [ADDED] "Unreal Software's" and "CS2D" in main menu are clickable, leading to unrealsoftware.de / cs2d.com
+ [ADDED] Commands "killcam", "killcam_spectator", "killcam_fx", "killcam_victimtime", "killcam_scrolltime" for kill cam settings
+ [ADDED] Command "renderdecoration" to enable/disable map decoration sprite/image rendering
+ [ADDED] Command "renderdecals" to enable/disable map decal rendering
+ [ADDED] Command "mp_anticlock" (detect local time/clock related hacks)
+ [ADDED] Command "menu_voxelweapons" to enable/disabled spinning 3D voxel weapons in buy menu
+ [ADDED] Command "effect" now supports new particle types "blood" and "sparkles"
+ [ADDED] Command "clear" to clear the console output
+ [ADDED] Bullet shell images "gfx/shells.png"
+ [ADDED] Lua: better require support (now looks in sys/lua/ and mods/, as well as in mods/<MODNAME>/lua/ when executed from mods/<MODNAME>/lua/main.lua)
+ [ADDED] Lua command os.millisecs (gets the number of milliseconds since the game's start)
+ [ADDED] Lua command os.info (gets information about the server's OS)
+ [ADDED] Lua command playerammo (get ammo value approximation of a weapon carried by a player)
+ [ADDED] Lua command objecttype (get info about a specific object type)
+ [ADDED] Lua image command now allows to spawn lights by using "<light>" as path value
+ [ADDED] Lua tile command now has parameters "rot", "blend", "color", "brightness" and "height"
+ [ADDED] Lua hook "turretscan" (when a turret searches for a target)
+ [ADDED] Warning message if server info is empty
+ [ADDED] Commandline parameter "-nosfx" to disable audio loading (for faster loading on low end systems)
+ [REMOVED] Launcher.exe removed from Windows Steam client (did not work properly with Steam)
+
+
+### 1.0.0.6 - 03.12.2017
+
+ [FIXED] Steam achievement progress did not save properly
+ [FIXED] Crash when hovering UI text field and starting loading the map at the same time
+ [FIXED] Better stability for servers with longer uptime
+ [FIXED] Lack of lag compensation precision since introduction of 60 fps
+ [FIXED] TileFX for 64px tilesets
+ [FIXED] 3D graphics mode with 4:3 gameplay ratio for 800x600 and 1024x768 resolutions
+ [FIXED] Autobuy did not allow to buy AK-47 when autobuy list contained a M4A1 before the AK-47
+ [FIXED] Main menu language flag sometimes opened the options while scrolling the serverlist
+ [FIXED] Offline serverlist cache did sometimes not work properly under certain circumstances
+ [FIXED] Spawn projectiles appeared out of sync between client and server
+ [FIXED] When using "Free Look" it was impossible to select player to spectate from scoreboard
+ [FIXED] Wrong flag was displayed for Czech localization
+ [FIXED] Env_Light size was limited to 128 instead of 256
+ [FIXED] Some rendering issues in DirectX mode with high resolutions on maps with Env_TileFX entities
+ [FIXED] Shotguns now fire correctly when mouse1 is held down with an empty clip
+ [CHANGED] User name is now updated in ranked data list
+ [CHANGED] Blood spray and ground snow particles fade out quicker if there are many (performance optimization)
+ [CHANGED] Default lag compensation divisor is now 16
+ [CHANGED] Rank command now shows user type (U.S.G.N. / Steam)
+ [CHANGED] Improved hudtxt font sharpness when using mp_hudscale (1 or 2)
+ [CHANGED] Serverlist: Only the real player count is now used for sorting by player count, bots are ignored
+ [CHANGED] Linux: Default color depth is now 24 bit instead of 32 bit for better compatibility
+ [CHANGED] Fancy round end messages (cp_roundend) are now enabled by default
+ [ADDED] Korean translation, thanks to Zeisen (U.S.G.N. #53832)
+ [ADDED] UTF-8 support for hudtxt and sv_msg commands
+ [ADDED] Lua UTF-8 support for print, msg, msg2 and parse commands ("hello" = "UTF-8:\x68\x65\x6C\x6C\x6F")
+ [ADDED] 1440x900 resolution support
+ [ADDED] 1360x768 resolution support
+ [ADDED] Lua image flag when using path "<flag:iso>"
+ [ADDED] Lua command reqhttp(url, path) to request http connection
+ [ADDED] Lua command player(id,"mousedist") now returns mouse distance from player with in-game measurement
+ [ADDED] Lua command "addbind" (adds a key bind which the server can listen to with the "key" Lua hook)
+ [ADDED] Lua hook "httpdata" (when http data is received afer sending a request with reqhttp)
+ [ADDED] Lua hook "assist" (when a player receives a kill assist)
+ [ADDED] Lua hook "key" (when key bound via "addbind" is pressed)
+ [ADDED] Command/setting "steam_login_timeout" to control how much time to use for login request
+ [ADDED] Additional ammo parameters for spawnitem command
+ [ADDED] "hudtxt" command additional vertical align and font size parameters
+ [ADDED] Entity property to ignore fog of war for Env_Breakable
+ [ADDED] Selected player in the scoreboard blinks in the radar
+ [ADDED] Spectator icon in the scoreboard for the player that you are currently spectating
+ [ADDED] Assist argument in "kill" hook
+ [ADDED] Small X button in main menu for quitting (top right corner in main menu)
+ [ADDED] Small arrow for window/fullscreen switching (top right corner in main menu)
+ [ADDED] 3 new Steam achievements ("FIRST BLOOD!", "So bright!", "I can see you!")
+ [REMOVED] IRC Chat (wasn't used properly by anyone)
+
+
+### 1.0.0.5 p3 - 19.11.2017
+
+ [FIXED] Steam login verification when user name was changed recently
+ [FIXED] Client set wrong max health after picking up medikit
+ [FIXED] Hit registration malfunction after implementing VSync
+ [FIXED] Map change and leave screen fade out did not cover full screen
+ [FIXED] Buy menu weapon scaling for larger skins
+ [FIXED] "SABOTAGE!!!" achievement only worked in multiplayer matches (now vs bots as well)
+ [CHANGED] Buy menu he, smoke, flash, kevlar skins
+ [CHANGED] Team select menu player graphics are now scaling with resolution
+ [CHANGED] Improved scoreboard sorting to prevent several issues
+ [CHANGED] In-game chat message character limit is now 50
+ [ADDED] Japanese localization, thanks to Amaguya (U.S.G.N. #11768)
+ [ADDED] 10 new weapon Steam achievements
+ [ADDED] Player chat muting in scoreboard using context menu (right click)
+ [ADDED] Left mouse click on scoreboard player to spectate
+ [ADDED] Language flags in language selection combo box
+ [ADDED] Language flag in bottom right corner of main menu for easy language switching
+
+
+### 1.0.0.5 p2 - 18.11.2017
+
+ [FIXED] Action messages offset when radar is disabled
+ [FIXED] Serverlist cache did not discard old servers, leading to growing server count
+ [FIXED] Some high resolution menu item positions
+ [FIXED] Main menu flickering when loading map
+ [FIXED] "Barbed Battlefield" achievement did not work (as client)
+ [CHANGED] sv_rconusers now also works with Steam IDs
+ [ADDED] VSync option (OpenGL only, enabled by default)
+ [ADDED] "!rank" support for Steam users
+ [ADDED] Lua command stats parameters to return player "mvp" and "assists"
+ [ADDED] Lua command steamstats
+ [ADDED] Lua image avatar loading when using path "<avatar:id>"
+
+
+### 1.0.0.5 p1 - 17.11.2017
+
+ [FIXED] Flash/scope did not cover entire screen in some resolutions
+ [FIXED] Kill assist achievements did not work
+ [FIXED] Key assignment in controls menu did not work properly
+ [FIXED] Lua player parameters mousex & mousey did not work (fix requires server update)
+ [CHANGED] Line of fire (shot) particle optimization
+ [CHANGED] Some avatar download optimizations
+ [CHANGED] Servers appear quicker in the server list by using a cached list
+ [ADDED] Introducing Steam client patches (visible in main menu version info with "pX")
+
+
+### 1.0.0.5 - 15.11.2017
+
+ [INFO] First release with Steam support (Win client only)
+
+ [FIXED] Various voice chat issues and stability problems
+ [FIXED] Various visual lighting engine issues
+ [FIXED] Various minor visual HUD / tooltip issues
+ [FIXED] Laser mines rotation
+ [FIXED] mp_hudscale not behaving correctly in all scenarios
+ [FIXED] Vertical black boarder (1-4px width) appeared for larger 16:9 resolutions
+ [FIXED] Graphical glitches when using command line parameters
+ [FIXED] Large avatars were sometimes not downloaded properly
+ [FIXED] Client money limit when pickup up gold or coins
+ [FIXED] Lag animation not looking right under certain network conditions
+ [FIXED] Committing suicide did not work anymore since 1.0.0.4
+ [FIXED] Bad projectile timing with increased FPS in 1.0.0.4
+ [FIXED] Problems with building rotations since 1.0.0.4
+ [FIXED] Sometimes unable to join servers when they were running Lua tweens
+ [FIXED] Scoreboard hide HUD option did not hide scripted Lua HUD elements
+ [FIXED] Possible crash when failing to write advanced radar/minimap cache
+ [CHANGED] Improved stability when server is being dDoSed
+ [CHANGED] Crosshair of spectated player is now semitransparent
+ [CHANGED] When being flashed the radar now also becomes invisible
+ [CHANGED] Max. 2 U.S.G.N./Steam avatars are downloaded & stored concurrently to minimize FPS drops
+ [CHANGED] Lua Command player(id,"mousex") now returns -1 if mouse data is not available
+ [CHANGED] "conkey" (console key) works as intended for more keyboard layouts
+ [CHANGED] Increased fire rate for all weapons (2.5%)
+ [CHANGED] Console now uses scaled text
+ [CHANGED] Scoreboard sorting now takes in account mvp and assists
+ [CHANGED] The scoreboard now shows building count of teammates only
+ [CHANGED] Default windows graphics driver is now OpenGL (for Steam overlay support)
+ [CHANGED] Flash bang effect now hides radar
+ [CHANGED] Fiveseven damage decreased from 19 to 18
+ [ADDED] Over 50 Steam achievements (Windows only)
+ [ADDED] Command mp_connectionlimit for max. accepted connections
+ [ADDED] Command cp_roundend for more additional round information message
+ [ADDED] Command sb_autosize (automatic scoreboard size)
+ [ADDED] Command sb_kpd (scoreboard kills / deaths ratio)
+ [ADDED] Lua Command tween_frame (image frame animation)
+ [ADDED] "mousemapx" & "mousemapy" parameters for Lua player command (mouse position on map)
+ [ADDED] Server ticks are displayed in scoreboard and in-game menu (updates per second)
+ [ADDED] Clients are able to see which operating system server is running
+ [ADDED] Server lag compensation information in menu
+
+
+### 1.0.0.4 - 29.09.2017
+
+ [FIXED] U.S.G.N. password file related console errors when not having entered any U.S.G.N. password
+ [FIXED] Lua hook "log" was not invoked with actual log text when equal subsequent logs were bundled
+ [FIXED] Turret range was too small for the new widescreen game resolution
+ [FIXED] Low quality smoke grenade particles were drawn under the player
+ [FIXED] Toilet and sink objects were disappearing near the screen corners
+ [FIXED] FPS influenced Animations, projectiles, particles and effects speed
+ [FIXED] 20ms player input delay
+ [FIXED] Shutdown when then the game reached low fps
+ [FIXED] Losing connection when loading advanced radar 
+ [FIXED] Crash when using non-default sound drivers
+ [FIXED] After tabbing out and returning whole game was hidden by radar texture
+ [FIXED] Flashlight freezing after player death and other circumstances in the map
+ [FIXED] Screen flickering and game freeze when using radar (OpenGL)
+ [FIXED] Game showed error when loading gfx/buildings.png under certain circumstances
+ [FIXED] Projectiles disappearing after landing on obstacles
+ [FIXED] English translation is now hardcoded in game binary, fixing some bugs when no translation is present
+ [FIXED] Mapcycle commands were not handled properly when they contained strings with { or }
+ [FIXED] equip command now works properly with armors
+ [FIXED] strip command now works with armors (armor is set to 0 whenever stripping any armor)
+ [FIXED] Changing a huge number of tiles at once with settile should not trigger disconnects anymore
+ [FIXED] Critical error with logbatch setting having no effect at all
+ [FIXED] Crash when config.cfg file is missing
+ [CHANGED] Crosshair now scales smoothly (with float instead of int precision) if ch_autoscale is 1
+ [CHANGED] Optimized low-detail fog
+ [CHANGED] Better and smoother hostage skins
+ [CHANGED] Player is drawn over obstacle shadow
+ [CHANGED] Wall cast shadows over obstacles
+ [CHANGED] Lighting engine version 3.0 (greater performance and more detailed lighting effects)
+ [CHANGED] Console warning message when map background files are missing
+ [CHANGED] Player health in spectator HUD is now colored (green/yellow/red depending on value)
+ [CHANGED] Improved scoreboard with 2 columns, more icons etc.
+ [CHANGED] Camera movement in spectator follow mode is now more smooth
+ [CHANGED] FPS lock increased from 50 to 60
+ [CHANGED] Some UI elements are now anti-aliased
+ [CHANGED] Chat text length limit is now 35 characters
+ [CHANGED] Profiler has a better UI
+ [CHANGED] Pressing ESC now closes the console if it is opened
+ [CHANGED] Map cycle (sys/mapcycle.cfg) is now cached and only loaded once when loading a new map as server
+ [CHANGED] Server list is now sorted by players on server by default (instead of latency)
+ [CHANGED] Better vote menu which shows current number of votes and maps which can be voted for
+ [CHANGED] You can now votekick for players of all teams (except spectators)
+ [CHANGED] Now also the player hosting a listen server can participate in voting
+ [CHANGED] "Offline / LAN" option renamed to "Hide Server (unlisted)" to clarify its meaning
+ [CHANGED] Triggers glow influences lighting
+ [CHANGED] Already selected text inputs do not flash anymore when clicking them again to place the cursor
+ [CHANGED] Spectator interface is scaled along with hud scaling parameters
+ [CHANGED] Player spectator button now displays health and armor icons
+ [ADDED] Mouse option "Filtered Crosshair" for selecting drawing mode between masked and alpha blending
+ [ADDED] Voice Chat option: "Mute all when joining server"
+ [ADDED] "Restore Default" controls button in the options
+ [ADDED] Crosshair size selection and preview in the options
+ [ADDED] Hud messages text shadow
+ [ADDED] SteamID bans
+ [ADDED] Scoreboard context menu (open with right mouse button)
+ [ADDED] Background for death notice messages that highlights your kills
+ [ADDED] Server Commands: sv_assist
+ [ADDED] Server Commands: sv_mvp
+ [ADDED] Command: sb_avatars
+ [ADDED] Command: sb_shortcuts
+ [ADDED] Command: sb_id
+ [ADDED] Command: sb_score
+ [ADDED] Command: sb_assists
+ [ADDED] Command: sb_death
+ [ADDED] Command: sb_ranks
+ [ADDED] Command: sb_ping
+ [ADDED] Command: sb_mvp
+ [ADDED] Command: sb_flags
+ [ADDED] Command: sb_mutevoice
+ [ADDED] Command: sb_hidehud
+ [ADDED] Command: sb_maxresolution
+ [ADDED] Steam and U.S.G.N. avatars in the scoreboard (Steam avatar has a priority to be shown over USGN)
+ [ADDED] Lua commmand "player" now has "steamid" and "steamname" parameters to get information about connected Steam user
+ [ADDED] Lua commmand "player" now has "mousex" and "mousey" parameters to get cursor position in 850*480 view space
+ [ADDED] Lua commmand "player" now has "usgnname"
+ [ADDED] Steam login state is now displayed in the main menu
+ [ADDED] File cache for avatars, radarmaps and minimaps (does not download/generate same files multiple times)
+ [ADDED] Voice chat
+ [ADDED] Script command setweapon now also accepts item names instead of type IDs only (like equip, strip & spawnitem)
+ [ADDED] Non-rotated 3D tile property wall textures option in tile properties
+ [ADDED] UTF-8 Support for team chat
+ [ADDED] Customizable size for hud symbols, texts and icons
+ [ADDED] Customizable size and scale for radar
+ [ADDED] Map transfer shows additional loading bar for overall files progress
+ [ADDED] Advanced - Simple radar support radar color settings
+ [ADDED] hud_autoscale option (enabled by default)
+ [ADDED] ch_autoscale enables automatic pointer scaling
+ [ADDED] ch_manualscale scales cursor by the value (when using ch_autoscale 0)
+ [ADDED] Higher resolution hud symbol, numbers, radar and icon images
+ [ADDED] Spark effect for knife and machete when hitting walls/obstacles
+ [ADDED] Spark effect for laser
+ [ADDED] env_light rotation offset property
+ [ADDED] env_room position offset property
+ [ADDED] env_room color transparency property
+ [ADDED] env_sprite "affect lighting" property
+ [ADDED] Bomb planting animation and sound
+ [ADDED] Dynamic recoil server filter
+ [ADDED] Error log output when saving stats fails
+ [ADDED] Lua command "game" now has a "sysfolder" parameter (gets the used sys folder)
+ [ADDED] Masked/filtered blending mode option for pointer
+ [ADDED] Optional detail minimap
+ [ADDED] Lua hook "vote" can now use return to cancel vote actions
+ [ADDED] logmaxflushrate setting (how frequently in millseconds can logs be flushed = written to drive, default 1000 ms)
+ [REMOVED] Info_OldRender hidden from editor entity list because it's deprecated and not working properly anymore
+
+
+### 1.0.0.3 - 30.04.2017
+
+ [FIXED] Main menu music kept playing when game server was started with commandline parameters
+ [FIXED] Game no longer crashes when running a Lua script without a mod.txt
+ [FIXED] Newlines (\n) printed to the console are processed properly (replaced with a whitespace character)
+ [FIXED] You were able to spawn/equip items with bad type IDs, leading to weird results
+ [FIXED] sv_restart/restart/sv_restartround/restartround caused unjustified and misleading console error output in some cases
+ [FIXED] Env_Light offset did not always work correctly
+ [FIXED] Game crashed when making lights with a size > 256 (size is now limited to 256)
+ [FIXED] Mouse pointer was invisible when opening any menu while in weapon scope/zoom mode
+ [FIXED] Crash when tabbing-out from full-screen application (DirectX)
+ [FIXED] Crash when minimizing application window (DirectX)
+ [FIXED] Same file will not be sent multiple times anymore if added multiple times to sys/servertransfer.lst
+ [FIXED] Memory leak in Lua hooks
+ [FIXED] Right handed player skins
+ [FIXED] Crash when loading smaller tileset in map editor while map is using TileFX entity
+ [FIXED] Map briefing and server info was unloaded when switching language in-game
+ [FIXED] Bots didn't spawn in some non-standard game modes in some special cases
+ [CHANGED] Dropped item mouseover is now sorted depending on the item type and price
+ [CHANGED] Game will always try to load files with the original extension first before trying alternative extensions
+ [CHANGED] hudtxt/hudtxt2 network data is now sent in separate packages to prevent connection loss on many calls
+ [CHANGED] arial.ttf replaced with free liberationsans.ttf for licensing reasons
+ [CHANGED] Standard resolution is now 16:9 (850x480 as minimum) instead of 4:3 (640x480)
+ [CHANGED] Horizontal borders appear when using 4:3 resolutions (640*480, 800*600, 1024*768 and etc.)
+ [CHANGED] A lot of performance improvements (loading maps/game initialization/map drawing/map export)
+ [CHANGED] Loading now happens during intro screen with visible loading bar
+ [CHANGED] Trigger_Delay entity now also works with float values for delays with millisecond precision
+ [CHANGED] More steps of joining a server are now described properly with text output
+ [CHANGED] Console command "entities" now also shows the used resources (image/sound) if there are any
+ [CHANGED] Replaced red crosses on items with green crosses because the red cross is a protected symbol
+ [CHANGED] mp_dispenser_money now defaults to 500 instead of 100
+ [CHANGED] screen_quality now defaults to 100 instead of 75
+ [CHANGED] Better player, hostages and npc shadows
+ [CHANGED] Buying menu shows spinning 3D weapons
+ [CHANGED] Burst mode shoots separate bullets (mp_recoil enabled)
+ [CHANGED] Pistol no longer shoots multiple rounds when attack key is hold (mp_recoil enabled)
+ [CHANGED] Lua sample script "hudtxt.lua" now uses dynamic variable values for the positions
+ [CHANGED] Improved flashbang and flare particle effects
+ [CHANGED] Editor and main menu use the full resolution
+ [CHANGED] Some windows like console and serverlist use the full resolution
+ [ADDED] UTF-8 chat messages support (to allow users to chat in more languages)
+ [ADDED] More color codes for dropped item mouseover (dark yellow = secondary weapon, orange = grenades, green = equipment)
+ [ADDED] More detailed error message when CS2D fails to load animated multi frame images because of bad image dimensions
+ [ADDED] reqcld mode 5 (mod info) and mode 6 (is 3D rendering enabled?)
+ [ADDED] Script command spawnitem now also accepts item names instead of type IDs only (like equip and strip)
+ [ADDED] Experimental 3D rendering mode (settings command: render3d)
+ [ADDED] Tiles now have a 3D height parameter in the tile properties menu
+ [ADDED] Tiles now have flipY and mirror drawing modes for 3D
+ [ADDED] Capability to automatically convert old maps to 3D versions
+ [ADDED] Env_Sprite & Env_Image now have a 3D height parameter
+ [ADDED] New Env_Cube3D entity allowing to place 3D cubes in the map
+ [ADDED] Experimental dynamic recoil & crosshair (settings command: mp_recoil)
+ [ADDED] Dynamic recoil crosshair settings (ch_red, ch_green, ch_blue, ch_size, ch_thickness, ch_bordersize)
+ [ADDED] New editor display option to either use full resolution or to show gameplay view
+ [ADDED] Editor now automatically saves the current map as "autosave.map" every 3 minutes
+ [ADDED] Hovering an entity in the editor now also shows its name and trigger
+ [ADDED] Trigger_If now has some parameterized conditions which can be used in the editor without Lua scripting
+ [ADDED] Some weapon values can now be configured over a new config (sys/weapons.cfg)
+ [ADDED] Command loadweaponcfg (reloads weapon config from sys/weapons.cfg at runtime, server only)
+ [ADDED] Command mp_hudscale (sets the scale/position mode for Lua HUD images and hudtxt/hudtxt2)
+ [ADDED] HD loading support for CT, T, VIP, random player and zombies images
+ [ADDED] HD loading support for hud symbols and numbers
+ [ADDED] HD loading support for player weapons and dropped weapons
+ [ADDED] Maps: de_dust2_new, de_aztec_new, de_cs2d_new, fy_shipment, de_cbble_new, de_inferno_new
+ [ADDED] Lua commmand "player" now has "screenw" and "screenh" parameters to get the CS2D screen resolution of a player
+ [ADDED] Lua sample script "hudimg.lua" which shows how to create and position HUD images
+ [ADDED] Lua sample script "imghover.lua" which shows a HUD image which reacts on mouseover
+ [ADDED] New spark particle effects when hitting walls / tactical shield (only with max particle settings)
+ [ADDED] New muzzle flash effects
+ [ADDED] Visual frame selection for Env_Decal in the editor
+ [ADDED] Decal painting tool in map editor (hotkey: 5)
+ [ADDED] Console message when screenshot was taken successfully
+ [ADDED] New advanced detail radar (showing the map with actual map graphics in the radar)
+ [ADDED] Console command "debug" mode 2 - Profiler: shows detailed information about application performance
+ [ADDED] Progress bar is displayed when loading map
+ [ADDED] Progress bar is displayed when exporting map
+ [REMOVED] Commands shadowz_wall and shadowz_obstacle are now deprecated as each tile has a defined height
+ [REMOVED] Some old/unused assets
+
+
+### 1.0.0.2 - 01.05.2016
+
+ [FIXED] Bad re-join delay after a map change (was 3000 seconds instead of 3)
+ [FIXED] Fixed vulnerability which allowed to disrupt communication between servers and the U.S.G.N.
+ [FIXED] The "Friends" button blink effect was misplaced after introduction of "Quick Play"
+ [FIXED] Crash when killing an already killed player
+ [FIXED] All sounds should now be stopped on disconnect or server shutdown
+ [FIXED] Left handed option checkbox in options showed inversed state
+ [FIXED] Server details window (rightclick on server in list) displayed some wrong texts
+ [FIXED] "Quick Play" won't try to join a server you failed to join because of a ban again (in the same session)
+ [CHANGED] New light engine with better performance, more features and without map size limit
+ [CHANGED] Using new skins from smn's "First Complete Skin Pack"! Thanks to smn!
+ [CHANGED] Tile #0 is not rendered in mini map / map export / radar (when it's a normal ground tile)
+ [CHANGED] Tile shadows won't be rendered on tile #0 anymore
+ [CHANGED] Hostage skin rendering now supports alpha channels instead of simple masking only
+ [CHANGED] Improved bullet & bullet hole particles/effects
+ [CHANGED] Interrupting (Ctrl+C, SIGINT) or closing (X button, SIGBREAK) a dedicated server will now gracefully stop it
+ [CHANGED] Bigger explosion animation with more frames
+ [CHANGED] Support for multiple sound file extensions: ogg and wav (tries to load in that order)
+ [CHANGED] Support for multiple image file extensions: png, bmp and jpg (tries to load in that order)
+ [CHANGED] The game now actually scales up when using custom resolutions, borders only for non 4:3 resolutions
+ [CHANGED] Rebalanced shotguns to reflect CS 1.6 more accurately
+ [ADDED] New super awesome advanced radar with included mini map
+ [ADDED] Command setteamscores tscore ctscore (sets the team scores for Ts and CTs)
+ [ADDED] Command sv_soundpos soundfile x y player (plays a sound at a certain position and, if provided, a certain player)
+ [ADDED] Command sv_forcelight to force advanced lighting to be enabled for all clients
+ [ADDED] Command sv_daylighttime to change the time influencing the day light
+ [ADDED] Commands setbackground, setbackgroundscroll and setbackgroundtiles (set map background image, its scrolling speed and scrolling-as-tiles mode)
+ [ADDED] Spritesheet support for Lua images
+ [ADDED] _CS2DVERSION Lua global
+ [ADDED] Image wiggling (player images with X >= 2 wiggle with the player, if enabled on the client side)
+ [ADDED] Lua image modes 4 (background image, covered by everything, including floor tiles) and 233-264 (background image following player)
+ [ADDED] Clientdata mode 4 will now also return an SHA256 checksum of the requested file (empty string if file is outside gfx/ or sfx/)
+ [ADDED] New "spectating" property to Lua function player and new "specswitch" Lua hook
+ [ADDED] Lua functions checksumfile and checksumstring (get SHA256 checksum of file or string)
+ [ADDED] Main menu music (sfx/menu.ogg)
+ [ADDED] Round-by-round reloading for shotguns ("_roundin.wav" files for custom reload sounds)
+ [ADDED] Lua hook "shutdown" (on server shutdown)
+ [ADDED] Lua functions io.enumdir (iterate over all files in a given directory) and io.isdir (check if a given path points to a directory)
+ [ADDED] More resolutions added to Launcher.exe
+ [ADDED] Info_RadarIcon entity which allows to place icons for the advanced radar on the map
+ [ADDED] Some new settings for Env_Room, Env_Light and Env_LightStripe
+ [ADDED] Day light time setting for maps in map editor
+ [ADDED] Light effect for molotov cocktail fire
+ [ADDED] Serverlist now has a light column which shows the "force light" setting
+ [ADDED] Serverlist status icons are now animated and more fancy
+ [ADDED] Modding support (see mods/Readme.txt)
+ [ADDED] Editor map export opens CS2D folder for easier access to mapexport.png
+ [ADDED] Command line parameter "-systemmouse" to use the mouse pointer from the OS instead of the CS2D mouse pointer
+ [ADDED] Dynamic object id parameter added to Lua hooks "hit", "shieldhit", "kill" and "die"
+ [ADDED] "Classic Skins" mod, containing the old player & weapon skins from previous versions
+ [REMOVED] Removed connection setting
+
+ 
+### 1.0.0.1 - 22.11.2015
+
+ [INFO] This version is a critical bug hotfix
+
+ [FIXED] Players were not able to join any server
+
+ 
+### 1.0.0.0 - 22.11.2015
+
+ [INFO] This is the first non-beta version. Leaving the beta phase was long overdue. No special implications.
+
+ [FIXED] Corrected bad parameter order in "die" Lua hook (from killer, victim to victim, killer)
+ [FIXED] Friendly fire server setting was not displayed correctly after joining a server
+ [FIXED] usgn.dat was sometimes saved to wrong folder when using custom sys-folder
+ [ADDED] "Quick Play" button in main menu to quickly find and join standard mode games
+ [ADDED] New game "Quick Play" option (adds quick play tag "[Q]" to server name and qualifies it for quick play)
+ [ADDED] Windows setup: Option to create quick launch icon
+ [ADDED] Windows setup: Now registers the cs2d-protocol to join servers via weblinks
+ [ADDED] Windows setup: www.UnrealSoftware.de link is added to CS2D's start menu folder
+ [ADDED] Delayed command line server joining to allow proper U.S.G.N. login
+ [CHANGED] Windows setup: Desktop icon option is now checked by default
+ [CHANGED] Pasting chat text will no longer remove existing input
+ [CHANGED] All clients can now see the U.S.G.N. IDs of all other clients
+
+
+### Beta 0.1.2.7 - 24.06.2015
+
+ [FIXED] HUD hover text was displayed for items which were hidden by fog of war
+ [FIXED] Wrong/strange fog of war visibility behavior in certain spectator modes
+ [FIXED] Items were invisible at right border of screen
+ [FIXED] Lua images with mode > 200 (draw over player) were not displayed properly
+ [FIXED] ESC/Enter did not work correctly while being in controls key assignment mode
+ [CHANGED] Silenced shots can be heared over a longer distance again
+ [ADDED] Stacktrace for (some) Lua errors (thanks to Starkkz)
+ [ADDED] Details about Lua hook when error occurs in hook (more when debuglua is enabled)
+ [REMOVED] LuaJIT has been removed from the release and replaced with the old Lua module
+ 
+ 
+### Beta 0.1.2.6 - 21.06.2015
+ 
+ [FIXED] Zoom HUD is not displayed anymore for weapons without zoom when z1/z2 damage is set
+ [FIXED] Rendering issues with HUD elements in some special cases
+ [FIXED] mp_hovertext changes were not sent to clients when changed while playing
+ [FIXED] sv_maxplayers changes were not sent to clients when changed while playing
+ [FIXED] "Generating Lightmap" loading screen sometimes went beyond 100%
+ [FIXED] Shadow sprites in map de_vantage were missing
+ [FIXED] Folders for HTTP downloads were not created properly
+ [CHANGED] Now using ZEKE.LuaJIT2 module for Lua (Win/Linux version only)
+ [CHANGED] sv_friendlyfire changes are now displayed to clients with a text message
+ [CHANGED] Dedicated server now uses server port to perform initial U.S.G.N. version check
+ [CHANGED] Some minor performance tweaks
+ [CHANGED] Tweaked performance of Lua images (out of screen ones cost less performance)
+ [CHANGED] Tweaked performance of laser mines (out of screen ones cost less performance)
+ [CHANGED] Silenced shots are less visible and can be heared over a short distance only
+ [CHANGED] Changed encryption and file name for locally saved U.S.G.N. password
+ [CHANGED] Dedicated server no longer tries to load sys/controls.cfg
+ [CHANGED] usgn.de is used as fallback U.S.G.N. address when sys/usgn.dat is missing
+ [CHANGED] English strings will be used for strings which are not available in custom languages
+ [CHANGED] equip and strip commands now work with weapon names as well
+ [ADDED] New fog of war modes to hide more stuff than just players
+ [ADDED] Server info button in in-game menu (opens window with server info text)
+ [ADDED] Multi item selection and removal for "Downloaded Files" dialog (with CTRL/Shift)
+ [ADDED] Total size of all downloaded files is displayed in "Downloaded Files" dialog
+ [ADDED] mp_wpndmg_z1 can be used to define an alternative damage when burst / silencer is used
+ [ADDED] Hotkey [enter] for standard confirm buttons, these buttons are also highlighted now
+ [ADDED] Hotkey [ESC] for standard cancel/close buttons
+ [ADDED] Command sv_stopsound (stop playing a sound for all or a specific player)
+ [ADDED] Lua command stats (get stats/rank for a specified U.S.G.N. ID)
+ [ADDED] Lua Hook shieldhit (when tactical shield of a player is hit)
+ [ADDED] Flamethrower now also emits light when light engine is enabled
+ [ADDED] Each language can use its own font with the new "font=..." statement, arial.ttf is default
+ [ADDED] Added/updated some translations/fonts (Thanks to all contributors! Names in Readme.txt)
+ 
+ [INFO]	Smoke grenade smoke will still ALWAYS be visible, even when hidden by fog of war.
+		That's because it would otherwise hide itself - which would make things very strange.
+		Buildings will also always be visible in fog of war (technical and gameplay reasons).
+
+		
+### Beta 0.1.2.5 - 06.09.2014
+
+ [FIXED] U.S.G.N. connectivity problems after using map editor
+ [FIXED] Random/flickering tile brightness for some wall tiles on big maps with light engine enabled
+ [FIXED] CS2D command flood protection (with bind/alias) did not work properly
+ [FIXED] Asynchronous smoke grenade, gas grenade, molotow and air strike positions on client/server
+ [FIXED] Barricade rendering order issues (its ground tile overlapped ground particles/decals)
+ [FIXED] Editor also displayed entity areas when pressing space in a text input box
+ [FIXED] Lua endround hook was not triggered when using sv_restart with a delay
+ [FIXED] Trigger_Use re-use delay did not work for clients at all (only for server player)
+ [FIXED] Turrets do not hurt their owner anymore when friendly fire is disabled (in deathmatch mode)
+ [CHANGED] mp_lagcompensation default setting reduced from 5 to 2 (only compensate pings up to 200)
+ [CHANGED] CS2D now shows an error message instead of simply quitting when silencer skins are oversized
+ [CHANGED] Construction buildings are now green/yellow in deathmatch mode (own yellow, rest green)
+ [CHANGED] Spawn and build effects are now green/yellow in deathmatch mode (instead of red/blue)
+ [CHANGED] You can use all teleporter buildings in deathmatch mode (instead of own "team" only)
+ [CHANGED] All dispensers heal you in deathmatch mode (instead of own "team" only)
+ [CHANGED] All gate fields (except for your own) now hurt you in deathmatch mode
+ [CHANGED] You can only repair/upgrade your own buildings in deathmatch mode
+ [CHANGED] Key " renamed to doublequote for bindings to (maybe) resolve parsing issues in binds
+ [ADDED] Additional debug output for Lua script execution order after server start / map change
+ [ADDED] Additional punishment modes for mp_antispeeder (kick without ban, kill, slap)
+ [ADDED] Lua hook suicide (when player tries to commit suicide with kill-command)
+ [ADDED] Experimental: Allow to change color of tiles in map editor (only for tiles without blending)
+ [ADDED] Map de_vantage by Alistaire (winner of the CS2Dworld Map Contest 2014)
+
+
+### Beta 0.1.2.4 - 11.04.2014
+
+ [FIXED] Light engine crashed on some maps with map width or height of 101 tiles
+ [FIXED] Clients sometimes accepted file transfers from manipulated servers they should not accept
+ [FIXED] Clients sometimes accepted sounds/images in file transfer they should not accept
+ [FIXED] Lua join hook wasn't triggered when bots were added to the game
+ [FIXED] Language string 0359=Normal (AI level) was set to value of 0253=normal (weapon weight)
+ [FIXED] Language string 0442=Display (verb) was set to value of 0148=Display (noun)
+ [FIXED] Language string 0745=left (remaining) was set to value of 0469=left (direction)
+ [CHANGED] Player count of full servers is now displayed in red
+ [CHANGED] Player count of servers with at least 1 human player and free slots is now displayed in green
+ [CHANGED] mp_luamap default setting is now 0 (disabled) for security reasons
+ [CHANGED] mp_luamap now also affects (enables/disables) Lua scripts in entities (trigger_if)
+ [CHANGED] Slightly improved flag animation
+ [CHANGED] Lua images with long image paths now cause significantly less traffic
+ [ADDED] Main menu scroll-in animation for "Unreal Software's CS2D"
+ [ADDED] A purple S in the serverlist now indicates that a server is using Lua scripts
+ [ADDED] Bot count is displayed behind player count in serverlist as yellow number (if >0)
+ [ADDED] Textfield in LAN serverlist to specify port which is scanned for LAN servers
+ [ADDED] Main menu button (2 little arrows) to force a refresh of the U.S.G.N. login
+ [ADDED] Command settile (change a tile on the map)
+ [ADDED] Command mp_floodprotignoretime (control how long packets from attackers are ignored)
+ [ADDED] Command bot_autofill (automatically manage bot count on server and fill free slots)
+ [ADDED] Command bot_keepfreeslots (keep 1-2 free slots when auto filling to allow players to join)
+ [ADDED] Command menu_lanscanport (set UDP port which is scanned to find LAN servers)
+ [ADDED] Lua command objectat (get ID of an object at a certain tile)
+ [ADDED] Lua command closeobjects (get list of close objects around a coordinate within a certain radius)
+ [ADDED] "hascustomframe" and "originalframe" parameters for Lua tile command
+ [ADDED] sys/lua/samples/tilemapper.lua example script
+
+
+### Beta 0.1.2.3 - 10.12.2013
+
+ [FIXED] Reload / weapon switch spam server vulnerability
+ [FIXED] Tile blending with top right tile was erroneous
+ [FIXED] Tile rotation context menu options did not work
+ [FIXED] mp_smokeblock setting wasn't sent to new joining players properly
+ [FIXED] Light engine crash during initialization (while loading map, thanks to BlazingNote)
+ [FIXED] Colortag © was STILL allowed in chat messages
+ [FIXED] Inconsistent duplicate lines in translation files leading to errors (will be set to equal values)
+ [FIXED] Env_Light entity state did not get reset properly on map/round restart
+ [FIXED] Lua command entitylist returned a list of all entities for entity type 0 instead of just T spawns
+ [FIXED] Wrong server name was displayed at some places (e.g. F1 server info window)
+ [FIXED] Image hitzones (Command imagehitzone) weakened shots which was an unintended behavior
+ [FIXED] hudtxtcolorfade / hudtxtalphafade / hudtxtmove animations were always visible to all players
+ [FIXED] Lua image tweens have not been sent to players who joined after they have been started
+ [FIXED] Lua command inentityzone made the game crash in some cases
+ [FIXED] Lua command closeitems did not list all items in some cases
+ [FIXED] Bots sometimes ignored valuable items (caused by the bug in the closeitems Lua command)
+ [FIXED] Bots STILL ignored radio commands
+ [FIXED] Some lag compensation bugs
+ [CHANGED] Improved logging performance (log files are updated in batches of 50 lines - see: logbatch)
+ [CHANGED] Consecutively equal log lines are bundled in log files
+ [CHANGED] Number of lines cached in console reduced from 500 to 250
+ [CHANGED] You can now blend all tiles with the tile blending tool and not just walkable tiles
+ [CHANGED] hitzone hook has been extended with a damage parameter and an optional return value (new damage)
+ [CHANGED] kill, die and hit Lua hooks now use weapon type 239 for damage/kills inflicted by entities
+ [CHANGED] Lua command closeitems lists closest items first (approximation, no exact distance sorting)
+ [ADDED] Command connect (connect to a server with specified ip:port and optionally a password)
+ [ADDED] Command setammo (set ammo values for a certain weapon/item)
+ [ADDED] Command mp_hovertext (control which stuff shows text when hovered)
+ [ADDED] Command logbatch (control log batch behavior, batches of 50 lines by default)
+ [ADDED] Command mp_lagcompensationdivisor (lag compensation fine tuning)
+ [ADDED] Commandline parameter -pw / -password can be used in combination with -j / -join to join a server
+ [ADDED] Editor shows tile modes and tile blending/modifiers when pressing space
+ [ADDED] You get flashed when the player you are spectating gets flashed
+ [ADDED] Flashed players have a small eye icon on their head in spectator mode
+ [ADDED] Link button in "more"-tabs (options/server) to open online reference for selected setting
+ [ADDED] Shadow background for HUD progress bar (reload/plant/defuse) to increase visibility
+
+
+### Beta 0.1.2.2 Hotfix - 15.02.2013
+
+ [INFO] This is just a hotfix to fix some crucial problems. It is optional. The version number is not changed.
+ [INFO] The light engine issue still exists! Please keep the light system DISABLED in case of crashs!
+
+ [FIXED] imagehitzone debug message removed
+ [FIXED] Console output had no linebreaks anymore in dedicated servers
+ [FIXED] Console output was cut off in some cases
+ [FIXED] Turret sound was missing
+ [FIXED] Bug when rendering multi-colored messages in chat area
+ [FIXED] Lua command tween_rotate did not work properly
+ [FIXED] imagehitzone did not work properly for images which were drawn at player position
+ [FIXED] imagehitzone created hitzones for HUD images as well - this has now been disabled
+ [FIXED] Some help menu bugs (error page when opening / clicking index button)
+ [FIXED] Some turret bugs (some particles at wrong positions, crash / no damage)
+ [FIXED] Serverlist not showing all server details (after connection through NAT hole punching)
+ [FIXED] Serverlist not pinging all servers properly (after connection through NAT hole punching)
+ [FIXED] NPCs were set to invalid types (red squares) when players left the server in some cases
+ [FIXED] Images which were rendered for a certain player only were set to "render for all" when player left
+ [CHANGED] Colortag © is now not allowed in player names anymore
+ [CHANGED] Colortag © is now not allowed in chat messages anymore
+ [CHANGED] Outdated sys/core/cmds.lst updated with new commands so console shows new commands
+ [ADDED] UTF-8 support for translation files
+ [ADDED] Serverlist visualization for unpinged servers (blinking "? ? ?" over latency/ping bar)
+
+
+### Beta 0.1.2.2 - 10.02.2013
+
+ [FIXED] Removed a few debug console messages
+ [FIXED] Password loading/saving issues
+ [FIXED] Windows dedicated/client crashed when Lua bugs occured
+ [FIXED] Vulnerability that allowed hackers to select super supply weapons in normal supply buildings
+ [FIXED] In-game name changing didn't work anymore
+ [FIXED] Language files were still loaded from old path when using -sys or -path commandline parameters
+ [FIXED] Lua "rawdmg" parameter was missing on lethal hits (hit hook) causing Lua errors in some cases
+ [FIXED] Lua flashlight hook only worked when spray hook was used somewhere as well
+ [FIXED] Changing mp_flashlight setting in-game didn't work properly
+ [FIXED] Servers tried to check U.S.G.N. logins even when using -offline command line parameter
+ [FIXED] Camera sometimes jumped around between spawnpoints while being a regular spectator
+ [FIXED] Bugged sample script in sys/lua/samples/console.lua (getentitylist command)
+ [FIXED] Grenades/projectiles were not drawn for one frame when changing state from flying to lying
+ [CHANGED] ";" is not allowed in player names anymore
+ [CHANGED] Warning about running the game in program files folder is now only displayed on Win Vista/7/8
+ [CHANGED] Shots now cause less damage when they hit other players/NPCs already (-30% damage per hit)
+ [CHANGED] Smoke grenades now block the field of view when fog of war is enabled (in a 3x3 tiles area)
+ [CHANGED] Lua files are not accepted via file transfer anymore (for security reasons)
+ [CHANGED] Clients disallow to save transferred files to 'sys'-folder (was possible with hacked server)
+ [CHANGED] Bot players now do not count anymore in all voting processes (vote/votemap)
+ [CHANGED] Dispenser buildings will not spawn ammo anymore on servers with mp_infammo enabled
+ [CHANGED] Barricade now behaves like obstacle and can be damaged with close combat/explosions only
+ [ADDED] Game now uses NAT hole punching for better connectivity in the serverlist as well
+ [ADDED] Editor test map button (at tools)/hotkey (F12) and in-game return button (ESC menu)/hotkey (F12)
+ [ADDED] Bot players can now be flashed with flashbangs
+ [ADDED] parse command now automatically stops to parse at first ";" (can be changed with new parameter)
+ [ADDED] hudtxt/hudtxt2/msg/sv_msg/sv_msg2 now support in-line color tags (©RRRGGGBBB)
+ [ADDED] Env_Sprite can now be moved/rotated/resized in editor with the mouse
+ [ADDED] Env_Image can now be moved in editor with the mouse
+ [ADDED] Gen_FX particle spawn area can now be resized in editor with the mouse
+ [ADDED] You can now also specify a custom kill image in the customkill command
+ [ADDED] Command mp_smokeblock (do smoke grenades block the field of view?)
+ [ADDED] Command mp_shotweakening (how much damage/force do shots lose when passing through players/NPCs)
+ [ADDED] Command damageobject (damage/repair/heal objects/NPCs)
+ [ADDED] Command endround (end the current round, supports different modes)
+ [ADDED] Command freeprojectile (instantly removes a projectile)
+ [ADDED] Command spawnprojectile (generate a new projectile)
+ [ADDED] Lua command projectilelist (get projectile lists)
+ [ADDED] Lua command projectile (get values from projectiles)
+ [ADDED] Lua command imagehitzone (add/remove Lua image hitzone)
+ [ADDED] Lua hook hitzone (on hit of a Lua image hitzone)
+ [ADDED] "entity", "entityx" and "entityy" parameters for object Lua command
+ [ADDED] "ai_flash" parameter for player Lua command
+
+
+### Beta 0.1.2.1 - 01.08.2012
+
+ [FIXED] Crash when using Lua scripts with error (on some systems)
+ [FIXED] Crash in some cases when people with IP ban try to join
+ [FIXED] Buildings/portals not working without language files
+ [FIXED] Breakables/DynWalls were not affected by light/shadow engine
+ [FIXED] Crash/bugs when translating language string 0433
+ [FIXED] Command cmsg not working when using spaces
+ [FIXED] Lua image tags not working
+ [FIXED] "Heavy" for weapon weight missing in translation file
+ [FIXED] Some misspellings in translation files
+ [FIXED] "Arctic Avengers" listed twice as terrorist faction
+ [FIXED] Changing supply items with E didn't work from some positions
+ [FIXED] Some U.S.G.N. connectivity issues
+ [FIXED] AI bug with friendly fire and teamkills (thanks to Klin)
+ [FIXED] Sounds were still played (very quietly) with volume setting 0
+ [FIXED] Lua command entitylist didn't return all entities
+ [FIXED] U.S.G.N. login timed out when using the editor for a few minutes
+ [FIXED] Chat spam protection doesn't kick if chat output is suppressed with say/sayteam hook
+ [FIXED] Disabled Lua menu buttons can not be used with the numeric keys anymore
+ [FIXED] Several bugs when triggering env_building entities (invisible buildings etc.)
+ [CHANGED] Improved internal friendlist handling, allowing higher friends count
+ [CHANGED] "debuglag" debugging info is not displayed for players with stealth armor
+ [CHANGED] ATTENTION: Lua command entitylist now works a bit differently!
+ [ADDED] Infinite roundtime in standard game mode is now possible (mp_roundtime 100)
+ [ADDED] Command setname now has a "hide" parameter (do not display change in chat)
+ [ADDED] Lua command reqcld has new parameters (request if lightengine is on or file is loaded)
+ [ADDED] Lua hook name now has a "forced" parameter (see if a nick change was forced with setname)
+ [ADDED] Lua hook startround_prespawn (on new round before spawning)
+ [ADDED] "gasmask" parameter for Lua player command (see if player has gasmask)
+ [ADDED] "sys/lua/autorun" folder. All Lua scripts in it will be executed automatically
+ [ADDED] Undo function for tile operations in editor (CTRL+Z, unlimited undo steps)
+ [ADDED] Entity Trigger_If (conditional trigger with Lua expression as condition)
+ [ADDED] Some translations by community members (see Readme.txt for credits)
+
+
+### Beta 0.1.2.0 - 29.02.2012
+
+ [INFO] This is the first update which is also distributed over the
+	new auto-update function. Please note that this function is
+	only available for Windows clients.
+
+ [FIXED] Crash when tabbing through textfields
+ [FIXED] Editor hotkeys were active while using textfields
+ [FIXED] Info_NoFow did not work on all maps
+ [FIXED] Bots no longer try to attack you with bomb in hands
+ [FIXED] Bots ignored radio commands
+ [FIXED] Effect command particle amount was always at least 100
+ [FIXED] Removed pointless transfer debug messages
+ [FIXED] Server player was able to commit suicide when already dead
+ [FIXED] Trouble with wrong "precon auth" errors after mapchanges
+ [FIXED] Encoding problems with special characters in serverstats.html
+ [FIXED] Vulnerability that allowed to use buttons that were too far away
+ [FIXED] Tooltip for unreachable (red) servers showed an empty box
+ [FIXED] Executing "disconnect" as client in-game crashed the game
+ [FIXED] Lua object(id,"team") returned a boolean instead of an integer
+ [FIXED] Decals were not displayed on map export images
+ [FIXED] Decals were not moved when moving the whole map in the map editor
+ [FIXED] Not all existing decal frames were available for use
+ [FIXED] Super supply menu option 9 did not work
+ [FIXED] Explosion sprites were rendered wrong sometimes
+ [FIXED] Attempt to equip certain items gave error message about strip
+ [FIXED] Lua inentityzone now works properly with teamgates
+ [FIXED] "temp" was displayed as map name after downloading a map temporarily
+ [FIXED] It was possible to see through fog of war as spectator by pressing CTRL
+ [FIXED] Breakable/DynWall transparency floating point precision bug in editor
+ [FIXED] "Game Commencing"-restart occured with 1 player who is alive already
+ [FIXED] Rotating sprites where not displayed correctly on map export images
+ [FIXED] Portal gun didn't perform attack/attack2 Lua hook
+ [FIXED] Game allowed to join when a client failed to save the downloaded map
+ [FIXED] There was no muzzle flash in burst mode (Glock/Famas)
+ [FIXED] Rotation setting was visible for Env_Image (doesn't support rotation)
+ [FIXED] Editor entity arrangement issues (re-arranged other entities)
+ [FIXED] Map image export rendered background image wrong (now w/o bg image)
+ [CHANGED] Connection setting is now "fast" by default
+ [CHANGED] U.S.G.N. login is now always checked before joining
+ [CHANGED] Command mapshadows now allows values from 0 to 4 (new shadow engine)
+ [CHANGED] NET errors will only be displayed in console when debbuging is on
+ [CHANGED] Serverlist is now much bigger
+ [CHANGED] Filters are applied to the Internet serverlist only
+ [CHANGED] Maximum flash duration slightly decreased
+ [CHANGED] Hostage speed increased
+ [CHANGED] Only players who are alive are allowed to perform name changes
+ [CHANGED] You can only join a running round if nobody has been killed in it
+ [CHANGED] Explosions will automatically have less details when there are many
+ [CHANGED] Explosions are now brighter
+ [CHANGED] Slightly improved particle and effect performance
+ [CHANGED] Planted lasermine images can be changed now (lasermine_planted.bmp)
+ [CHANGED] Less molotov particles, even less with lower particle settings
+ [CHANGED] Less gas grenade particles with lower particle settings
+ [CHANGED] Projectiles of a player are now removed on team change / leave
+ [CHANGED] Dropped CTF flags will be returned automatically after 10 secs
+ [ADDED] Command sv_checkusgnlogin (always check login?)
+ [ADDED] Command sv_rconusers (list of users that are allowed to use RCon)
+ [ADDED] Command shadowz_wall (wall shadow length)
+ [ADDED] Command shadowz_obstacle (obstacle shadow length)
+ [ADDED] Command shadowshade_wall (wall shadow shade effect)
+ [ADDED] Command shadowshade_obstacle (obstacle shadow shade effect)
+ [ADDED] Command shadow_angle (sun/shadow angle)
+ [ADDED] Command shadow_frameskipping (light/shadow rendering frame skipping)
+ [ADDED] Command mp_hud (enable/disable certain HUD elements)
+ [ADDED] Command mp_buymenu (custom buy menu)
+ [ADDED] Command mp_flashlight (allow flashlights on server?)
+ [ADDED] Command flashlight (turn flashlight on/off)
+ [ADDED] Command win (switch between full-screen and windowed mode)
+ [ADDED] Command cmsg (send console message to all or certain player)
+ [ADDED] Command triggerposition (trigger entity at certain position)
+ [ADDED] Command language (change the game language)
+ [ADDED] Lua Command entitylist (get list with entity positions)
+ [ADDED] Lua Hook flashlight (when flashlight is turned on or off)
+ [ADDED] (, ) and | can be escaped with preceding \\ in Lua menu command
+ [ADDED] Lua image command can display map tiles and other game graphics
+ [ADDED] Player parameter for Lua break hook
+ [ADDED] Enhanced in-game chat flood protection with auto-kick
+ [ADDED] serverstats.html now has a CS2D favicon
+ [ADDED] Light/shadow engine by BlazingEyed (see video options, off by default)
+ [ADDED] The language can now be changed (external language files@sys/language)
+ [ADDED] Env_Room entity for light/shadow engine
+ [ADDED] Env_Light entity for light/shadow engine
+ [ADDED] Env_LightStripe entity for light/shadow engine
+ [ADDED] Info_NoWeather entity (disable weather effect in certain area)
+ [ADDED] Flashlights (turn on and off with F)
+ [ADDED] Some additional loading screens for certain editor actions
+ [ADDED] Serverlist now saves the server name as well (for website serverlist)
+ [ADDED] Serverlist now has a "recently joined" tab with 20 latest servers
+ [ADDED] Serverlist refresh countdown is visible in refresh button
+ [ADDED] Serverlist now has a "game mode" column
+ [ADDED] Browser launch compatibility (allow to join over cs2d://ip:port URIs)
+ [ADDED] "-realport" commandline parameter (use port from settings for list entry)
+ [ADDED] "-rconlua" commandline parameter (allow Lua script execution via RCon)
+ [ADDED] Gas Mask (non-buyable protection against gas grenades, id 60)
+ [ADDED] Several new Info_TeamGate entity options
+ [ADDED] Info_NPC now performs trigger whenever an NPC from it is killed
+ [ADDED] Info_TeamGate now performs trigger when it kills someone
+ [ADDED] Trigger_Use now has a re-use delay option
+ [ADDED] Warning message when saving map without spawnpoints (Info_T/Info_CT)
+ [ADDED] Checkbox in graphics options menu to switch to window/full-screen
+ [ADDED] Editor displays depth of an entity at the bottom (for arrangement)
+ [ADDED] Editor got simple tile blending tool to make tile blending easier
+ [ADDED] Ban reason parameter for banip/banname/banusgn
+ [ADDED] Translation. Most parts of the game can now be translated
+ [ADDED] Satchel Charge (remote controlled explosives)
+ [ADDED] M134 machine gun (by FaqAp)
+ [ADDED] FN F2000 rifle (by FaqAp)
+ [ADDED] Some new user created maps from the file archive
+
+
+### Beta 0.1.1.9 - 25.03.2011
+
+ [FIXED] Editor: Move whole map ignored tiles left / at bottom of map
+ [FIXED] Editor: Move whole map did not update trigger relation lines
+ [FIXED] Editor: "Entity graphics" display setting did not work
+ [FIXED] Editor: info_noweapons property menu was misplaced
+ [FIXED] Editor: env_npc Snark selection bug
+ [FIXED] Tile alpha channel/transparency (PNG) is now rendered properly
+ [FIXED] ai_say and ai_sayteam did not work
+ [FIXED] Money has been reduced if you skipped repairing using objectdamage
+ [FIXED] Spraylogos are not rendered above trigger_use buttons anymore
+ [FIXED] Killing a player in its Lua hit-hook without return 1 caused bugs
+ [FIXED] Sometimes more than one player received +3 score for defusing
+ [FIXED] You can't vote to kick yourself anymore
+ [FIXED] Wrong response for vote attempts when voting was disabled
+ [FIXED] Editor save window didn't remember map name after first save
+ [FIXED] NPC spawn bug on some non-square maps
+ [FIXED] Building re-spawn bug on some non-square maps
+ [CHANGED] menu_svreqdelay is now 30 ms again by default (instead of 50)
+ [CHANGED] Idle kick now has its own kick message
+ [CHANGED] No damage/direction indicators when hit by silenced weapon
+ [CHANGED] mp_roundtime maximum value increased from 15 to 99
+ [CHANGED] info_nofow entity re-enabled (hides Fog of War in 3x3 area)
+ [CHANGED] debug mode (including FPS display) is now disabled by default
+ [CHANGED] Super supply RPG Launcher replaced with Molotov Cocktail
+ [CHANGED] You now don't see full rank info of other players by default
+ [CHANGED] Improved NPC effects and sounds
+ [CHANGED] Increased NPC default health values
+ [CHANGED] You can now join the round 30 secs (default) after roundstart
+ [CHANGED] Remote Lua execution (via rcon) disabled for more security
+ [CHANGED] Minimal lag compensation change (probably doesn't help)
+ [ADDED] Hovering the U.S.G.N. login state will show your U.S.G.N. ID
+ [ADDED] Dynamic Lua image tween animation system
+ [ADDED] HUD Text tween animation system
+ [ADDED] Snarks now explode when they die, causing additional damage
+ [ADDED] Attack buffer to minimize server sided attack packet drops
+ [ADDED] List of items for (super) supply can now be changed
+ [ADDED] Warning when running game in program files or temporary folder
+ [ADDED] Stop button for serverlist (stops loading of new servers)
+ [ADDED] Tiles can now be rotated (middle mouse key in editor)
+ [ADDED] Each tile on map can have own brightness setting
+ [ADDED] Each tile on map can seamlessly blend with an adjacent tile
+ [ADDED] Editor grid can now be toggled with hotkey G
+ [ADDED] Disabled Lua menu buttons can be created with brackets
+ [ADDED] In-game server menu has now add/remove favorite button
+ [ADDED] Optional fog of war while spectating a player
+ [ADDED] Forced spectating-fog in "spectate own team only" mode
+ [ADDED] Friendslist context menu option "View Profile"
+ [ADDED] Auto-Update function for future updates (Win client only)
+ [ADDED] Command mp_postspawn (time allowed to spawn after roundstart)
+ [ADDED] Command mp_radar (enable/disable radar)
+ [ADDED] Command mp_supply_items (list of items for supply)
+ [ADDED] Command hud_fullrankinfo (show full rank info of other players?)
+ [ADDED] Command hudtxtcolorfade (hud txt color fade animation)
+ [ADDED] Command hudtxtalphafade (hud txt alpha fade animation)
+ [ADDED] Command hudtxtmove (hud txt move animation)
+ [ADDED] Lua Command reqcld (request client data like cursor position)
+ [ADDED] Lua Command tween_move (move image animation)
+ [ADDED] Lua Command tween_rotate (rotate image animation)
+ [ADDED] Lua Command tween_rotateconstantly (rotate image constantly)
+ [ADDED] Lua Command tween_alpha (image alpha fade animation)
+ [ADDED] Lua Command tween_color (image color fade animation)
+ [ADDED] Lua Command tween_scale (scale image animation)
+ [ADDED] Lua Hook clientdata (when reqcld response arrives)
+ [ADDED] Lua Hook objectupgrade (when building is upgraded)
+ [ADDED] banip, banname and banusgn have temp ban time parameter
+ [ADDED] NPC: Vortigaunt (with melee and ranged attack)
+ [ADDED] NPC: Soldier (ranged attack)
+
+
+### Beta 0.1.1.8 - 25.08.2010
+ 
+ [FIXED] Black pixels became transparent on PNG screenshots
+ [FIXED] Lua images of a player will now be removed when player leaves
+ [FIXED] Lua hook spawn has been emitted for spectators on roundstart
+ [FIXED] Lua timers were added twice and had some others bugs
+ [FIXED] Buildings were covered by entities (palms etc.)
+ [FIXED] Massive FPS drop when pointing at wall with pathfinding tool
+ [FIXED] Editor will now never load more than 256 tiles (tile limit)
+ [FIXED] customkill does not work with dead players/spectators anymore
+ [FIXED] Bans haven been loaded wrong from bans.lst
+ [FIXED] "/quit" in built-in IRC chat caused CS2D to crash
+ [FIXED] Crash when loading damaged stat files
+ [FIXED] Strange pointer/crosshair positioning in higher resolution win.
+ [FIXED] Higher resolution win. allowed higher grenade throwing distance
+ [FIXED] Lua join hook has not been executed for pl. 1 on listen server
+ [FIXED] Lua use/usebutton hooks have not been executed correctly
+ [FIXED] Flare exploit which allowed to throw infinte flares (locally)
+ [FIXED] It was sometimes possible to reload unreloadable weapons
+ [FIXED] Pings were inaccurate (precision limited by FPS)
+ [FIXED] Grenade sync-bug when throwing grenade directly at yourself
+ [CHANGED] Pings are now refreshed more frequently
+ [CHANGED] Game now runs in window by default
+ [CHANGED] Some minor performance tweaks
+ [CHANGED] Mine/Lasermine moved from weapon slot 4 to weapon slot 5
+ [CHANGED] Zombies can now also collect gut bombs (if any on map)
+ [CHANGED] Zombies now can't kill each other with claws when FF is enabled
+ [CHANGED] mp_autogamemode is now disabled by default
+ [CHANGED] mp_randomspawn now also works in "Team Deathmatch"-mode
+ [CHANGED] Maximum size for downloads is now 250 kb by default
+ [CHANGED] maxplayers and port are now unchangeable if set as cmdl param
+ [CHANGED] Not existing maps (on local PC) are now darker in serverlist
+ [CHANGED] Player counts full/empty are now darker in serverlist
+ [CHANGED] Large item versions in menu will be scaled depending on size
+ [CHANGED] Better "rank" in-game interface output
+ [CHANGED] Better "killed by" in-game interface output
+ [CHANGED] Empty weapon on ground now says (empty) instead of (0|0)
+ [CHANGED] Bigger close buttons for server info and map briefing
+ [CHANGED] menu_svreqdelay new default value is 50 ms (instead of 30)
+ [CHANGED] Player/item shadows can not be changed (unfair advantages)
+ [CHANGED] Falling letters link effect is far less annoying now
+ [ADDED] Lag compensation for fair aiming with high pings
+ [ADDED] Player IDs are now displayed in scoreboard (in front of name)
+ [ADDED] Free cursor positioning / text editing for text inputs and chat
+ [ADDED] You can now use CTRL+X/C/V (cut/copy/past) in in-game chat
+ [ADDED] Right clicking a text input now opens a useful context menu
+ [ADDED] Console context menu (clear console, copy line, copy all)
+ [ADDED] Textbox context menu (copy line, copy all)
+ [ADDED] Minimap preview for existing maps in serverlist
+ [ADDED] Put [ ] around name/map filter to match identical values only
+ [ADDED] "Downloaded Files" download history (see Options -> Net)
+ [ADDED] Auto-Buy system (button in buy menu, autobuy.cfg)
+ [ADDED] Re-Buy system (button in buy menu)
+ [ADDED] Optional reason parameter for kick-command
+ [ADDED] Command mp_localrconoutput (show output of remote commands?)
+ [ADDED] Command mp_lagcompensation (lag compensation for aiming)
+ [ADDED] Command autobuy (automatically purchase weapons)
+ [ADDED] Command rebuy (purchase same weapons as before)
+ [ADDED] Command fps (display current fps / buffer values in console)
+ [ADDED] Command reroute (forward a player to another server)
+ [ADDED] Command spawnnpc (spawns a npc at a certain position)
+ [ADDED] "-rcon" commandline parameter (set rcon pw and make unchangeable)
+ [ADDED] "-nocache" commandline parameter (never load cached serverlist)
+ [ADDED] "-path" commandline parameter (change working directory)
+ [ADDED] "-fullscreen" commandline parameter (run in fullscreen)
+ [ADDED] "-lua" commandline parameter (use this lua script)
+ [ADDED] Lua image mode 3 (cover entities like palms etc.)
+ [ADDED] Lua Hook rcon (when someone sends remote control commands)
+ [ADDED] Lua Hook objectdamage (when dynamic object is damaged/repaired)
+ [ADDED] Lua Hook objectkill (when dynamic object is killed)
+ [ADDED] Lua Command randomentity (get pos of random entity of certain type)
+ [ADDED] Lua Command randomhostage (get pos of random hostage)
+ [ADDED] Lua Command closehostage (get hostage which is close to player)
+ [ADDED] Lua Command inentityzone (is tile in zone of certain entity type?)
+ [ADDED] Lua Command setentityaistate (set AI state of entity)
+ [ADDED] Lua Command closeitems (return all dropped items close to a player)
+ [ADDED] Lua Bot AI (super primitive, including many new commands and hooks)
+ [ADDED] Lua Command ai_say (bot chat)
+ [ADDED] Lua Command ai_sayteam (bot team chat)
+ [ADDED] Lua Command ai_radio (bot radio messages)
+ [ADDED] Lua Command ai_goto (let bot go to tile)
+ [ADDED] Lua Command ai_move (move bot to certain direction)
+ [ADDED] Lua Command ai_respawn (bot respawns)
+ [ADDED] Lua Command ai_findtarget (find enemy for bot)
+ [ADDED] Lua Command ai_freeline (check if line of fire is free)
+ [ADDED] Lua Command ai_aim (let bot aim at certain position)
+ [ADDED] Lua Command ai_iattack (intelligent bot attack)
+ [ADDED] Lua Command ai_attack (primitive bot attack)
+ [ADDED] Lua Command ai_buy (bot buys item)
+ [ADDED] Lua Command ai_use (bot uses environment)
+ [ADDED] Lua Command ai_rotate (bot rotates to certain direction)
+ [ADDED] Lua Command ai_selectweapon (bot selects a weapon)
+ [ADDED] Lua Command ai_reload (bot reloads current weapon)
+ [ADDED] Lua Command ai_drop (bot drops current weapon)
+ [ADDED] Lua Command ai_spray (bot sprays a spraylogo)
+ [ADDED] Lua Command ai_build (bot builds a building)
+ [ADDED] Lua Command ai_debug (show debug info for bot in ai debug mode)
+ [ADDED] "rcon" param for Lua cmd "player" (has player valid rcon login?)
+ [ADDED] Return value 2 for "drop" Lua hook (never fade out item)
+ [ADDED] Editor function to export image of whole map in different sizes
+ [ADDED] Editor warning when tileset has more than 256 tiles
+ [ADDED] Editor warning/confirmation when you try to overwrite a map
+ [ADDED] Editor distance tool now shows distance in tiles as well
+ [ADDED] Editor move whole map tool
+ [ADDED] Automatically reloading "bans.lst" when it has been modified
+ [ADDED] Super supply building (supply upgrade, spawns armor/rpg launcher)
+ [ADDED] Custom reload sfx is now possible with files in sfx/weapons/
+		- sfx/weapons/<WEAPONNAME>_clipout.wav
+		- sfx/weapons/<WEAPONNAME>_clipin.wav
+ [ADDED] env_npc entity which spawns NPCs (non-player characters)
+ [ADDED] Individual zombie player skin (gfx/npc/zombie.bmp)
+ [ADDED] HTTP download support for sys/servertransfer.lst
+ [REMOVED] "weaponid" param for Lua cmd "player" (was pointless, always 0)
+
+
+### Beta 0.1.1.7 - 21.12.2009
+
+ [FIXED] Security vulnerability which allowed rpg/grenade hacks
+ [FIXED] Lua command tile did not work properly (always returned false)
+ [FIXED] Lua command object did not work
+ [FIXED] Lua hook bombplant did not work
+ [FIXED] Lua images were destroyed by explosions
+ [FIXED] Lua HUD image scale sometimes influenced normal HUD scale
+ [FIXED] Several file transfer bugs
+ [FIXED] Crash with death notice images if image for weapon was missing
+ [FIXED] Crash if there are no spraylogos
+ [FIXED] mp_timelimit mapchanges only occured with players on map
+ [FIXED] It was possible to switch team to spectators when being spectator
+ [CHANGED] Now using DirectX9 drivers on Windows systems
+ [CHANGED] More intelligent latency sorting (prefer servers with players)
+ [CHANGED] Serverlist filters changed/improved
+ [CHANGED] You can now drag the minimap view by holding the mousebutton
+ [CHANGED] mp_wpndmg/mp_unbuyable now accept weapon names without spaces
+ [ADDED] Optional player param. for Lua images (only one player can see img)
+ [ADDED] Bots serverlist filter (yes, no, at least 1 human)
+ [ADDED] Name serverlist filter (only show if contains X in name)
+ [ADDED] Map serverlist filter (only show if contains X in map)
+ [ADDED] -offline / -off commandline parameter (offline mode)
+
+
+### Beta 0.1.1.6 - 11.11.2009
+
+ [FIXED] Bug with commands which accepted a name AND id of a player
+ [FIXED] Dropped weapon when attempting to buy outside buyzone
+ [FIXED] Wrong rate of fire calculation (/2)
+ [FIXED] Env_Object did not work everywhere on the map
+ [FIXED] de_dust2 bomb explosion range was too large
+ [FIXED] Removed unused env_sound from de_aztec
+ [FIXED] Floor behavior Func_DynWall entities were invisible sometimes
+ [FIXED] Some server only commands SEEMED to work for clients as well
+ [FIXED] Infinite ammo icon flashed when bomb was planted
+ [FIXED] Dedicated servers attempted to play sv_sound(2) locally as well
+ [FIXED] It was still possible to use "invisible" nicks with special chars
+ [FIXED] Screenshot function did only work properly at 640x480
+ [FIXED] Screenshots from menu were called "_XXXXX.XXX" now "menu_XXXXX.XXX"
+ [FIXED] Minimap creation caused the game to crash with certain maps
+ [FIXED] Console: Params consisting of more than one word were displayed wrong
+ [FIXED] Dead players and spectators were not able to chat with each other
+ [FIXED] Some bomb defusing bugs
+ [FIXED] Bug in bind system (binds were attached instead of replaced)
+ [FIXED] All binds outside controls.cfg were removed when using options menu
+ [FIXED] Lua hook "spray" did not work
+ [FIXED] Severlist sometimes showed "Add to Favorites" for added servers
+ [CHANGED] Improved weapon selection HUD (visualized number of items in slot)
+ [CHANGED] AK47/M4A1 are more balanced/equal now
+ [CHANGED] SG552/Aug damage increased
+ [CHANGED] Scout/AWP unzoomed damage increased
+ [CHANGED] Highly improved particle and effect performance on large maps
+ [CHANGED] Extended command line parsing (see Readme.txt for details)
+ [CHANGED] Zombies don't get gut bombs on spawn anymore
+ [CHANGED] Dropped weapons don't disappear in Zombies! mode
+ [CHANGED] Not allowed to change team on roundstart in Zombies! mode
+ [CHANGED] sv_maxclientsip default value is now 5
+ [CHANGED] Improved rcon/mp_maxrconfails warning messages
+ [CHANGED] Walls become neutral if not killed when player leaves/changes teams
+ [CHANGED] Bomb blinks on radar (T only) when it is planted
+ [CHANGED] "Copy Address" replaced with "Copy Address" and "Copy Name+Address"
+ [CHANGED] "Copy Address" removed from Linux/Mac version (didn't work anyway)
+ [CHANGED] Moved action messages (join,leave,...) so they don't obscure radar
+ [CHANGED] hudtxt/hudtxt2 message limit increased from 10 to 50
+ [CHANGED] Enhanced Speedhack detection (mp_antispeeder)
+ [CHANGED] Improved serverlist loading performance
+ [CHANGED] Highly improved stats/rank performance
+ [CHANGED] Console now only holds/displays the latest 500 output lines
+ [CHANGED] Enhanced logging performance
+ [CHANGED] transfer_delay and transfer_size removed (now transfer_speed)
+ [CHANGED] Improved file transfer
+ [CHANGED] Command exec now automatically prepends sys-directory if necessary
+ [CHANGED] Command spawnplayer doesn't allow to spawn spectators anymore
+ [CHANGED] Lua move-hook walk-parameter is now integer instead of boolean
+ [ADDED] Game loads recent serverlist locally in case of U.S.G.N. downtimes
+ [ADDED] Wooden floor tiles
+ [ADDED] More hostage styles are available
+ [ADDED] Skip briefing/server info with space (cmd "specplayer")
+ [ADDED] Clicking X in a Lua menu will now also emit a Lua menu event
+ [ADDED] Remote control panel (rightclick a server in serverlist)
+ [ADDED] Weapon images in death notices (optional with game setting)
+ [ADDED] A lot of additional Env_Decal images
+ [ADDED] Portal Gun: You can now close your portals with reload-key
+ [ADDED] You can now upgrade barricades to walls (fast and cheap!)
+ [ADDED] Wildcards (*) for IP bans (e.g. banip 192.168.*.*)
+ [ADDED] Server net message flood-attack protection
+ [ADDED] U.S.G.N. info screen if U.S.G.N. connection failed
+ [ADDED] Download files option (control what files you want to download)
+ [ADDED] List of files server will send to clients (sys/servertransfer.lst)
+ [ADDED] Lua menus can now be invisible and bigger (@i or @b in title string)
+ [ADDED] You can now add custom images to map/HUD with Lua commands
+ [ADDED] Command mp_zombiekillequip (disable the gut bomb stuff etc.)
+ [ADDED] Command mp_floodprot (enable/disable flood-attack protection)
+ [ADDED] Command mp_autogamemode (auto. switch game mode on mapchange)
+ [ADDED] Command deathnoticeimg (death notices with images or not)
+ [ADDED] Command reconnect/retry (reconnect to last joined server)
+ [ADDED] Command entities (list all entities, as server only)
+ [ADDED] Command unban (remove a certain ban)
+ [ADDED] Command listbans (list all bans, as server only)
+ [ADDED] Command menu_red (influence menu color)
+ [ADDED] Command menu_green (influence menu color)
+ [ADDED] Command menu_blue (influence menu color)
+ [ADDED] Command menu_svreqdelay (serverlist info request delays)
+ [ADDED] Command transfer_speed (server file upload speed in kb/sec)
+ [ADDED] Command download (download files option)
+ [ADDED] Command flashplayer id intensity (flash one or all players)
+ [ADDED] Command flashposition x y intensity (flash players close to pos)
+ [ADDED] Command effect type x y p1 p2 r g b (create an effect)
+ [ADDED] Lua Command tile x y value (return tile values)
+ [ADDED] Lua Hook flagtake (when taking a flag)
+ [ADDED] Lua Hook flagcapture (when capturing a flag)
+ [ADDED] Lua Hook dominate (when dominating a domination point)
+ [ADDED] Lua Hook bombplant (when planting bomb)
+ [ADDED] Lua Hook bombdefuse (when defusing bomb)
+ [ADDED] Lua Hook bombexplode (when bomb explodes)
+ [ADDED] Lua Hook break (when breaking a breakable entity)
+ [ADDED] Lua Hook usebutton (when using a button)
+ [ADDED] Lua Hook vipescape (when the VIP escapes)
+ [ADDED] Lua Hook hostagerescue (when hostage enters rescue zone)
+ [ADDED] Lua Hook movetile (when a player reaches a new tile)
+ [ADDED] Lua Command timer time function [param] [count] (create timer)
+ [ADDED] Lua Command freetimer [function] [param] (free timer)
+ [ADDED] Lua Command image path x y mode (create dynamic image)
+ [ADDED] Lua Command imagecolor id red green blue (change image color)
+ [ADDED] Lua Command imagealpha id alpha (change image alpha)
+ [ADDED] Lua Command imageblend id blend (change image blend mode)
+ [ADDED] Lua Command imagescale id xscale yscale (change image size)
+ [ADDED] Lua Command imagepos id x y rotation (change image position)
+ [ADDED] Lua Command freeimage id (free dynamic image)
+
+
+### Beta 0.1.1.5 - 19.06.2009
+
+ [WARNING] Hostages can't use portals/teleporters
+ [WARNING] Don't use portals/teleporters when playing with bots
+
+ [FIXED] Mines did not explode anymore
+ [FIXED] You were able to build dispensers close together
+ [FIXED] Whitespace (ASCII 160) was allowed in nicks
+ [FIXED] It was possible to choose numbers as nicks (cmd conflicts)
+ [FIXED] You can't set health/maxhealth of dead players anymore
+ [FIXED] You can't equip dead players anymore
+ [FIXED] Vote-bans are now really temporary (1 hour by default)
+ [FIXED] "Remove Friend" context menu in friends list removed
+ [FIXED] Lua itemtype(id,"dispersion") did not work
+ [FIXED] Lua use hook did only work for server uses not for client uses
+ [FIXED] Lua menu problem when opening a new menu with menu hook
+ [FIXED] Very high mp_timelimit caused mapchange all the time
+ [FIXED] Bomb did not explode with Info_BombSpot range
+ [FIXED] Some weapon images in the buy menu were slightly blurred
+ [FIXED] Bug in grenade rebuy protection
+ [FIXED] "Add to Favorites" did not work
+ [FIXED] Client players did not see burst fire of server player
+ [FIXED] Less annoying position resets on laggy servers
+ [CHANGED] Explosions are curtailed by walls by default now
+ [CHANGED] HE Grenade causes less damage
+ [CHANGED] AK47 is now a bit weaker, M4A1 a bit stronger (minimal)
+ [CHANGED] Movement is now slower with chainsaw
+ [CHANGED] "x changes his name to y" is now "x changes name to y"
+ [CHANGED] Some player sprite improvements
+ [CHANGED] Knife sprite changed
+ [CHANGED] Upgrade to dual turret: price and duration increased by 50%
+ [CHANGED] Upgrade to triple turret: price and duration increased by 100%
+ [CHANGED] Removed number of bots on server from serverlist (was too long)
+ [CHANGED] Chat details like *DEAD*, (Team) or (Radio) are now yellow
+ [CHANGED] Debug Lua message "calling hooked function [...]" removed
+ [CHANGED] No blood FX when hitting mates with wrench (if FF is off)
+ [CHANGED] Some changes on map zm_street
+ [CHANGED] Zombies get +3 score/frags per kill (setting mp_zombiekillscore)
+ [CHANGED] Reload at round end will now be finished and not canceled
+ [CHANGED] Radio and Lua menus are smaller now
+ [CHANGED] Now sending map file as last file to avoid incomplete transfers
+ [CHANGED] Friends list is now sorted by online status
+ [CHANGED] Flash effect will now be stopped when you die
+ [ADDED] New and improved speedhack protection with kick + temp. ban
+ [ADDED] Console input context menu with list of commands
+ [ADDED] Map preview images (minimap) in maplist
+ [ADDED] Blinking "Friends" button when you have new messages/requests
+ [ADDED] U.S.G.N. powered NAT hole punching for better server connectivity
+ [ADDED] Additional weapon information in buy menu
+ [ADDED] Additional enlarged weapon/item image in buy menu
+ [ADDED] Back buttons in in-game menus
+ [ADDED] Command mp_tempbantime (defines how long vote-bans stay active)
+ [ADDED] Command mp_maxrconfails (security against RCon bruteforcing)
+ [ADDED] Command mp_natholepunching (allow/disallow NAT hole punching)
+ [ADDED] Command mp_zombiekillscore (score/frags per kill for zombies)
+ [ADDED] Command mp_teleportreload (teleport reload time in seconds)
+ [ADDED] Command mp_antispeeder (protection against speedhackers)
+ [ADDED] Command sv_sound2 id sound (play soundfiles as server)
+ [ADDED] Command weapon weapon (select a weapon by name/id)
+ [ADDED] Command setname id name (server: set name of a player)
+ [ADDED] Command setweapon id weapon (server: set weapon of a player)
+ [ADDED] Command explosion x y size damage id (server: make explosion)
+ [ADDED] Command shake id intensity (server: quake effect for player)
+ [ADDED] Command killobject id (server: kill an object)
+ [ADDED] Command spawnobject typ x y ... (server: spawn an object)
+ [ADDED] Command customkill killer "weaponname" victim (server: kill pl.)
+ [ADDED] Bombspot can now trigger entities when the bomb explodes there
+ [ADDED] Func_DynWall can now behave like a floor as well
+ [ADDED] Additional new button styles/graphics for Trigger_Use
+ [ADDED] Additional new objects for Env_Object
+ [ADDED] Option for Info_NoBuildings to allow Mines/Portals
+ [ADDED] Entity Info_TeamGate (only one team or nobody can pass)
+ [ADDED] Entity Env_Building (set buildings in editor, Neutral/T/CT)
+ [ADDED] You can now return 1 in Lua hit-hook to skip the damage process
+ [ADDED] You can now return 1 in Lua build-hook to skip building
+ [ADDED] Lua Hook buildattempt (when attempting to build something)
+ [ADDED] Extended Lua commands to get tables of player IDs/item IDs
+ [ADDED] Lua Command playerweapons player (return table with carried items)
+ [ADDED] Lua Command hostage id value (return hostage values)
+ [ADDED] Lua Command object id value (return object [building] values)
+ [ADDED] Laser Mine
+ [ADDED] Portal Gun
+ [ADDED] Teleporter Entrance building
+ [ADDED] Teleporter Exit building
+
+
+### Beta 0.1.1.4 - 30.03.2009
+
+ [INFO] Several maps have been updated! Please re-upload the maps if you
+	are hosting a dedicated server!
+
+ [FIXED] Click for respawning did not work on the whole screen
+ [FIXED] Dropped armors did not fade out like other items
+ [FIXED] Infinite ammo did not work as client
+ [FIXED] Ammo values have been displayed in infinite ammo mode
+ [FIXED] Bug which allowed to keep zombie vision on as survivor
+ [FIXED] Money for returning flags was sometimes 300 and sometimes 1000
+ [FIXED] "Remove from Favorites" did not work always
+ [FIXED] You didn't see your own score on mapchanges
+ [FIXED] Exploit which allowed to throw grenades over a higher distance
+ [FIXED] Mine planting problems (fast/unwanted planting)
+ [FIXED] Servers were not reachable for a certain time after disconnect
+ [FIXED] Some bugs with higher resolutions (spec zoom, screenshots)
+ [FIXED] Player collected defuse kit even if already having one
+ [CHANGED] rcon command now sends full script line and works with " and ;
+ [CHANGED] Chat-/action-/killmessages are now smaller
+ [CHANGED] "options->more" splitted in "options->more" and "server->more"!
+ [CHANGED] © not longer allowed as first character in playername
+ [CHANGED] You can't shoot trough teammates with tactical shield anymore
+ [CHANGED] Improved serverlist filter settings
+ [CHANGED] Default mp_zombiedmg changed to 0.5 (less zombie armor)
+ [CHANGED] Some bot AI improvements
+ [CHANGED] Changed de_aztec and aztec tileset + botnodes for some maps
+ [CHANGED] Gate field and barbed wire have more healthpoints
+ [CHANGED] Some buildings are now built faster
+ [CHANGED] Domination points are now displayed in the radar
+ [ADDED] Overwrite/tempload options when joining server with differing map
+ [ADDED] Serverlist number of displayed servers/players (in brackets)
+ [ADDED] Serverlist number of bots in a server/total/displayed
+ [ADDED] Serverlist "Copy Address" function now also copies the name
+ [ADDED] Serverlist "Details" function (shows players on server)
+ [ADDED] Zombies do now recover 3 HP per second by default
+ [ADDED] Zombies have a gut bomb (and get a new one for each kill)
+ [ADDED] Lua script interface for server side scripting (sys/lua/info.txt)
+ [ADDED] Lua script support for maps (save as maps/MAPNAME.lua)
+ [ADDED] Weblinks for briefings (enclose in » and «)
+ [ADDED] Colors/links in all briefings for "official" maps
+ [ADDED] Colorcodes ©XXXYYYZZZ work in server msgs (sv_msg, sv_msg2)
+ [ADDED] Ending a sv_msg/sv_msg2 text with "@C" will show it in center
+ [ADDED] It is now possible tab trough all textfields in menus
+ [ADDED] More "rank" info (score, kills, deaths, kills per death, time)
+ [ADDED] Server info text (sys/serverinfo.txt, opens on join and with F1)
+ [ADDED] Different weapon modes for bots
+ [ADDED] Building kill buttons in construction menu
+ [ADDED] Some buildings can now be upgraded with wrench
+ [ADDED] Console input history (use up/down cursor keys in console)
+ [ADDED] Command hud_fireinthehole (disable grenade radio message)
+ [ADDED] Command stats_rank ("rank" on/off/detailed)
+ [ADDED] Command mp_reservations (reservation system for U.S.G.N. users)
+ [ADDED] Command mp_randomspawn (spawn on random positions in DM mode)
+ [ADDED] Command mp_zombierecover (zombies get health over time)
+ [ADDED] Command mp_zombiespeedmod (zombie speed modifier)
+ [ADDED] Command sv_msg2 id msg (send message to certain player only)
+ [ADDED] Command sv_sound sound (play soundfiles as server)
+ [ADDED] Command killplayer id (server: kill a player)
+ [ADDED] Command spawnplayer id x y (server: spawn player at position)
+ [ADDED] Command setpos id x y (server: move player to position)
+ [ADDED] Command setmoney id money (server: set player money)
+ [ADDED] Command sethealth id health (server: set player health)
+ [ADDED] Command setmaxhealth id maxhealth (server: set player max health)
+ [ADDED] Command setarmor id armor (server: set player armor)
+ [ADDED] Command setscore id score (server: set player score)
+ [ADDED] Command setdeaths id deaths (server: set player deaths)
+ [ADDED] Command equip id itemtype (server: give weapon / refill ammo)
+ [ADDED] Command strip id itemtype (server: remove weapon from a player)
+ [ADDED] Command spawnitem itemtype x y (server: spawn item on map)
+ [ADDED] Command removeitem id (server: remove item from map)
+ [ADDED] Command trigger name (server: trigger entities)
+ [ADDED] Command speedmod id value (server: change player speed)
+ [ADDED] Command lua script (server: execute a Lua script)
+ [ADDED] Command luareset (server: reset Lua, remove all vars/funcs)
+ [ADDED] Command debuglua mode (show Lua debug information on/off)
+ [ADDED] Command serverinfo (show server info)
+ [ADDED] Command serveraction1 (F2, custom server action for Lua scripts)
+ [ADDED] Command serveraction2 (F3, custom server action for Lua scripts)
+ [ADDED] Command serveraction3 (F4, custom server action for Lua scripts)
+ [ADDED] Command hudtxt tid,text,x,y,align (display text on screen)
+ [ADDED] Command hudtxt2 id,tid,text,x,y,align (display text on screen)
+ [ADDED] Command mp_building_price building price (construction price)
+ [ADDED] Command mp_building_limit building limit (construction limit)
+ [ADDED] Command mp_building_health building health (health of building)
+ [ADDED] Gut Bomb
+ [ADDED] Dual turret building (turret upgrade)
+ [ADDED] Triple turret building (dual turret upgrade)
+ [ADDED] Entity Info_BotNode (define important spots on the map for bots)
+
+
+### Beta 0.1.1.3 - 07.02.2009
+
+ [FIXED] Flash effects have not been reset on roundstart/spawn
+ [FIXED] Wrong bomb selection key in auto-help messages
+ [FIXED] Max HP was unlimited (env_hurt) - limit set to 100 HP
+ [FIXED] env_hurt created hurt-sound when healing (negative damage)
+ [FIXED] Zombie mode team balance on roundstart did not work properly
+ [FIXED] Storm stayed active after deleting info_storm in editor
+ [FIXED] Some problems with buy commands (ump45, mac10)
+ [FIXED] Missing team score reset on server start
+ [FIXED] Particles on walls/buildings did not disappear on removal
+ [FIXED] Bots ignored respawndelay (always respawned instantly)
+ [FIXED] Env_Item did not work with Trigger_Start
+ [FIXED] Last votekick message before kick has not been displayed
+ [FIXED] Whitepspaces in playername removed (options menu)
+ [FIXED] Some bugs in the ban system
+ [FIXED] Bug with ingame server settings menu (always loaded server.cfg)
+ [FIXED] Player also respawned when clicking at minimap or other players
+ [FIXED] Zombie vision did not hide sprites with nightvision setting
+ [FIXED] "Authentication failed" error when joining with long nicks
+ [FIXED] Script parser bug with max length for string parameters
+ [FIXED] Wrong start money for players who joined after starting
+ [FIXED] Position synch. problems (occured when dropping items etc.)
+ [CHANGED] Increased AUG/SG552 damage
+ [CHANGED] mp_trace improvements + set mp_trace to 0 by default
+ [CHANGED] Health of buildings is now displayed with at least 1% and not 0%
+ [CHANGED] Normal players (not zombies) can now drop the claw weapon
+ [CHANGED] Puking blood as zombie (spray) brings more HP for yourself
+ [CHANGED] "PIayer" is not allowed as name anymore (I looks like l)
+ [CHANGED] Env_Hurt can now cause damage on a variable area (not just 1 tile)
+ [CHANGED] Some minor network traffic improvements
+ [CHANGED] HTML Statistics show top 30 instead of top 100
+ [CHANGED] Ranking is now based on score-deaths instead of kills/deaths
+ [CHANGED] You can only hear silenced weapons over a small distance now
+ [CHANGED] Improved melee weapon bot AI (important for bots in zombie mode)
+ [ADDED] Auto-help on bombspot and when collecting a bomb
+ [ADDED] Auto-help when collecting a flag (CTF)
+ [ADDED] Auto-help when finishing a supply building
+ [ADDED] Short entity names in editor
+ [ADDED] Trigger relations are visible in editor (space or point at entity)
+ [ADDED] Command mp_infammo (infinite ammunition server setting)
+ [ADDED] Command mp_maxclientsip (max clients/players per ip limit)
+ [ADDED] Command mp_kevlar (kevlar strength)
+ [ADDED] Command logsplit (create a new logfile each day)
+ [ADDED] Command logstamp (add timestamps in logfiles)
+ [ADDED] Command usgn_checkversion (setting to skip version/news sync.)
+ [ADDED] Command usgn_info (show U.S.G.N. info)
+ [ADDED] Command usgn_addserver (force an attempt to add server to list)
+ [ADDED] Claw secondary attack (higher damage+range, lower rate)
+ [ADDED] Spraylogo selection arrows and info that you can't change ingame
+ [ADDED] Additional U.S.G.N. request debug information (debug has to be 1)
+ [ADDED] 6 armor items (light, normal, heavy, medic, super, stealth)
+ [ADDED] Env_Item "On Trigger only" (spawn item on trigger only)
+ [ADDED] Func_DynWall "Close only if not blocked" (against doorkillers)
+ [ADDED] Selectable entity categories for the editor entity list
+ [ADDED] Automatic instant round restart when changing the game mode
+ [ADDED] Mapcycle script commands (add with {yourcommands} after map)
+ [ADDED] Displaying scoreboard before each mapchange
+ [ADDED] Auto rcon password reset when joining a server (due to security)
+ [ADDED] You can see player ips/usgn ids in playerlist with correct rcon pw
+ [ADDED] Chainsaw (with pretty stupid soundeffect!)
+ [ADDED] "Don't cheat" call on start
+ [ADDED] Protection against hacks which allowed to move trough walls
+ [ADDED] You can get your rank by saying "rank" (only when stats are enabled)
+
+
+### Beta 0.1.1.2 - 10.01.2009
+
+ [INFO] Don't forget to upload the new "sys/core"-folder if you are hosting
+	a dedicated server!
+
+ [INFO] Movement tracing is EXPERIMENTAL! Please use "mp_trace 0" to deactivate
+	it on your server if clients complain about movement!
+	If your own player movement as client is laggy it is caused by the
+	movement tracing. It happens with high mp_trace values and bad pings!
+
+ [FIXED] Critical file transfer bug
+ [FIXED] Some bugs which caused crashs
+ [FIXED] Auto balance made it impossible to join a team in zombie mode sometimes
+ [FIXED] "play map sounds" option did not work
+ [FIXED] ^ console problem (german keyboards)
+ [FIXED] Very long mapnames left the box of the maplist
+ [FIXED] Playerlimit did not work on U.S.G.N.-only servers
+ [FIXED] Own player (server) left game when banning others sometimes
+ [FIXED] Different hostage looks did not work
+ [FIXED] Chat messages were not visible on dedicated servers
+ [FIXED] It was possible to build dispensers close together (building sites)
+ [CHANGED] Improved/modified hack/cheat detections
+ [CHANGED] Wrench undropable in construction mode
+ [CHANGED] V.I.P. can collect kevlar, nv, medikit, sec. ammo, money, flags
+ [CHANGED] Zombies can collect flags
+ [CHANGED] New max. name length is now 25 instead of 30
+ [CHANGED] Default mp_idletime is now 60 sec (1 min) instead of 180 sec (3 min)
+ [ADDED] Editor context menu for entity arrangement (bring forward etc.)
+ [ADDED] Entity Func_GameAction
+ [ADDED] Zombie Vision (night vision for zombies)
+ [ADDED] Ban saving error message
+ [ADDED] Bot+Kick menus are PARTIALLY available for clients with correct rcon pw
+ [ADDED] Serverside movement tracing and position correction (mp_trace 0-5)
+
+
+### Beta 0.1.1.1 - 31.12.2008
+
+ [FIXED] Critical errors in join routine
+ [FIXED] Player dropped old prim/sec weapon when buying failed
+ [FIXED] Zoom bug (dropping related)
+ [FIXED] Auto balance for team selection was active in deathmatch mode
+ [CHANGED] Damage of all pistols reduced
+ [CHANGED] Armor is a bit stronger (max. 30% damage absorption)
+ [CHANGED] Improved file transfer speed
+ [CHANGED] Buildings (besides barbed wire) now need time for construction
+ [CHANGED] Improved menu for voting
+ [CHANGED] Other players spray us logo instead of yours if transmission failed
+ [ADDED] Error codes and messages
+ [ADDED] Repair sound for wrench
+ [ADDED] Voting messages and sound
+ [ADDED] Command mp_wpndmg WPN DMG (weapon damage adjustment)
+ [ADDED] Command mp_wpndmg_z1 WPN DMG (damage in zoom level 1)
+ [ADDED] Command mp_wpndmg_z2 WPN DMG (damage in zoom level 2)
+ [ADDED] Command logaddress_add IP:PORT (send console output to this address)
+ [ADDED] Command logaddress_remove IP:PORT
+ [ADDED] Command logaddress_removeall
+ [ADDED] Command mp_zombiedmg
+ [ADDED] Claw
+ [ADDED] New game mode: Zombies!
+
+
+### Beta 0.1.1.0 - 23.12.2008
+
+ [FIXED] Friends list scrolling bug
+ [FIXED] Bug which allowed to have a knife with scope
+ [FIXED] It was not possible to build dispensers close to enemy dispensers
+ [FIXED] Dead players/spectators blocked building positions
+ [FIXED] Hostages followed dead players/spectators
+ [FIXED] Spraylogo selection did not work after deleting the selected logo file
+ [FIXED] Spawn effect was visible through fog of war
+ [FIXED] "Hostage following"-arrows were visible through fog of war
+ [FIXED] Rendering problems with buildings on maps with Info_OldRender
+ [FIXED] Server name in scoreboard did not change after changing the server name
+ [FIXED] Mouseover item info showed only one item and not all at one tile
+ [FIXED] Serverlist mouseover info was not fully visible sometimes
+ [FIXED] Internet crashed when joining servers with many players/buildings
+ [CHANGED] Armor is much weaker now (max. 20% damage absorption)
+ [CHANGED] Damage of all pistols doubled
+ [CHANGED] USP ammo limit raised from 48 to 100
+ [CHANGED] AWP now kills with one hit in zoom level 2 even if enemy has full armor
+ [CHANGED] Stats don't show players with 0 score/deaths/frags anymore
+ [CHANGED] Console is now on the classic console key by default (~ on US keyboards)
+ [CHANGED] Some internal U.S.G.N. changes/improvements
+ [CHANGED] Spraylogos with other sizes than 32x32 pixels will not be accepted anymore
+ [CHANGED] Weapon sprites bigger than 75x75 (in hand) will not be accepted anymore
+ [CHANGED] Weapon sprites bigger than 100x100 (dropped) will not be accepted anymore
+ [CHANGED] Defuse times increased (10 sec or 5 sec with defuse kit)
+ [CHANGED] Join error messages are now more detailed
+ [ADDED] Missing sound for weapon buying
+ [ADDED] Stats now also display the score of players
+ [ADDED] "Forgot password?" and "Create new account" buttons for fast usgn.de access
+ [ADDED] Enemy health is now visible for spectators (spec. mode "everything" only)
+ [ADDED] Mouseover item info now also lists ammo/amount of weapons on the ground
+ [ADDED] Minimap for spectators which shows players/hostages/bomb/flags etc.
+ [ADDED] You can now start following by clicking a player while spectating
+ [ADDED] You can't rebuy grenades by default now (new command: mp_grenaderebuy)
+ [ADDED] Enhanced speedhack protection
+ [ADDED] Additional general hack protections
+ [ADDED] Bots button in ingame menu
+ [ADDED] Voting system and menu (commands: votemenu, vote, votemap)
+ [ADDED] Original CS weapon buying commands (deagle, hegren, ak47, m4a1, awp, ...)
+ [ADDED] New fog of war rendering mode (Smoothed)
+ [ADDED] Scorboard mouseover player details
+ [ADDED] Linux and MacOS (Intel) binaries (windowed only, dl at www.CS2D.com)
+
+
+### Beta 0.1.0.9 - 08.09.2008
+
+ [FIXED] Serverlist sorting bug with uppercase / lowercase letters
+ [FIXED] Blank/empty playernames were possible
+ [FIXED] Only CTs heared "Hostage has been rescued!" message
+ [FIXED] Skin selection security hole
+ [FIXED] Living teammates heared dead team chat
+ [FIXED] Displayed pings were imprecise and too high
+ [FIXED] Wrong rendering order of barricade ground
+ [FIXED] Func_DynWall did not kill hostages
+ [FIXED] Fire and gas did not injure hostages
+ [FIXED] Several spectating bugs
+ [FIXED] RPGs/Rockets flew too far sometimes (clientside in multiplayer games)
+ [CHANGED] Damage of all pistols increased
+ [CHANGED] Penalty for killing team buildings + max 5 team buildings killable
+ [CHANGED] Info_CTF_Flag, Info_Dom_Point and Env_Breakable can now trigger entities
+ [CHANGED] Everyone can read dead chat in game modes with instant respawning
+ [CHANGED] Nobody receives radio messages in deathmatch mode
+ [CHANGED] You only hear your own "Fire in the Hole" message in deathmatch mode
+ [CHANGED] logs will now be saved in "sys/logs"-folder
+ [CHANGED] TKs with gas grenade or molotov cocktail are not counted as TK anymore
+ [CHANGED] Ingame menu button order changed (options/server settings/players & bans)
+ [ADDED] New commands / Settings
+ [ADDED] Builder and health of buildings will now be displayed
+ [ADDED] Buildings of own team can be repaired with wrench primary attack
+ [ADDED] Option to render Env_Sprite under or over players (like Env_Image)
+ [ADDED] Option to hide Env_Sprite if player uses nightvision googles
+ [ADDED] Player spawnmoney time limit (max every 15 sec, DM/TeamDM/Construction)
+ [ADDED] Adjustable respawn delay (0 sec by default)
+ [ADDED] Team option for trigger entities
+ [ADDED] Zoom function for spectating (rightclick)
+ [ADDED] Entity Info_NoBuildings
+ [ADDED] Entity Func_Message
+ [ADDED] Supply building (can be used with [E] by builder for supply selection)
+ [ADDED] Snowball
+ [ADDED] Air Strike
+ [ADDED] Mine
+ [ADDED] Basic HTML server stats with player ranking and traffic stats
+ [ADDED] IRC Chat (very basic)
+ [ADDED] Friends List (does NOT support chatting!)
+
+
+### Beta 0.1.0.8 - 18.08.2008
+
+ [FIXED] Minor editor tilelist scrolling problem
+ [FIXED] Weapon stayed in zoom mode while reloading
+ [FIXED] Dropped flags disappeared like normal weapons (CTF)
+ [FIXED] Map editor/mapinfo showed wrong map-size (1 x/y too small)
+ [FIXED] Bugs with some buildings when players leave (buildings will be removed now)
+ [FIXED] "scroll background like tiles" bug (no scrolling)
+ [FIXED] Kevlar/Kevlar&Helmet purchasing bug with little money
+ [FIXED] Tile modes explosion/toxic were mixed up
+ [FIXED] Several spectating bugs
+ [FIXED] Trigger_Delay self-trigger did not work
+ [FIXED] Dispenser did not work properly
+ [FIXED] players were able leave the map 1 tile on the left/top
+ [FIXED] Env_Decal bugs in editor
+ [FIXED] Bots ran into walls when they tried to collect weapons sometimes
+ [FIXED] V.I.P. was able to collect all weapons (now USP only)
+ [FIXED] Items did not fade out in deathmatch mode on dedicated servers
+ [CHANGED] Movement speed decreased by 10%
+ [CHANGED] Flash/HE detonation delay decreased (now 1.3 sec, old 1.5)
+ [CHANGED] HE explosion damage and radius increased
+ [CHANGED] Gate field price and health reduced, buildimit of 3 added, damage reduced
+ [CHANGED] Gas grenade now hurts player directly. Armor doesn't protect anymore
+ [CHANGED] Gas grenade damage and radius increased
+ [CHANGED] Molotov cocktail explodes when it hits a wall
+ [CHANGED] Shotgun range decreased and dispersion increased
+ [CHANGED] Glock/Famas burst dispersion increased and burst damage decreased
+ [CHANGED] Env_Decal now works on walls and obstacles too
+ [CHANGED] lastinv command (Q) improved
+ [CHANGED] Domination possible with less players if there are not enough on server
+ [CHANGED] All player texts are now green in deathmatch mode (instead of red/blue)
+ [CHANGED] All players are now visible on the radar in deathmatch mode
+ [CHANGED] sayteam is now the same as say in deathmatch mode
+ [CHANGED] Playername character restriction removed
+ [CHANGED] You always have a knife now - even in construction mode
+ [ADDED] New commands / Settings
+ [ADDED] Servers using wrong version can be hidden with filter
+ [ADDED] +300$ for dominating points (DOM)
+ [ADDED] Map editor rect tool size displayed
+ [ADDED] Additional setting for Env_Hurt (damage on time/movement/both)
+ [ADDED] Bots now understand CTF and DOM maps
+ [ADDED] Flags are now visible on the radar (CTF)
+ [ADDED] Turret building
+ [ADDED] Editor button to remove the background image
+ [ADDED] High ping/latency autokick with mp_pinglimit (500 ms by default)
+ [ADDED] Player gets money each spawn (DM/TeamDM/Construction, 2000$ by default)
+
+
+### Beta 0.1.0.7 - 12.08.2008
+
+ [FIXED] Several building bugs
+ [FIXED] Several netcode bugs
+ [FIXED] Several map editor bugs
+ [FIXED] Scoreboard was not able to display all (32) players
+ [FIXED] Problems with some binds/keys/menus
+ [FIXED] Trigger_Delay did not work properly
+ [FIXED] Bug with Func_DynWall
+ [FIXED] Leaving players did not drop bomb/flag
+ [FIXED] auto teambalance now changes uneven teams
+ [CHANGED] DirectX is now used by default
+ [CHANGED] Movement speed increased by further 20%
+ [CHANGED] Screenshots will now be saved in "screens" folder
+ [CHANGED] Join-/leave- and kill-messages limited to 5 visible messages
+ [CHANGED] Zoom switch-delay halfed, laser removed, scope changed
+ [CHANGED] Servers with old version will not be added to serverlist anymore
+ [CHANGED] Info_NoWeapons now removes collected/bought weapons on roundstart
+ [CHANGED] Flag carrier is now slower (CTF)
+ [ADDED] New commands / Settings
+ [ADDED] Servers using another version are now highlighted red
+ [ADDED] Scoreboard shows which player is server/bot
+ [ADDED] +3 Score for planting+detonating or defusing C4
+ [ADDED] +3 Score and +1000$ for capturing enemy flag (CTF)
+ [ADDED] More info when your mousepointer is over a server
+ [ADDED] Game mode filter added
+ [ADDED] Domination map type
+ [ADDED] The game now supports more resolutions (graphics will NOT be scaled!)
+ [ADDED] Launcher for CS2D added (Launcher.exe)
+ [ADDED] Transparency settings for Env_Breakable and Func_DynWall
+ [ADDED] Explosion delay for HE and flash
+ [ADDED] Button/Switch graphics for Trigger_Use
+ [ADDED] ESC+DEL now work in in-game chat
+
+
+### Beta 0.1.0.6 - 4.08.2008
+
+ [FIXED] Func_DynWall/Env_Breakable rendered in wrong size sometimes
+ [FIXED] Fog Alpha perc. display did not change ingame
+ [FIXED] Low FPS rate decreased movement speed
+ [FIXED] Func_Teleport didn't work when teleporter exit was on a new teleporter
+ [FIXED] Env_Explode / Env_Breakable explosions did not work
+ [FIXED] Binds are now disabled when an ingame menu is open
+ [FIXED] Serverlist wrong ping sorting with unreachable servers
+ [FIXED] Movement transmission bug
+ [FIXED] Several zoom mode bugs
+ [FIXED] Weapon mode switching problem as client on servers with high latency
+ [FIXED] Game closed on disconnect with ESC+9
+ [FIXED] Several map editor bugs
+ [FIXED] Several map transfer bugs
+ [FIXED] Security hole which allowed to buy unpurchasable items
+ [CHANGED] Movement speed increased by 10%
+ [CHANGED] Movement speed with knife increased
+ [CHANGED] Movement speed with tactical shield decreased
+ [CHANGED] Tactical shield is now unbuyable by default
+ [CHANGED] Damage of all Weapons increased
+ [CHANGED] Damage bonus for zooming decreased 
+ [CHANGED] Armor now absorbs less damage
+ [CHANGED] Func_DynWall now kills the player when it emerges on the same tile
+ [CHANGED] Func_Teleport now triggers when it teleports someone
+ [CHANGED] Galil/Famas ammo values changed
+ [CHANGED] Mousepointer crosshair removed in zoom mode
+ [CHANGED] Zoom/mode switching delay added/increased
+ [ADDED] New commands
+ [ADDED] Info_OldRender for CS2D 0.1.0.4 compability (only needed for some old maps)
+ [ADDED] Rocket Launcher
+ [ADDED] Grenade Launcher
+ [ADDED] Wrench
+ [ADDED] Building system (2x rightclick with wrench!)
+ [ADDED] Different game modes (Deathmatch/Team Deathmatch)
+ [ADDED] Serverlist "Copy Address"-function (on rightclick)
+ [ADDED] Entity cut/copy/paste with Ctrl+X/C/V in editor
+ [ADDED] Low quality smokegrenade smoke on low particle details
+ [ADDED] More options for env_item (spawn every x seconds)
+ [ADDED] Debug Logfiles
+
+
+### Beta 0.1.0.5 - 28.07.2008
+
+ [INFO]	CS2D has been re-programmed from scratch!
+	Please consider that this probably caused new bugs.
+	These will be fixed in following updates.
+	Furthermore the game is still unfinished and imbalanced.
+ 
+ [FIXED] Grenade bugs
+ [FIXED] Money and teamchange issues
+ [CHANGED] Shadows and effects
+ [CHANGED] Network code
+ [CHANGED] New interface and menus
+ [CHANGED] New ingame HUD
+ [CHANGED] New map editor
+ [CHANGED] Bots are now available in multiplayer mode
+ [ADDED] Security system and encryption
+ [ADDED] Left- and righthanded players
+ [ADDED] Visible reload animation
+ [ADDED] Visible nightvision googles
+ [ADDED] New settings and commands
+ [ADDED] Map and spaylogo transfer
+ [ADDED] U.S.G.N. account system
+ [ADDED] Serverlist filters and sorting
+ [ADDED] LAN serverlist
+ [ADDED] Favorite servers
+ [ADDED] Some new items (medikit, money etc.)
+ [ADDED] New weapons: Famas, Galil, RPG, Gas Gren., Molotov Cocktail
+ [ADDED] New equipment: Tactical Shield
+ [ADDED] New server settings and commands
+ [ADDED] New weapon modes (burstmode, silencer, laser colors)
+ [ADDED] New entities
+ [ADDED] Entity trigger system
+ [ADDED] CTF map type
+ [ADDED] Ingame menus for options, server settings and kicking/banning
+ [REMOVED] Entity Info_NoFoW removed
+
+
+### Beta 0.1.0.4 - 12.06.2007
+
+ [FIXED] Fixed 2 bugs which caused "Memory Access Violation" error
+ [FIXED] Internal serverlist bug
+ [CHANGED] New Unreal Software logo
+
+
+### Beta 0.1.0.3 - 23.01.2007
+ 
+ [CHANGED] U.S.G.N.
+ [CHANGED] Reduced price of flare grenade to 150$
+ [FIXED] Some Bugfixes
+
+
+### Beta 0.1.0.2 - 25.11.2006
+
+ [FIXED] Map exploit concerning new external CS2D map editor
+ [FIXED] Some U.S.G.N. problems (were only present on certain systems)
+ [CHANGED] Faster U.S.G.N. Server
+ [CHANGED] New Smokesprite by |jUSTiN|
+ [ADDED] Nickname checking: A lot of special characters are not longer allowed
+ [ADDED] Total number of playerslots used/available beneath the serverlist
+ [ADDED] U.S.G.N. features/improvements
+ [ADDED] (poor) Speedhack Protection
+ [ADDED] Some new maps
+
+
+### Beta 0.1.0.1 - 07.04.2005
+
+ [CHANGED] Removed ability to join the "official" version with open source clients due to hacks
+ [CHANGED] Serverlist now displays only servers with the same game version
+ [ADDED] Display of the amount of registered and available servers below the serverlist
+
+
+### Beta 0.1.0.0 - 24.12.2004
+
+ [INFO] CS2D now requires user32.dll (generally available on each windows system!)
+
+ [FIXED] Some minor bugs
+ [FIXED] Player did not drop the weapon before buying a new one in alpha 0.0.3.3
+ [FIXED] VIP had no knife
+ [FIXED] Zoom made it possible to shoot faster with sniper weapons
+ [FIXED] "refresh/update" button stayed unclickable after leaving a net game
+ [FIXED] "Join Game" button on "View Info" screen was sometimes unclickable
+ [FIXED] sv_ff (friendly fire) default was not 0 (off) - now it is.
+ [CHANGED] Increased (zoom-)damage of SG552 and Aug
+ [CHANGED] Improved bot AI
+ [CHANGED] Improved damage direction indicator
+ [CHANGED] Improved nightvision (slightly glowing players)
+ [CHANGED] Weapon zoom is now a real 2x/4x-zoom
+ [CHANGED] Dynamic loading of players.bmp (-> you can add new hostage frames)
+ [CHANGED] Flare3.bmp loadbug. Start with cmdlparam "noerrormsgs" to load an alternate image
+ [CHANGED] Spectator minimap enlarged (doubled size)
+ [ADDED] Explosions (Bomb, HE grenade, explosive breakables) now damage breakables around
+ [ADDED] Editor copy and paste for entities (ctrl+c / ctrl+v)
+ [ADDED] Cut, copy and paste for console, chat and textfields (ctrl+x / ctrl+c / ctrl+v)
+ [ADDED] Delete for textfields (del)
+ [ADDED] Spectator zoom (Right Mousebutton)
+ [ADDED] "obstacle" option for env_breakable
+ [ADDED] Some new entities (info_nofow, info_quake)
+ [ADDED] Editor move map function (ctrl+w/a/s/d or ctrl+cursor keys)
+ [ADDED] Cmdline param.: "map" ("dedicated", "bots") to setup a server with the given map
+ [ADDED] Cmdline param.: "noerrormsgs" to disable load error output
+ [ADDED] Manual.htm with script- and command line commands
+ [ADDED] Bot weapon modes (menu was already available in prev. versions but had no effect)
+ [ADDED] Some new commands
+
+
+### Alpha 0.0.3.3 - 22.08.2004
+
+ [FIXED] Buying/weapon switching bugs (a 0.0.3.2 bug)
+ [FIXED] Erroneous cheat detection (a 0.0.3.2 bug)
+ [FIXED] Changed accidental exchanged aztec.bmp tileset (a 0.0.3.2)
+ [FIXED] U.S.G.N. clear up bugs (a 0.0.3.2)
+ [FIXED] Some small editor bugs
+ [CHANGED] Changed sv_ff (friendly fire) default to 0
+ [ADDED] "catchcursor" function/command wich holds cursor in window (for windowed mode only!)
+ [ADDED] "no shadow" option for env_breakable
+ [ADDED] Some new commands
+
+
+### Alpha 0.0.3.2 - 19.08.2004
+
+ [FIXED] Now the player drops his weapon before he buys a new one
+ [FIXED] Game tried to load some not existing files
+ [FIXED] Removed Bot game memory leak
+ [FIXED] Several script parser bugs
+ [FIXED] Players stayed visible when covered by FoW on some old graphic cards
+ [FIXED] Bug which allowed to write a script based "speed-hack"
+ [FIXED] Client received invalid/expired msgs from servers where he previously played
+ [FIXED] Multiplayer mapchange didn't work correctly
+ [FIXED] Player kept bomb in hand after round restart
+ [FIXED] Net Game didn't work after Bot Game
+ [CHANGED] Load process: replaced "memory access violation" with detailed error msg
+ [CHANGED] Delay after switching zoom mode halved (from 1000ms to 500ms)
+ [CHANGED] Decreased M249 damage and accuracy
+ [CHANGED] Decreased M4A1 firerate
+ [CHANGED] Highly increased Knife damage
+ [CHANGED] Script keynames changed
+ [CHANGED] Removed P2P connection display
+ [CHANGED] Changed some stuff to serverside to avoid cheats
+ [ADDED] Score, deads and ping are now displayed in dedicated server playerlist
+ [ADDED] Additional clientside anti cheat routines
+ [ADDED] Serverlist ping filter
+ [ADDED] server.cfg executed when you run a server
+ [ADDED] Mapcycle (mapcycle.txt)
+ [ADDED] Cmdline param.: "set" to setup the CS2D settings on start
+ [ADDED] Cmdline param.: "nostartup" to deactivate Unreal Software startup sequence
+ [ADDED] Cmdline param.: "connect" to connect to a server (works like the connect command!)
+ [ADDED] Some new commands (mp_fraglimit, mp_maxrounds, mp_timelimit [...])
+ [ADDED] Some new entities (info_nobuying, info_noweapons)
+ [ADDED] Damage direction indicator
+ [ADDED] IRC chat badwords
+ [ADDED] Obstacle Block tile type (the same as a normal obstacle but without shadows)
+
+
+### Alpha 0.0.3.1 - 20.07.2004
+
+ [FIXED] Some internal bugs
+ [FIXED] Grenades were picked up, even if already carrying the max number of allowed grenades
+ [FIXED] Respawn bug which allowed respawing multiple times during one round
+ [FIXED] Server was chosen / joined when clicking the scrollbar
+ [FIXED] Say/Sayteam just openened the chatwindow
+ [FIXED] Menu font was not loaded correctly 
+ [FIXED] Reset of the variables at roundstart
+ [CHANGED] Exchanged the P2P with client-server scheme
+ [CHANGED] Hostages will be teleported with the player using them
+ [CHANGED] Movement speed more dependent on the carried weapon
+ [CHANGED] Ammunition for each weapon corrected
+ [CHANGED] Laser ammunition lowered
+ [CHANGED] Changed U.S.G.N. - no more lags in the serverlist
+ [ADDED] Info Text if mousepointer is pointed on items
+ [ADDED] Ingame Dedicated Server (needs 3D graphics card!)
+ [ADDED] Chat Introscreen
+ [ADDED] Chat Antiflood
+ [ADDED] Many new commands
+ [ADDED] Configurable friendly fire
+
+
+####################################################### older versions (german)
+
+
+### Alpha 0.0.3.0 - 28.06.2004
+
+ [FIXED] Mehrere SCHWERE Bugs im Multiplayer Modus behoben, welche mit Version
+	 a 0.0.2.9 auftraten
+
+
+### Alpha 0.0.2.9 - 26.06.2004
+ 
+ [INFO] Achtung! Beim Bot-Game besteht die Gefahr, dass das Programm
+	nicht mehr reagiert. Die Ursache wurde bereits gefunden und wird
+	in einer der nächsten Versionen behoben
+		
+ [FIXED] Granaten von "env_item" konnten nicht aufgehoben werden
+ [FIXED] "buyequip" Command funktionierte nicht
+ [FIXED] Fehlerhafte Kollision mit "Block"-Tiles
+ [FIXED] Angriff mit Messer wurde nicht richtig übertragen
+ [CHANGED] Standardport geändert von 27015 auf 36963
+ [CHANGED] Verbesserte Schuss- und Schadensübertragung
+ [cHANGED] Sprites werden im VRAM gespeichert
+ [CHANGED] Rauch von Rauchgranaten der Vorrunde verschwindet beim Rundenstart
+ [CHANGED] Debug Logging deaktiviert
+ [CHANGED] Teilweise leicht verbesserte Bot KI
+ [ADDED] Verschiedene Bot Skills
+ [ADDED] "env_teleport" Entity zum Teleportieren von Spielern
+ [ADDED] IRC Chat Client integriert (nocht nicht voll funktionsfähig!)
+
+
+### Alpha 0.0.2.8 - 30.05.2004
+
+ [FIXED] Fehlerhafte Armor Anzeige / Übertragung
+ [FIXED] Parser Bug bei Parametern
+ [FIXED] Bestimmte Radio Messages wurden an alle gesendet
+ [CHANGED] Festgelegter Standardport für Client und Host (27015)
+ [CHANGED] Verbesserung der Bot KI
+ [CHANGED] Körperteilverschiebung nur über eigenen Spieler u. Bots
+ [ADDED] ESC Ingame schließt/löscht offene Chateingabe
+ [ADDED] Sonderzeichen zur Schrift hinzugefügt (z.B. Umlaute)
+
+
+### Alpha 0.0.2.7 - 29.05.2004
+
+ [FIXED] Fehlerhafte Health Anzeige / Übertragung
+ [FIXED] Schleichen (walk) wurde nicht lautlos übertragen
+ [FIXED] Volle Munition kaufen über Buymenü bzw primammo/secammo
+ [FIXED] Ab Version 0.0.2.6 fehlende Schusslinien wieder sichtbar
+ [CHANGED] Radio-Message Texte
+ [CHANGED] Verbesserte Eingabe (Gedrückthalten von Backspace)
+ [ADDED] "Hostage down!" Radio Message beim Töten einer Geisel
+ [ADDED] U.S.G.N.-seitiger Serverping vor Serverlöschung aus Liste
+ [ADDED] Herumschiebbare Körperteile ab "blood 3"
+
+
+### Alpha 0.0.2.6 - 26.05.2004
+
+ [FIXED] Spieler konnte sich beim Planten/Defusen bewegen
+ [FIXED] Item Bug beim Löschen im Editor
+ [FIXED] Bei Relative Movement war schnelleres Laufen möglich
+ [FIXED] Spieler hatte sehr viele Frags statt Minus-Frags
+ [FIXED] "env_sound"-Sounds wurden nach RR mehrmals abgespielt
+ [FIXED] Einige kleinere Multiplayer Bugs
+ [CHANGED] Richtige 360° Bewegung bei Relative Movement
+ [CHANGED] Spieler läuft mit Messer in der Hand schneller
+ [CHANGED] Radar dreht sich nicht mehr mit
+ [CHANGED] X-Button deaktiviert
+ [ADDED] Radar blinkt bei Radio Messages
+ [ADDED] "Fire in the hole!" Radio Message bei Granaten
+ [ADDED] "env_breakable" Entities können explodieren
+ [ADDED] Waffen "Laser" und "Flamethrower", nicht kaufbar
+ [ADDED] Überprüfung wichtiger Bilder
+ [ADDED] P2P Verbindungsanzeige im Scoreboard
+
+
+### Alpha 0.0.2.5 - 21.05.2004
+
+ [FIXED] Diverse kleinere Bugs
+ [FIXED] Spieler behielt Waffe nach Tod durch tödliches Feld
+ [FIXED] Z-Ordering fixed. Keine flackernden Sprites mehr
+ [FIXED] Runde wurde in bestimmten Situationen nicht beendet
+ [CHANGED] Leichte Optimierung des Multiplayer Codes
+ [CHANGED] Geschwindigkeit der Schrittgeräusche verringert
+ [CHANGED] Sichtfeld erweitert (von 120° auf 170°)
+ [CHANGED] Passwort wird nur noch Serverseitig ausgewertet
+ [CHANGED] Leicht veränderte Spielergrafiken
+ [CHANGED] Verbesserte und neue Effekte
+ [ADDED] "War Mode" für Server. Deaktiviert Spectating.
+ [ADDED] Info über "Fog of War" / "War Mode" bei Server Info
+ [ADDED] Frame Limit im Menü (40 FPS)
+ [ADDED] Culling und Rotation bei "env_sprite" Entities
+ [ADDED] "gen_gfx", "info_storm" und "info_tilefx" Entities
+ [ADDED] Diverse Commands hinzugefügt
+ [ADDED] Spieler Schatten und Beine
+
+
+### Alpha 0.0.2.4 - 01.05.2004
+
+ [FIXED] Diverse kleinere Bugs
+ [FIXED] Fehler bei mehrfacher Nutzung externer Dateien
+ [FIXED] Fehler von Volume/Pan Update bei "env_sound"
+ [FIXED] Sprites/Decal/Hostage Bug beim Löschen im Editor
+ [FIXED] Hostages konnten über tödliche Tiles laufen
+ [FIXED] "Server went offline"-Meldung bei Cheat Detection
+ [FIXED] Mehrere Bomben/VIPs im Bot Game
+ [FIXED] Mehrfache Explosion von Smoke-/Flaregrenades
+ [CHANGED] Leichte Optimierung des Multiplayer Codes
+ [CHANGED] Optimierung des "Fog of War"
+ [CHANGED] Verbesserte UDP Initialisierung
+ [ADDED] Tile Propertie "Block" (wie "Wall", aber ohne Schatten)
+ [ADDED] Tile Scrolling Modus für Backgrounds
+ [ADDED] Joinen jetz auch per URL möglich
+ [ADDED] Waypointverfügbarkeitsanzeige
+ [ADDED] Diverese Commands hinzugefügt
+ [ADDED] Fog Effekt für "gen_weather"-Entities
+ [ADDED] Schaden durch Bombenexplosion
+ [ADDED] U.S.G.N. Prüfsumme bei "Server Kill" Operationen
+
+
+### Alpha 0.0.2.3 - 10.04.2004
+ 
+ [FIXED] Einige Fehler im Multiplayer Modus behoben
+ [ADDED] "Aim-Line" im Follow Spectator Modus
+ [ADDED] Anzeige der Tile-Koordinaten im Map Editor
+ [ADDED] Buy Commands für Waffen und Items (deagle,vest,hegren ...)
+
+
+### Alpha 0.0.2.2 - 08.04.2004
+
+ [FIXED] Fehler bei der abgesicherten UDP Übertragung
+ [ADDED] Snapshot Command
+ [ADDED] Automatische Ausführung von Scripts über autoexec.cfg
+ [ADDED] Übertragung von Items beim Joinen
+
+
+### Alpha 0.0.2.1 - 07.04.2004
+
+ [CHANGED] TCP wurde wieder entfernt
+ [ADDED] Abgesicherte UDP Übertragung
+
+
+### Alpha 0.0.2.0 - 05.04.2004
+
+ [INFO] Experimentelle Version für das Testen von TCP
+
+ [FIXED] Mehrere kleine Bugs
+ [FIXED] Fehler bei falschem Pfad für "env_sprite"-Entities
+ [FIXED] Bots schießen auf Gegner, die sie gar nicht sehen dürften
+ [CHANGED] Map "de_dust" überarbeitet
+ [CHANGED] Spectator Modus verbessert, anklickbare Buttons
+ [ADDED] TCP für sicherere Datenübertragung
+ [ADDED] Minimap im Editor und im Spectator Modus
+ [ADDED] Map Briefings
+ [ADDED] Bot Control Menü (noch nicht 100% fertig)
+
+
+### Alpha 0.0.1.9 - 27.03.2004
+
+ [RELEASE] Erste Vorstellung des Projektes auf www.blitzforum.de

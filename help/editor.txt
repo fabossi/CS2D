@@ -1,0 +1,42 @@
+©255255255- Editor -
+The built in editor allows you to create your own maps very easily!
+An editor tutorial is available at:
+»www.CS2D.com/help_mapping«
+
+©255255255- Tilesets -
+Tilesets contain the images/textures for your map. They are just big image files with a lot of 32x32 pixel squares. Each tile in a tileset has its own properties. Like wall, floor, water or obstacle. The editor allows you to place the tiles in your map grid.
+
+©255255255- Entities -
+Entities are used to tell CS2D where special places are. Like spawnpoints or bombspots for example. Moreover you can use them to add sounds and effects to your map. Each map needs at least spawnpoints for terrorists (Info_T) and counter-terrorists (Info_CT)!
+
+©255255255- Getting Started -
+©255255000New Map
+- Start the editor from the CS2D main menu.
+- Click the "new map" (blank page) button.
+- Specify the size in tiles. Don't make your map too big! A size of 100x100 tiles is already very huge!
+- Select a tileset
+- Now you can also select a background image or color
+
+©255255000Editing Tiles on your Map
+- Make sure "Edit Tiles" (squares) is selected
+- Click the list of tiles to select a tile
+- Now click into the grid to place tiles on the map
+- You can also hold your mousebutton and move the mouse
+- There are pencil, rectangle and fill tools
+- Rightclick on the map to select a tile from there
+
+©255255000Tile Properties
+- Make sure "Edit Tiles" (squares) is selected
+- Click "Tile Properties"
+- No you can set the properties/behaviour of each tile
+- You can also load/save defaults for a tileset! When you save your settings as default CS2D will automatically load these settings for the next map you create with this tileset!
+
+©255255000Using Entities
+- Select "Edit Entities" (light bulb)
+- Select an entity by clicking at its name
+- Click into the grid to place the entity
+- Click the placed entity to edit its properties
+- Rightclick the entity for additional options
+
+
+»Return«

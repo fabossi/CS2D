@@ -1,0 +1,19 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:14:19
+
+[23:14:19] #######################################################
+[23:14:19] Unreal Software's CS2D Dedicated Server
+[23:14:19] > visit www.CS2D.com for info and updates <
+[23:14:19] Game Version: 1.0.1.1
+[23:14:19] Server Build for 1.0.1.1: 1.0
+[23:14:19] System Time: 29 Mar 2020 - 23:14:19
+[23:14:19] Operating System: Microsoft Windows
+[23:14:19] #######################################################
+[23:14:19] UDP socket initialized using port 0
+[23:14:20] U.S.G.N.: Your game version is up to date!
+[23:14:20] Starting server...
+[23:14:20] load map 'awp_grey'
+[23:14:20] ----- Server started -----
+[23:14:20] U.S.G.N.: Server added to serverlist
+[23:15:09] U.S.G.N.: Serverlist entry updated
+[23:15:57] "  (1x)
+[23:17:34] "  (1x)

@@ -1,0 +1,18 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:10:16
+
+[23:10:16] Steam: Not logged in
+[23:10:16] UDP socket initialized using port 57634
+[23:10:17] U.S.G.N.: Your game version is up to date!
+[23:10:33] Starting server...
+[23:10:33] UDP socket initialized using port 36963
+[23:10:34] load map 'awp_grey'
+[23:10:42] ----- Server started -----
+[23:10:42] U.S.G.N.: Server added to serverlist
+[23:10:57] Player joins the Terrorist Forces
+[23:11:28] U.S.G.N.: Serverlist entry updated
+[23:12:13] "  (1x)
+[23:12:59] "  (1x)
+[23:13:45] "  (1x)
+[23:13:58] Server Shutdown
+[23:13:59] U.S.G.N.: Server removed from serverlist
+[23:13:59] ----- Disconnected -----

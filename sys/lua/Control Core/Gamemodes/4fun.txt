@@ -1,0 +1,19 @@
+sv_fow 0
+sv_friendlyfire 0
+mp_roundtime 2
+mp_freezetime
+sv_password
+sv_specmode 1
+mp_timelimit 30
+mp_pinglimit 600
+mp_damagefactor 9999
+mp_roundtime 2
+mp_buytime 0.25
+mp_startmoney 16000
+mp_roundtime 2
+mp_tkpunish 1
+mp_idlekick 01
+mp_autoteambalance 1
+stats 1
+stats_rank 1
+sv_restart 2

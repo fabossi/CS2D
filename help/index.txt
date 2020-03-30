@@ -1,0 +1,17 @@
+©255255255- Welcome to the CS2D Help! -
+
+©255255255- Basic Topics -
+»Introduction« | »How to Play« | »USGN«
+»Options« | »Server Options«
+
+©255255255- Advanced Topics -
+»Map Editor« | »Entities«
+»Scripting« | »Commands«
+»Dedicated Server« | »RCon« | »Lua«
+
+©255255255- Weblinks -
+»www.CS2D.com« - official CS2D website
+»www.CS2D.com/help« - Command reference
+»www.CS2D.com/faq« - Frequently asked questions
+»www.USGN.de« - official U.S.G.N. website
+»www.UnrealSoftware.de« - CS2D developer website with account registration, forums and file archive

@@ -1,0 +1,14 @@
+©255255255Aztec - Bomb/Defuse
+
+©255255000official CS2D Map by DC
+»www.UnrealSoftware.de«
+
+
+©050150255Counter-Terrorists:
+©110130150Prevent the Terrorists bombing the archiological site.
+
+©255025000Terrorists:
+©150110100Destroy the valuable aztec ruins.
+
+Other Notes:
+There are 2 bomb sites in this mission.

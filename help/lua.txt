@@ -1,0 +1,14 @@
+©255255255- Lua -
+CS2D can be modified and extended with Lua scripts.
+Please open the file "sys/lua/info.txt" for more information!
+
+©255255255- Examples -
+Many samples can be found in
+"sys/lua/samples/"
+Open "sys/lua/server.lua" with a texteditor and remove the comment in the corresponding dofile-line to activate a sample. Afterwards restart your CS2D server or change the map to load the new scripts.
+
+©255255255- More About Lua -
+»www.Lua.org«
+»www.CS2D.com/help«
+
+»Return«

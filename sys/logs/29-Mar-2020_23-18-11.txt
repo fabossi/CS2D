@@ -1,0 +1,68 @@
+CS2D 1.0.1.1 Logfile - 29 Mar 2020, 23:18:11
+
+[23:18:11] Steam: Not logged in
+[23:18:11] LOAD MAP: 'maps/awp_grey.map' does not exist
+[23:18:11] UDP socket initialized using port 57641
+[23:18:11] U.S.G.N.: Your game version is up to date!
+[23:18:15] Cached servers added to list: 192
+[23:18:17] U.S.G.N.: Received serverlist (servers: 89)
+[23:18:28] Connecting to 179.228.156.85:36963...
+[23:18:29] Checking 'maps/awp_grey.txt': Does not exist. Request transfer!
+[23:18:29] Checking 'gfx/tiles/fruitpapje1.bmp': Already exists.
+[23:18:29] Checking 'maps/awp_grey.map': Does not exist. Request transfer!
+[23:18:29] Requesting 2 files from server...
+[23:18:29] Downloading 'maps/awp_grey.txt' from server...
+[23:18:29] Downloading 'maps/awp_grey.map' from server...
+[23:18:30] load map 'awp_grey'
+[23:18:37] receiving physics data (7 b)
+[23:18:54] ----- Server joined -----
+[23:18:55] THAEKI NA CADEIRA DE RODA *DEAD*: kkkkkkkkk cade cade
+[23:18:55] soD. aniquilator killed DEADPOOL_BR with AWP
+[23:18:55] soD. thaeki! *DEAD*: ta aqui
+[23:18:55] nL. kushida *DEAD*: .
+[23:18:56] THAEKI NA CADEIRA DE RODA *DEAD*: .l.
+[23:18:56] [Server] Bem vindo, Player 2!
+[23:18:56] [Server] Sua USGN está autenticada como Visitante!
+[23:18:57] soD. spirity killed LinkooN with AWP
+[23:18:57] nL. Key connected
+[23:18:58] "  (1x)
+[23:18:59] LinkooN *DEAD*: fdp
+[23:19:01] nL. Key joins the Terrorist Forces
+[23:19:11] soD. thaeki! *DEAD*: obrigado senhor por mais um dia
+[23:19:14] nL. kushida has left the game
+[23:19:16] oF. Cølt'. (BROADCAST): ta alio <
+[23:19:16] soD. aniquilator killed soD. spirity with AWP
+[23:19:18] soD. spirity:  :o
+[23:19:20] THAEKI NA CADEIRA DE RODA *DEAD*: oh aleluiassssssss
+[23:19:20] soD. spirity: viada
+[23:19:22] soD. aniquilator: asuiy&tgae
+[23:19:23] nL. kushida connected
+[23:19:26] nL. kushida joins the Counter-Terrorist Forces
+[23:19:26] nL. kushida joins the Terrorist Forces
+[23:19:28]  »shida with AWP
+[23:19:33] nL. kushida has left the game
+[23:19:33]  soD. aniquilator killed »¢øÑ« with AWP
+[23:19:40] nL. kushida connected
+[23:19:43] nL. kushida joins the Terrorist Forces
+[23:19:43] nL. Key killed THAEKI NA CADEIRA DE RODA with AWP
+[23:19:49] oF. Cølt'. killed PRO'LEAGUE. iKinze ~ with AWP
+[23:19:50] nL. Key killed soD. spirity with AWP
+[23:19:51] R4SUKE |ANGEL| connected
+[23:19:51] LinkooN killed PRO'LEAGUE. Smp with Knife
+[23:19:51] soD. thaeki!: kkkk
+[23:19:52] soD. spirity: :o
+[23:19:52] PRO'LEAGUE. iKinze ~ has left the game
+[23:19:55] soD. thaeki! killed LinkooN with AWP
+[23:19:56] oF. Cølt'. killed nL. Key with AWP
+[23:19:56] soD. aniquilator killed oF. Cølt'. with AWP
+[23:19:57] PRO'LEAGUE. iKinze ~ connected
+[23:19:57] soD. thaeki!: o
+[23:19:59] R4SUKE |ANGEL| joins the Terrorist Forces
+[23:20:00] LinkooN *DEAD*: afgpd
+[23:20:00] PRO'LEAGUE. iKinze ~ joins the Terrorist Forces
+[23:20:00] THAEKI NA CADEIRA DE RODA is now a spectator
+[23:20:01] Black_Wolff killed DEADPOOL_BR with AWP
+[23:20:01] LinkooN *DEAD*: thaeoik[[
+[23:20:02] Player 2 has left the game
+[23:20:02] Disconnect Reason: Client request (Code 0)
+[23:20:02] ----- Disconnected -----

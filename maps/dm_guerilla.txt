@@ -1,0 +1,19 @@
+©255255255Guerilla - Deathmatch
+
+©255255000official CS2D Map by SoB
+©000255000Winner of the CS2DN.de.vu Mapping Contest
+»http://sob.bplaced.net/Index.html«
+
+
+©050150255Counter-Terrorists:
+©110130150Try to eliminate all Terrorists in the jungle.
+
+©255025000Terrorists:
+©150110100Try to elliminate all Counter-Terrorists.
+
+Other Notes:
+There is one hidden bunker.
+
+
+
+

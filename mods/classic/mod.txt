@@ -1,0 +1,4 @@
+name=Classic Skins
+description=Players, weapons and HUD from old CS2D versions.
+author=Unreal Software
+version=1.0

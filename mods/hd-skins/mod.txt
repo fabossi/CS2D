@@ -1,0 +1,4 @@
+name=HD Skins
+description=Higher resolution CS2D Skins.
+author=ksan_leon
+version=1.0

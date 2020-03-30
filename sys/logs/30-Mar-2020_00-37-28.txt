@@ -1,0 +1,252 @@
+CS2D 1.0.1.1 Logfile - 30 Mar 2020, 00:37:28
+
+[00:37:28] #######################################################
+[00:37:28] Unreal Software's CS2D Dedicated Server
+[00:37:28] > visit www.CS2D.com for info and updates <
+[00:37:28] Game Version: 1.0.1.1
+[00:37:28] Server Build for 1.0.1.1: 1.0
+[00:37:28] System Time: 30 Mar 2020 - 00:37:28
+[00:37:28] Operating System: Microsoft Windows
+[00:37:28] #######################################################
+[00:37:28] UDP socket initialized using port 36963
+[00:37:28] U.S.G.N.: Your game version is up to date!
+[00:37:28] Starting server...
+[00:37:29] load map 'awp_grey'
+[00:37:30] ----- Server started -----
+[00:37:30] [Server] sys/lua/Control Core/Language/portuguese.txt carregado
+[00:37:30] [Server] sys/lua/Control Core/Data/stream.dat carregado
+[00:37:30] [Server] sys/lua/Control Core/Data/os.dat carregado
+[00:37:30] [Server] sys/lua/Control Core/Data/functions.dat carregado
+[00:37:30] [Server] sys/lua/Control Core/Data/commands.dat carregado
+[00:37:30] Lua: Adding function 'cc_global.sayteam' to hook 'sayteam'
+[00:37:30] Lua: Adding function 'cc_global.team' to hook 'team'
+[00:37:30] Lua: Adding function 'cc_global.join' to hook 'join'
+[00:37:30] Lua: Adding function 'cc_global.leave' to hook 'leave'
+[00:37:30] Lua: Adding function 'cc_global.say' to hook 'say'
+[00:37:30] [Server] sys/lua/Control Core/Data/hooks.dat carregado
+[00:37:30] Lua: Adding function 'advertise.join' to hook 'join'
+[00:37:30] Lua: Adding function 'advertise.minute' to hook 'minute'
+[00:37:30] [Server] sys/lua/Control Core/Modules/addon_advertise.lua carregado
+[00:37:30] [Server] S-Admin: 35283
+[00:37:30] [Server] Todos os sistemas carregados.
+[00:37:30] [Server] Control Core Ultimate® carregado com sucesso.
+[00:37:31] U.S.G.N.: Server added to serverlist
+[00:38:23] U.S.G.N.: Serverlist entry updated
+[00:38:28] [Info] Perdido? Digite !help para ver os comandos ou !help <comando> para um comando específico!
+[00:39:11] U.S.G.N.: Serverlist entry updated
+[00:39:27] [Info] Caso queira falar em publico enquanto estiver no espectador, utilize !broadcast <mensagem>.
+[00:39:54] U.S.G.N.: OF. molotöv' (189.120.238.84) joining with U.S.G.N. ID #35283 - verifying...
+[00:39:54] U.S.G.N.: 189.120.238.84 is using U.S.G.N. ID #35283
+[00:39:54] OF. molotöv' is using IP 189.120.238.84:56691, U.S.G.N. ID #35283 and no Steam
+[00:39:57] U.S.G.N.: Serverlist entry updated
+[00:40:12] U.S.G.N.: oF |  kwSK (177.30.105.102) joining with U.S.G.N. ID #28538 - verifying...
+[00:40:14] U.S.G.N.: 177.30.105.102 is using U.S.G.N. ID #28538
+[00:40:14] oF |  kwSK is using IP 177.30.105.102:59679, U.S.G.N. ID #28538 and no Steam
+[00:40:14] JOIN FAILURE: oF |  kwSK (177.30.105.102:59679) can't join (map differs)
+[00:40:15] U.S.G.N.: oF |  kwSK (177.30.105.102) joining with U.S.G.N. ID #28538 - verifying...
+[00:40:16] U.S.G.N.: 177.30.105.102 is using U.S.G.N. ID #28538
+[00:40:16] oF |  kwSK is using IP 177.30.105.102:59679, U.S.G.N. ID #28538 and no Steam
+[00:40:23] oF |  kwSK: ish
+[00:40:26] oF |  kwSK: olha os ticks
+[00:40:27] [Info] Digite !listcolor para ver as cores disponíveis, e ative essa cor usando @setcolor <nome da cor>!
+[00:40:37] [S-Admin] OF. molotöv': agora sim
+[00:40:38] [S-Admin] OF. molotöv': ta bom
+[00:40:39] [S-Admin] OF. molotöv': esse sv
+[00:40:41] oF |  kwSK: os ticks
+[00:40:42] U.S.G.N.: oF/ (177.89.35.221) joining with U.S.G.N. ID #15236 - verifying...
+[00:40:42] U.S.G.N.: 177.89.35.221 is using U.S.G.N. ID #15236
+[00:40:42] oF/ is using IP 177.89.35.221:61001, U.S.G.N. ID #15236 and no Steam
+[00:40:43] oF |  kwSK: do sv
+[00:40:43] U.S.G.N.: Serverlist entry updated
+[00:40:45] oF |  kwSK: ta zuado
+[00:40:47] oF/: ai to lag n
+[00:40:49] oF/: ufa
+[00:40:50] oF |  kwSK: tão usanDO QUAL SISTEMA OPERACIONAL
+[00:40:52] oF |  kwSK: ?
+[00:40:54] oF/: win10
+[00:40:55] [S-Admin] OF. molotöv': windows 10
+[00:40:56] [S-Admin] OF. molotöv': KKKK
+[00:40:56] oF/: tem q tirar
+[00:40:57] [S-Admin] OF. molotöv': KKKKKKKKKKK
+[00:40:58] [S-Admin] OF. molotöv': sim
+[00:41:00] oF/: n aguenta 1gb de ram n
+[00:41:00] [S-Admin] OF. molotöv': eu vou mnudar
+[00:41:00] oF |  kwSK: tem que tirar mano
+[00:41:02] [S-Admin] OF. molotöv': pra linux
+[00:41:02] oF |  kwSK: wtf
+[00:41:06] oF |  kwSK: muda pra linux
+[00:41:08] oF |  kwSK: olhas os ticks
+[00:41:11] oF/: nossa ta 18 ticks
+[00:41:13] oF/: KKKKKKKKKKKKKKKKKKKKKKKKKK
+[00:41:15] oF |  kwSK: wtf
+[00:41:17] oF/: poha monge te falei
+[00:41:21] oF |  kwSK: ai é burro
+[00:41:27] [Info] Use @check para ver informações específicas do jogador, como IP e USGN.
+[00:41:27] oF |  kwSK: arruma ai rapidao
+[00:41:28] oF/: era pra ter win server 2012
+[00:41:29] oF |  kwSK: pra gente ir o x5
+[00:41:29] U.S.G.N.: Serverlist entry updated
+[00:41:30] [S-Admin] OF. molotöv': 22
+[00:41:31] oF |  kwSK: aqui 
+[00:41:31] [S-Admin] OF. molotöv': KKK
+[00:41:35] oF/: no linux n sei mexer
+[00:41:39] [S-Admin] OF. molotöv': ah mano
+[00:41:39] oF |  kwSK: o windows server 2008
+[00:41:42] oF |  kwSK: é o melhor gente
+[00:41:43] [S-Admin] OF. molotöv': linux me da preguica
+[00:41:44] oF |  kwSK: wtf
+[00:41:44] [S-Admin] OF. molotöv': mds
+[00:41:49] oF |  kwSK: usa o windows server 2008
+[00:41:51] oF |  kwSK: ele é bom
+[00:41:53] oF/: n tem
+[00:41:53] oF |  kwSK: pra hostear
+[00:41:54] oF |  kwSK: 2d
+[00:41:59] oF/: tem monge?
+[00:42:00] oF |  kwSK: tem qual?
+[00:42:01] [S-Admin] OF. molotöv': deixa eu ve
+[00:42:03] oF/: man 
+[00:42:03] oF |  kwSK: como n tem?
+[00:42:07] oF |  kwSK: tem o 2012
+[00:42:09] oF/: se tiver como aumentar a ram
+[00:42:09] oF |  kwSK: e n tem 2008
+[00:42:14] oF/: ate rola win10
+[00:42:16] U.S.G.N.: Serverlist entry updated
+[00:42:27] [Info] Caso queira falar em publico enquanto estiver no espectador, utilize !broadcast <mensagem>.
+[00:42:28] generating stats...
+[00:42:28] stats generated in 45 ms!
+[00:42:36] [S-Admin] OF. molotöv': wind10 e foda com 1gb 
+[00:42:38] [S-Admin] OF. molotöv': kk
+[00:42:39] oF |  kwSK: sim
+[00:42:39] oF/: s
+[00:42:44] oF/: o da azure era 3.5gb
+[00:42:48] oF |  kwSK: coloca windows server 2008
+[00:42:49] oF |  kwSK: mano
+[00:42:51] oF/: mas n tava pra sp
+[00:42:55] oF/: ele falou q nao tem
+[00:43:00] oF/: so tem win10 e linux
+[00:43:02] U.S.G.N.: Serverlist entry updated
+[00:43:02] oF |  kwSK: ??????????
+[00:43:03] [S-Admin] OF. molotöv': 2008 n tem
+[00:43:06] [S-Admin] OF. molotöv': so 2012
+[00:43:06] oF |  kwSK: tem qual?
+[00:43:06] oF/: tem 2012?
+[00:43:09] oF/: poe 2012
+[00:43:10] oF |  kwSK: windows é so o 2012?
+[00:43:13] oF/: é tipo win7
+[00:43:18] oF |  kwSK: o 2012 é o win 10
+[00:43:19] oF |  kwSK: seu burro
+[00:43:22] oF/: é n filho
+[00:43:23] oF/: ta loko?
+[00:43:27] oF |  kwSK: ta usando o win 10?
+[00:43:27] [Info] Use @validate <id> <dias> para dar um prazo para uma conta expirar. @unvalidate <id> retira esse prazo.
+[00:43:28] [S-Admin] OF. molotöv': acho q e sim mano
+[00:43:31] oF |  kwSK: ou windows server 2012?
+[00:43:32] oF/: é n mano
+[00:43:34] [S-Admin] OF. molotöv': n?
+[00:43:36] oF |  kwSK: kraken
+[00:43:36] oF/: mds eu mexo com vps
+[00:43:38] oF/: mais q vcs
+[00:43:38] [S-Admin] OF. molotöv': vo subi aqui
+[00:43:41] oF |  kwSK: kraken
+[00:43:45] oF |  kwSK: usa o windwos server
+[00:43:46] [S-Admin] OF. molotöv': eu
+[00:43:47] [S-Admin] OF. molotöv': ok
+[00:43:47] oF/: n tem como botar
+[00:43:48] U.S.G.N.: Serverlist entry updated
+[00:43:49] oF/: 2gb de ram?
+[00:43:51] oF |  kwSK: n mano
+[00:43:52] oF |  kwSK: n precisa
+[00:43:55] oF |  kwSK: pra sv de cs2d
+[00:43:56] oF |  kwSK: porra
+[00:44:00] oF/: na vdd precisa
+[00:44:05] oF/: pq ia dar pra fazer
+[00:44:07] oF/: mais sv
+[00:44:11] oF |  kwSK: com 1 gb
+[00:44:13] oF |  kwSK: da max webs
+[00:44:16] oF |  kwSK: eu coloquei 4 sv
+[00:44:17] oF |  kwSK: on
+[00:44:20] oF |  kwSK: a maquina ficou suave
+[00:44:27] [Info] Reporte jogadores que você achar que são cheaters, flammers e fakes, utilizando @report <id>.
+[00:44:27] oF |  kwSK: 1gb
+[00:44:28] [S-Admin] OF. molotöv': eu vou subir
+[00:44:28] oF/: cria ai rapidao e me manda
+[00:44:30] oF/: monge
+[00:44:30] [S-Admin] OF. molotöv': um linux
+[00:44:31] oF/: no wpp
+[00:44:35] U.S.G.N.: Serverlist entry updated
+[00:44:38] oF |  kwSK: sobe windows server
+[00:44:40] oF |  kwSK: anemal
+[00:44:40] oF/: po no linux
+[00:44:41] oF/: n sei mxer
+[00:44:45] [S-Admin] OF. molotöv': vo subi linux
+[00:44:46] [S-Admin] OF. molotöv': melhor
+[00:44:49] [S-Admin] OF. molotöv': jaja ta pronto
+[00:44:56] oF |  kwSK: vou ver a rv dos cara
+[00:45:09] oF/: monge?
+[00:45:20] U.S.G.N.: Serverlist entry updated
+[00:45:27] [Info] Digite !usgn <id> para ver a USGN de um jogador.
+[00:46:07] U.S.G.N.: Serverlist entry updated
+[00:46:27] [Info] Use @check para ver informações específicas do jogador, como IP e USGN.
+[00:46:53] U.S.G.N.: Serverlist entry updated
+[00:47:27] [Info] Use @cloak caso você queira que ninguém veja seus comandos.
+[00:47:27] generating stats...
+[00:47:27] stats generated in 38 ms!
+[00:47:39] U.S.G.N.: Serverlist entry updated
+[00:48:27] [Info] Digite !listcolor para ver as cores disponíveis, e ative essa cor usando @setcolor <nome da cor>!
+[00:48:32] U.S.G.N.: Serverlist entry updated
+[00:49:28] [Info] Use @check para ver informações específicas do jogador, como IP e USGN.
+[00:49:32] U.S.G.N.: Serverlist entry updated
+[00:50:38] [Info] Caso estiver em fullscreen, digite !hour ou !date, para ver a hora e a data atual do servidor.
+[00:50:51] U.S.G.N.: Serverlist entry updated
+[00:51:43] [Info] Use @validate <id> <dias> para dar um prazo para uma conta expirar. @unvalidate <id> retira esse prazo.
+[00:52:16] U.S.G.N.: Serverlist entry updated
+[00:52:39] [Info] Use @freezeall para detectar speedhackers, e @freeze <id> para um jogador específico!
+[00:52:51] generating stats...
+[00:52:57] stats generated in 4451 ms!
+[00:53:31] [Info] Perdido? Digite !help para ver os comandos ou !help <comando> para um comando específico!
+[00:53:54] U.S.G.N.: Serverlist entry updated
+[00:54:37] [Info] Visite nosso site! www.cs2dscripts.blogspot.com
+[00:54:57] U.S.G.N.: Serverlist entry updated
+[00:55:33] [Info] Reporte jogadores que você achar que são cheaters, flammers e fakes, utilizando @report <id>.
+[00:55:43] U.S.G.N.: Serverlist entry updated
+[00:56:29] "  (1x)
+[00:56:33] [Info] Digite !listcolor para ver as cores disponíveis, e ative essa cor usando @setcolor <nome da cor>!
+[00:57:23] U.S.G.N.: Serverlist entry updated
+[00:57:33] [Info] Digite !listcolor para ver as cores disponíveis, e ative essa cor usando @setcolor <nome da cor>!
+[00:57:34] generating stats...
+[00:57:34] stats generated in 2 ms!
+[00:58:38] Control Core Ultimate®. Criado por Mozilla [21707] | SektoR_ [80692])
+[00:58:42] U.S.G.N.: Serverlist entry updated
+[00:59:36] [Info] Use o @god para realizar eventos e impedir que outros te matem, mas não use para ter benefício próprio!
+[00:59:58] U.S.G.N.: Serverlist entry updated
+[01:00:37] [Info] Visite nosso site! www.cs2dscripts.blogspot.com
+[01:00:55] U.S.G.N.: Serverlist entry updated
+[01:01:44] [Info] Perdido? Digite !help para ver os comandos ou !help <comando> para um comando específico!
+[01:02:16] U.S.G.N.: Serverlist entry updated
+[01:02:25] U.S.G.N.: oF/ (177.89.35.221) joining with U.S.G.N. ID #15236 - verifying...
+[01:02:27] U.S.G.N.: 177.89.35.221 is using U.S.G.N. ID #15236
+[01:02:27] oF/ is using IP 177.89.35.221:61001, U.S.G.N. ID #15236 and no Steam
+[01:02:39] [Info] Perdido? Digite !help para ver os comandos ou !help <comando> para um comando específico!
+[01:02:47] generating stats...
+[01:02:55] stats generated in 3471 ms!
+[01:03:36] [Info] Reporte jogadores que você achar que são cheaters, flammers e fakes, utilizando @report <id>.
+[01:04:23] U.S.G.N.: Serverlist entry updated
+[01:04:36] [Info] Use @validate <id> <dias> para dar um prazo para uma conta expirar. @unvalidate <id> retira esse prazo.
+[01:05:18] U.S.G.N.: Serverlist entry updated
+[01:05:36] [Info] Caso queira falar em publico enquanto estiver no espectador, utilize !broadcast <mensagem>.
+[01:06:08] U.S.G.N.: Serverlist entry updated
+[01:06:36] [Info] Utilize !reset ou !resetscore para resetar a sua pontuação (frags).
+[01:06:57] U.S.G.N.: Serverlist entry updated
+[01:07:38] [Info] Utilize !reset ou !resetscore para resetar a sua pontuação (frags).
+[01:07:44] generating stats...
+[01:07:51] stats generated in 654 ms!
+[01:07:59] U.S.G.N.: Serverlist entry updated
+[01:08:36] [Info] Digite !listcolor para ver as cores disponíveis, e ative essa cor usando @setcolor <nome da cor>!
+[01:08:47] U.S.G.N.: Serverlist entry updated
+[01:09:35] "  (1x)
+[01:09:37] [Info] Utilize !reset ou !resetscore para resetar a sua pontuação (frags).
+[01:10:23] U.S.G.N.: Serverlist entry updated
+[01:10:36] [Info] Use o @god para realizar eventos e impedir que outros te matem, mas não use para ter benefício próprio!
+[01:11:11] U.S.G.N.: Serverlist entry updated
+[01:11:37] [Info] Reporte jogadores que você achar que são cheaters, flammers e fakes, utilizando @report <id>.
+[01:12:02] U.S.G.N.: Serverlist entry updated

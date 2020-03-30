@@ -1,0 +1,326 @@
+-- PROJETO DE SCRIPT INICIALMENTE CRIADO POR MOZILLA (21707) E SEKTOR_ (80692)
+-- ATUALIZADO PELO MOZILLA (21707) ENTRE 2013~2014
+-- VERSÃO ULTIMATE CRIADA PARA UNIFICAR VERSÕES DO SCRIPT, SENDO ESTA SOB SUPERVISÃO/EDIÇÃO/CRIAÇÃO DO SEKTOR (80692)
+
+-- FAVOR MANTER OS CRÉDITOS DO RESPECTIVO SCRIPT.
+-- SCRIPT REGISTRADO LEGALMENTE E INTERNACIONALMENTE EM CREATIVE COMMONS.
+
+-- ATENÇÃO!!! QUALQUER ALTERAÇÃO SEM AUTORIZAÇÃO OU REMOÇÃO DOS CRÉDITOS,
+-- 	ESTARÁ SUJEITO A RESPONDER JURIDICAMENTE POR FERIR OS DIREITOS AUTORAIS DO AUTOR.
+
+-- O trabalho Control Core Ultimate® de CS2D SCRIPTS está licenciado com uma Licença Creative Commons - Atribuição-Não Comercial-Sem Derivações 4.0 Internacional.
+-- Para ver uma cópia desta licença, visite http://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+
+
+
+
+
+
+--------------------------------------------------
+--        			 INICIO	                    --
+--------------------------------------------------
+-- Arquivo de configurações e parâmetros para o Script.
+-- Não mexa nas linhas abaixo, a não ser que saiba o que esteja fazendo.
+--------------------------------------------------
+--                 	PATH	                    --
+--------------------------------------------------
+cc_users_folder 	= "sys/lua/Control Core/Users/"
+cc_data_folder  	= "sys/lua/Control Core/Data/"
+cc_banned_folder	= "sys/lua/Control Core/Banned/"
+cc_reports_folder	= "sys/lua/Control Core/Reports/"
+cc_modules_folder	= "sys/lua/Control Core/Modules/"
+cc_gamemodes_folder	= "sys/lua/Control Core/Gamemodes/"
+cc_language_folder  	= "sys/lua/Control Core/Language/"
+
+cc_data_commands 	= "commands.dat"
+cc_data_hooks 		= "hooks.dat"
+cc_data_functions 	= "functions.dat"
+cc_data_os		= "os.dat"
+cc_data_stream		= "stream.dat"
+--------------------------------------------------
+--                  Files	                    --
+--------------------------------------------------
+function init_array(length,mode)
+	local array = {}
+	for i = 1,length do 
+		array[i] = mode	
+	end
+	return array
+end
+
+function init_doublearray(len1,len2,mode)
+    local array, x, y = {}
+    for x = 0, len1 do 
+		array[x] = {}
+        for y = 0, len2 do
+            array[x][y] = mode
+        end
+    end
+    return array
+end
+--------------------------------------------------
+--                  Variáveis                   --
+--------------------------------------------------
+-- Flags globais
+cc_global={}
+cc_global.ctlock 		= false
+cc_global.tlock 		= false
+cc_global.teamchange 		= false
+cc_global.recentplayers		= {}
+
+-- Tabelas globais.
+t_say={}
+t_rank={}
+t_log={}
+t_symbol={}
+t_color={}
+t_shortcut={}
+t_translate={}
+
+-- Arrays globais
+p_level 	= init_array(32,0)
+p_mute 		= init_array(32,0)
+p_god 		= init_array(32,0)
+p_cloak 	= init_array(32,0)
+p_validate	= init_array(32,0)
+p_rank 		= init_array(32,"")
+p_color 	= init_array(32,"")
+p_countdown 	= init_doublearray(32,1,0)
+
+
+
+--------------------------------------------------
+--                  CONFIG	                    --
+--------------------------------------------------
+-- Control Core Configuration
+cc_config={}
+
+cc_config.host 			= 35283 -- COLOQUE SUA USGN AQUI!!!
+
+cc_config.creator		= ""
+cc_config.creator_usgn		= ""
+cc_config.cc_version		= "Ultimate®"
+cc_config.language		= "portuguese"
+cc_config.say_type 		= 1
+cc_config.say_auto 		= true
+cc_config.say_dead 		= true
+cc_config.auto_login 		= true
+cc_config.auto_log 		= false
+
+
+
+
+--------------------------------------------------
+--                  ADDONS	                    --
+--------------------------------------------------
+-- Para ativar, é só remover os 2 traços (--) atrás dos nomes.
+-- Os scripts dessa lista que são de minha autoria: hat_system, gamegard_systen, addon_checktag, addok_advertise, addon_morecommands
+-- O restante percente aos respectivos autores, que estão espeficidados(ou não) dentro dos scripts.
+cc_config.include 		= {
+"addon_advertise",
+
+--"addon_glow",			-- ADICIONA MENU PARA ADIÇÃO DE BRILHO NOS JOGADORES
+--"addon_killsounds",		-- ADICIONA SONS AO MATAR ADVERSÁRIOS
+--"hat_system",			-- ADICIONA MENU DE CHAPÉUS
+--"addon_lagcompensation",	-- ADICIONA RECURSO COMPENSADOR DE LAG PARA CADA JOGADOR DO SERVIDOR
+--"gameguard_system",		-- ADICIONA NOSSO GAMEGUARD CONTRA SPEEDHACKERS (ATENÇÃO: ELE APRESENTA BUG CONTRA JOGADORES LAGGERS)
+--"addon_morecommands",		-- ADICIONA MAIS COMANDOS AO SCRIPT COMO, POR EXEMPLO, @GOD, !CLAN, @KNIFE (RECOMENDADO!)
+--"addon_checktag",		-- ADICIONA RECURSO PARA CLANS
+--"addon_class",		-- NÃO EXISTENTE
+}
+----------------------------------
+-- 		Comandos Monitorados	--
+----------------------------------
+t_log["@kick"]		= true
+t_log["@restart"]	= true
+t_log["@banname"]	= true
+t_log["@banusgn"]	= true
+t_log["@banip"]		= true
+t_log["@mute"]		= true
+t_log["@lockall"]   	= true
+t_log["@lockct"]    	= true
+t_log["@lockt"]     	= true
+t_log["@unban"]     	= true
+t_log["@kill"]     	= true
+t_log["@slap"]      	= true
+----------------------------------
+--	   		Mensagens			--
+----------------------------------
+t_say[1] = "©$color[$rank] $name: $message"
+t_say[2] = "©$color$name [$rank]: $message"
+t_say[3] = "©$color$name /$rank/: $message"
+t_say[4] = "©$color$name: $message"
+t_say[5] = "©$color$name diz: $message"
+t_say[6] = "©$color$name ($rank): $message"
+t_say[7] = "©$color[$rank] $name diz: $message"
+t_say[8] = "©$color$name | $rank |: $message"
+----------------------------------
+--	   		Hierarquia			--
+----------------------------------
+t_rank["S-Admin"] 		= {color="255255255",level=5,cloak=1,god=0,validate=0}
+t_rank["Admin"]			= {color="255000000",level=4,cloak=1,god=0,validate=0}
+t_rank["Moderador"]		= {color="023237048",level=3,cloak=0,god=0,validate=0}
+t_rank["Supervisor"]		= {color="182232032",level=2,cloak=0,god=0,validate=0}
+t_rank["VIP"]			= {color="128000128",level=1,cloak=0,god=0,validate=30}
+----------------------------------
+--	   		Simbolos 			--
+----------------------------------
+t_symbol["exclamation"]	= "!"
+t_symbol["at"]			= "@"
+t_symbol["copyright"]	= "©"
+----------------------------------
+--	   		Atalhos 			--
+----------------------------------
+t_shortcut["@rr"]		= "@restart"
+t_shortcut["@ct"]		= "@makect"
+t_shortcut["@tr"]		= "@maket"
+t_shortcut["@ff"]		= "@friendlyfire"
+t_shortcut["@map"]		= "@changemap"
+t_shortcut["@spec"]		= "@makespec"
+t_shortcut["!rs"]		= "!reset"
+t_shortcut["!bc"]		= "!broadcast"
+t_shortcut["@cor"]		= "@setcolor"
+t_shortcut["@dcmd"]		= "@disablecommand"
+t_shortcut["@ecmd"]		= "@enablecommand"
+t_shortcut["@pmtid"]		= "@promoteid"
+t_shortcut["@pmt"]		= "@promote"
+t_shortcut["@dmt"]		= "@demote"
+t_shortcut["@dmtid"]		= "@demoteid"
+t_shortcut["@specall"]		= "@makespecall"
+t_shortcut["@pw"]		= "@password"
+t_shortcut["@cchat"]		= "@clearchat"
+----------------------------------
+--		Lista de cores			--
+----------------------------------
+-- Função command_init
+t_color["err"] 			= "255000000"
+t_color["cmd"]	 		= "190190190"
+t_color["info"]	 		= "255255128"
+t_color["broadcast"]		= "000255255"
+t_color["sv"]			= "210235255"
+
+-- Comando @setcolor
+t_color["default"]		= "244211000"
+t_color["ciano"]		= "000255255" 
+t_color["azul"]			= "000000255" 
+t_color["azul escuro"]		= "000000128" 
+t_color["azul claro"]		= "210235255" 
+t_color["azul marinho"]		= "000128128"
+t_color["azul neutro"]		= "000155255"
+t_color["chocolate"]		= "092051023"
+t_color["ouro"]			= "217217025"
+t_color["bege"]			= "219147112"
+t_color["bege claro"]		= "235199158"
+t_color["amarelo"]		= "255255000" 
+t_color["amarelo claro"]	= "255255128"
+t_color["aquamarino"]		= "112219147"
+t_color["preto"]		= "000000000"
+t_color["vermelho"]		= "255000000" 
+t_color["vermelho escuro"]	= "128000000" 
+t_color["verde"]		= "000255000" 
+t_color["verde claro"]		= "154255120" 
+t_color["verde escuro"]		= "136187060"
+t_color["branco"]		= "255255255" 
+t_color["cinza"]		= "190190190"
+t_color["cinza claro"]		= "205205205" 
+t_color["rosa"]			= "255000255" 
+t_color["rosa choque"]		= "255040120" 
+t_color["rosa claro"]		= "255130255" 
+t_color["rosa bebe"]		= "255235255"
+t_color["violeta"]		= "128000128" 
+t_color["violeta clara"]	= "070000070" 
+t_color["violeta escura"]	= "130060130" 
+t_color["laranja"]		= "255165000" 
+t_color["marrom"]		= "128050000" 
+t_color["prata"]		= "230232250"
+-- Cores do Scoupnown
+t_color["salmao"]		= "250128114"
+t_color["tijolo"]		= "178034034"
+t_color["oleo"]			= "210180140"
+t_color["areia"]		= "244164096"
+t_color["oliva"]		= "085107047"
+t_color["primavera"]		= "000255127"
+t_color["coral"]		= "255127080"
+t_color["azul ardosia"]		= "000127255"
+t_color["azul brilhante"]	= "192217217"
+t_color["azul celeste"]		= "050153204"
+t_color["diamante"]         	= "180250247" -- diamante
+t_color["titanio"]          	= "190035035" -- titanio
+t_color["grená"]            	= "179034096" -- grená
+t_color["esmeralda"]        	= "146238021" -- rubi
+t_color["preto fosco"]      	= "041041041" -- preto fosco
+t_color["verde agua"]       	= "039203134" -- verde agua
+t_color["agua"]             	= "098175217" -- agua
+t_color["vermelho rosa"]    	= "193017079" -- vermelho arosado
+t_color["bordo"]            	= "137073086" -- bordo
+t_color["amarelo quemado"]  	= "221180038" -- amarelo quemado
+t_color["diamante fosco"]   	= "016209243" -- diamante fosco
+t_color["bege neutro"]      	= "247243210" -- bege sólido
+t_color["rosa fosco"]       	= "244218213" -- rosa fosco
+t_color["cristal"]          	= "230254255" -- aquamarino
+t_color["cimento"]          	= "124135105" -- cimento
+t_color["verde tóxico"]     	= "121132047" -- verde tóxico
+t_color["melância"]         	= "255053053" -- melância
+t_color["verde topásio"]    	= "138255009" -- verde topásio
+t_color["maçã"]             	= "202032036" -- maçã
+t_color["poeira"]           	= "156150078" -- poeira
+t_color["azul ciano"]       	= "004208142" -- azul ciano
+t_color["roxo fosco"]       	= "072013172" -- roxo fosco
+t_color["vidro"]            	= "220222226" -- vidro
+t_color["conde"]            	= "139218174" -- conde
+t_color["abacate"]          	= "051179067" -- abacate
+t_color["cal"]              	= "220221250" -- cal
+t_color["vermelho bauru"]   	= "220057010" -- vermelho bauru
+t_color["esgoto"]           	= "100112073" -- esgoto
+t_color["ciano esverdeado"] 	= "000185079" -- ciano esverdeado
+t_color["caqui escuro"]     	= "169046080" -- caqui escuro
+t_color["casca"]            	= "169180035" -- casca
+t_color["amendoim"]         	= "143027047" -- amendoin
+t_color["inchado"]          	= "108062088" -- inchado
+t_color["azul bolota"]      	= "060080134" -- azul bolota
+t_color["cinza oliva"]      	= "065129080" -- cinza oliva
+t_color["terra"]           	= "103082044" -- terra
+t_color["pele"]            	= "236238138" -- pele
+t_color["roxo sólido"] 	   	= "143086111" -- roxo sólido
+t_color["rubi escuro"]		= "098118095" -- rubi escuro
+t_color["rosa enciazeado"]  	= "208159234" -- rosa enciazeado
+t_color["switch"]       	= "070047166" -- switch
+t_color["titanio pedra"]    	= "182232032" -- titanio pedra
+t_color["esmeralda"]   		= "157206113" -- esmeralda
+--------------------------------------------------
+--                  INIT	                    --
+--------------------------------------------------
+function cc_config.dofile(str) 
+	local func = loadstring("dofile(\""..str.."\")")
+	local loaded,err = pcall(func)
+	if err then
+		msg("©255000000LUA ERROR: "..err)
+	else
+		print("[Server] "..str.." carregado")
+	end	
+end
+
+cc_config.dofile(cc_language_folder..cc_config.language..".txt")
+cc_config.dofile(cc_data_folder..cc_data_stream)
+cc_config.dofile(cc_data_folder..cc_data_os)
+cc_config.dofile(cc_data_folder..cc_data_functions)
+cc_config.dofile(cc_data_folder..cc_data_commands)
+cc_config.dofile(cc_data_folder..cc_data_hooks)
+
+for i in ipairs(cc_config.include) do
+	local path = cc_modules_folder..cc_config.include[i]..".lua"
+	cc_config.dofile(path) 
+end	
+
+if is_file(cc_users_folder..cc_config.host) then
+	print("[Server] S-Admin: "..cc_config.host)
+elseif (cc_config.host==0) then
+	print("[Server] S-Admin principal desabilitado pelo usuário.")
+else
+	print("[Server] S-Admin criado: "..cc_config.host)
+	create_user(cc_config.host,"S-Admin")
+end
+
+print("[Server] Todos os sistemas carregados.")
+print("[Server] Control Core "..cc_config.cc_version.." carregado com sucesso.")

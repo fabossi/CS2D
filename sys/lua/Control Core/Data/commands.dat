@@ -1,0 +1,1191 @@
+command = {}
+-- Não mexa aqui
+
+is_disabled = {}
+-- Caso deseja bloquear um comando do Control Core, insira uma linha abaixo:
+-- is_disabled["nome do comando"]==true
+
+-- Para adicionar um novo comando, adicione uma linha de acordo com esse padrão:
+-- command["name"] = time|level|args|hide/show|type|syntax|event
+
+-- Em name, coloque o nome do comando. Ele poderá ser um comando contendo qualquer símbolo especificado em t_symbol.
+-- É possivel adicionar mais símbolos, adicionando a linha: t_symbol["simbolo"]=="nome do símbolo"
+-- Os simbolos disponíveis são (@;#;!;©)
+-- O comando só será executado contendo um desses símbolos, portanto um command["restart"] jamais funcionará.
+
+-- Em time, coloque o tempo de espera entre comandos
+-- Quando um usuário utilizar o comando, só poderá usa-lo novamente depois do numero de segundos especificado no time
+
+-- Em level, coloque que tipos de usuários poderão usar esse comando. Usuários com nivel inferior não poderão usa-lo
+-- Se um usuário com nivel 3 tentar executar um comando de nivel 4, não conseguirá devido a restrição de nivel.
+
+-- Em args, coloque o numero total de argumentos. Você poderá botar argumentos opcionais tambem.
+-- Um comando com args 3 só será executado caso o usuário inserir 3 argumentos.
+
+-- Em hide/show, coloque 0 para esconder o comando e 1 para mostra-lo.
+-- Com hide/show 1, o comando será exibido no formato padrão. (Usuário usou @comando)
+
+-- Em type, coloque o tipo dos argumentos, seguindo da esquerda para a direita. 
+-- Caso o numero de tipos de argumentos seja maior do que em args, o que sobrar será opcional.
+-- Assim um comando com args 3 e numero de tipos 4, o ultimo tipo será opcional.
+-- Os tipos dos argumentos são:
+-- id 		- Tem como argumento um ID de jogador
+-- sid 		- Mesma coisa do id, porém ele obedece a ordem de hierarquia.
+-- switch 	- tem como argumento as palavras chave "on" e "off", como um interruptor
+-- nil 		- Não tem nada como argumento, só é colocado em uma função sem argumento
+-- set 		- Aceita qualquer tipo de argumento, sem restrições
+-- number 	- Só aceita números naturais (positivos) como argumento
+-- integer 	- Só aceita números inteiros (positivos ou negativos)
+
+-- Em syntax, coloque as instruções de como o comando deve ser executado. 
+-- syntax não tem qualquer influência no comando, só serve para ser exibido no !help
+
+-- Em event, digite o nome da função em lua que o comando executar.
+-- É possivel inserir os comandos diretamente, mas para uma melhor compreensão do código, coloque uma função externa.
+-- Número de argumentos para a função event:
+-- v_me 		- uma variavel de texto global que armazena o ID do usuário que utilizou um comando
+-- t_args 		- uma variavel de tabela global que armazena os argumentos que o usuário inseriu no comando. t_args[1] chama o primeiro argumento.
+-- v_argsall	- uma variavel de texto global que armazena todos os argumentos. É semelhante a get_args(1)
+-- get_args 	- uma função que pega múltiplos argumentos. 
+-- get_args(2) captura começando do argumento 2 até o número atual de argumentos.
+-- Um intervalo entre get_args(2,4) pega todos os argumentos entre 2 e 4.
+
+
+-- Level 0 (User)
+command["!reset"] 			= "10|0|0|1|nil|!reset|c_reset(v_me)"
+command["!help"]			= "0|0|0|1|nil|!help|c_help(v_me,t_args[1])"
+command["!listcolor"]		= "10|0|0|1|nil|!listcolor|c_listcolor(v_me,t_args[1])"
+command["!hour"]			= "20|0|0|0|nil|!hour|c_hour(v_me)"
+command["!date"]			= "20|0|0|0|nil|!date|c_date(v_me)"
+command["!login"]			= "10|0|0|0|nil|!login|c_login(v_me)"
+command["!logoff"]			= "10|0|0|0|nil|!login|c_logoff(v_me)"
+command["!usgn"]			= "10|0|0|0|id|!usgn <jogador>|c_usgn(v_me,t_args[1])"
+command["!loginduration"]	= "10|0|0|0|nil|!loginduration|c_loginduration(v_me)"
+command["!broadcast"]		= "20|0|0|1|nil|!broadcast <mensagem>|c_broadcast(v_argsall)"
+command["!report"]			= "100|0|2|0|id|@report <jogador> <razão>|c_report(v_me,t_args[1],get_args(2))"
+
+-- Level 1 (VIP)
+command["@sayc"]			= "10|1|1|1|set|@say <mensagem>|c_sayc(v_me,v_argsall)"
+command["@say"]				= "2|1|1|1|set|@say <mensagem>|c_say(v_me,v_argsall)"
+command["@sayto"]			= "5|1|1|1|id,set|@say <id> <mensagem>|c_sayto(v_me,t_args[1],get_args(2))"
+command["@listusers"]		= "5|1|0|0|nil|@listusers|c_listusers(v_me)"
+command["@setcolor"]		= "5|1|1|0|set|@setcolor <cor>|c_color(v_me,v_argsall)"
+command["@setrgb"]			= "5|1|1|0|set|@setrgb <cor>|c_setrgb(v_me,t_args[1])"
+command["@check"]			= "5|1|1|0|id|@check <jogador>|c_check(v_me,t_args[1])"
+
+-- Level 2 (Supervisor)
+command["@slap"]			= "5|2|1|0|sid|@slap <jogador>|slap(t_args[1])"
+command["@kill"]			= "5|2|1|0|sid|@kill <jogador>|killplayer(t_args[1])"
+command["@unmute"]			= "5|2|1|0|id|@unmute <jogador>|c_unmute(t_args[1])"
+command["@mute"]			= "5|2|1|0|sid|@mute <jogador>|c_mute(t_args[1])"
+command["@kick"] 			= "5|2|1|0|sid,set|@kick <jogador> <*razão>|kick(v_me,t_args[1],t_args[2])"
+command["@freeze"]			= "5|2|1|0|sid|@freeze <jogador>|c_freeze(t_args[1])"
+command["@unfreeze"]		= "5|2|1|0|sid|@unfreeze <jogador>|c_unfreeze(t_args[1])"
+command["@restart"]			= "5|2|0|0|number|@restart <*tempo>|restart(t_args[1])"
+command["@freezeall"]		= "5|2|0|0|nil|@freezeall|c_freezeall()"
+command["@unfreezeall"]		= "5|2|0|0|nil|@unfreezeall|c_unfreezeall()"
+command["@recentplayers"]	= "5|2|0|0|nil|@recentplayers|c_recentplayers(v_me)"
+
+-- Level 3 (Moderador)
+command["@clearchat"]		= "10|3|0|0|nil|@clearchat|c_clearchat()"
+command["@makect"]			= "5|3|1|0|id|@makect <jogador>|makect(t_args[1])"
+command["@maket"]			= "5|3|1|0|id|@maket <jogador>|maket(t_args[1])"
+command["@makespec"]		= "5|3|1|0|id|@makespec <jogador>|makespec(t_args[1])"
+command["@swap"]			= "5|3|0|0|nil|@swap|c_swap()"
+command["@strip"]			= "5|3|1|0|sid|@strip <jogador>|strip(t_args[1])"
+command["@setscore"]		= "5|3|2|0|id,number|@setscore <jogador> <pontos>|setscore(t_args[1],t_args[2])"
+command["@setname"]			= "5|3|2|0|id,set|@setname <jogador> <nome>|setname(t_args[1],get_args(2))"
+command["@listbanned"]		= "5|3|0|0|number|@listbanned <pagina>|c_listbanned(v_me,t_args[1])"
+command["@makespecall"]		= "5|3|0|0|nil|@makespecall|c_makespecall()"
+command["@makectall"]		= "5|3|0|0|nil|@makectall|c_makectall()"
+command["@maketall"]		= "5|3|0|0|nil|@maketall|c_maketall()"
+command["@lockt"] 			= "5|3|1|0|switch|@lockt <on/off>|c_lockt(t_args[1])"
+command["@lockct"]			= "5|3|1|0|switch|@lockct <on/off>|c_lockct(t_args[1])"
+command["@lockall"]			= "5|3|1|0|switch|@lockall <on/off>|c_lockall(t_args[1])"
+command["@infammo"]			= "5|3|1|0|switch|@infammo <on/off>|c_infammo(t_args[1])"
+command["@friendlyfire"]	= "5|3|1|0|switch|@friendlyfire <on/off>|c_friendlyfire(t_args[1])"
+command["@fow"]				= "5|3|1|0|switch|@fow <on/off>|c_fow(t_args[1])"
+command["@teambalance"]	    = "5|3|1|0|switch|@teambalance <on/off>|c_teambalance(t_args[1])"
+command["@sayauto"]	 		= "5|3|1|0|switch|@sayauto <on/off>|c_autosay(t_args[1])"
+command["@setpos"]			= "5|3|3|0|id,integer,integer|@setpos <jogador> <x> <y>|setpos(t_args[1],t_args[2],t_args[3])"
+command["@unban"]			= "5|3|1|0|set|@unban <ip/usgn/nome>|c_unban(v_argsall)"
+command["@banuser"]			= "5|3|1|0|set,number,set|@banuser <ip/usgn/nome> <dias> <razão>|c_banuser(t_args[1],t_args[2],t_args[3])"
+command["@banip"]			= "5|3|1|0|sid,number,set|@banip <id> <dias> <razão>|c_banip(t_args[1],t_args[2],t_args[3])"
+command["@banusgn"]			= "5|3|1|0|sid,number,set|@banusgn <id> <dias> <razão>|c_banusgn(t_args[1],t_args[2],t_args[3])"
+command["@banname"]			= "5|3|1|0|sid,number,set|@banname <id> <dias> <razão>|c_banname(t_args[1],t_args[2],t_args[3])"
+command["@spawn"]			= "5|3|1|0|id|@spawn <id> <x> <y>|spawnplayer(t_args[1],t_args[2],t_args[3])"
+command["@goto"]			= "5|3|1|0|id|@goto <jogador>|c_goto(v_me,t_args[1])"
+command["@bring"]			= "5|3|1|0|id|@bring <jogador>|c_bring(v_me,t_args[1])"
+
+-- Level 4 (Admin)
+command["@loadconfig"]		= "10|4|1|0|set|@setconfig <mode>|c_setconfig(v_me,v_argsall)"
+command["@liststaff"]		= "5|4|0|0|number|@liststaff <pagina>|c_liststaff(v_me,t_args[1])"
+command["@speedmod"]		= "5|4|2|0|id,number|@speedmod <jogador> <velocidade>|speedmod(t_args[1],t_args[2])"
+command["@botadd"]			= "5|4|0|0|nil|@botadd|bot_add()"
+command["@botkill"]			= "5|4|0|0|nil|@botkill|bot_kill()"
+command["@botremove"]		= "5|4|0|0|nil|@botremove|bot_remove()"
+command["@botremoveall"]	= "5|4|0|0|nil|@botremoveall|bot_remove_all()"
+command["@freezetime"]		= "5|4|1|0|number|@freezetime <number>|mp_freezetime(t_args[1])"
+command["@sethealth"]		= "5|4|2|0|id,number|@sethealth <jogador> <vida>|sethealth(t_args[1],t_args[2])"
+command["@setmaxhealth"]	= "5|4|2|0|id,number|@sethealth <jogador> <vida maxima>|setmaxhealth(t_args[1],t_args[2])"
+command["@cloak"]			= "5|4|1|0|switch|@cloak <on/off>|c_cloak(v_me,t_args[1])"
+command["@sound"]			= "5|4|1|0|set|@sound <arquivo>|sv_sound(v_argsall)"
+command["@weapondamage"]	= "5|4|1|0|set,number|@weapondamage <arma> <dano>|mp_wpndmg(t_args[1],get_args(2))"
+command["@weapondamage1"]	= "5|4|1|0|set,number|@weapondamage1 <arma> <dano>|mp_wpndmg_z1(t_args[1],get_args(2))"
+command["@weapondamage2"]	= "5|4|1|0|set,number|@weapondamage2 <arma> <dano>|mp_wpndmg_z2(t_args[1],get_args(2))"
+command["@equip"]			= "5|4|2|0|id,number|@equip <jogador> <item>|equip(t_args[1],t_args[2])"
+command["@spawnnpc"]		= "5|4|4|0|number,integer,integer,number|@spawnnpc <tipo> <x> <y> <angulo>|spawnnpc"
+command["@spawnitem"]		= "5|4|4|0|number,integer,integer|@spawnitem <item> <x> <y>|spawnitem(t_args[1],t_args[2],t_args[3])"
+command["@damage"] 			= "5|4|1|0|number|@damage <damage>|mp_damagefactor(t_args[1])"
+command["@gamemode"]		= "5|4|1|0|number|@gamemode <modo>|sv_gamemode(t_args[1])"
+command["@roundtime"]		= "5|4|1|0|number|@roundtime <tempo>|mp_roundtime(t_args[1])"
+command["@setsay"]			= "5|4|1|0|number|@setsay <modo>|c_setsay(t_args[1])"
+command["@startmoney"]		= "5|4|1|0|number|@startmoney <quantidade>|mp_startmoney(t_args[1])"
+command["@servername"]		= "5|4|1|0|set|@servername <nome>|sv_name(v_argsall)"
+command["@trigger"]			= "5|4|1|0|set|@trigger <nome>|trigger(t_args[1])"
+command["@promoteid"]		= "5|4|2|0|sid,set|@promoteid <jogador> <cargo>|c_promoteid(v_me,t_args[1],get_args(2))"
+command["@validate"]		= "5|4|2|0|sid,number|@validate <jogador> <dias>|c_validateid(t_args[1],get_args(2))"
+command["@unvalidate"]		= "5|4|1|0|sid|@unvalidate <jogador>|c_unvalidate(t_args[1])"
+command["@demoteid"]		= "5|4|1|0|sid|@demoteid <jogador>|c_demoteid(t_args[1])"
+command["@dispensermoney"]	= "5|4|1|0|number|@dispensermoney <money>|c_dispensermoney(t_args[1])"
+
+-- Level 5(S-Admin)
+command["@password"]		= "5|5|0|0|set|@password <*senha>|sv_password(v_argsall)"
+command["@changemap"]		= "5|5|1|0|set|@changemap <mapa>|changemap(v_argsall)"
+command["@disablecommand"]	= "5|5|1|0|set|@disablecommand <comando>|c_disablecommand(t_args[1])"
+command["@enablecommand"]	= "5|5|1|0|set|@enablecommand <comando>|c_enablecommand(t_args[1])"
+command["@ccreset"]			= "5|5|0|0|nil|@ccreset|cc_reset()"
+command["@refresh"]			= "5|5|0|0|nil|@refresh <*tempo>|c_refresh(t_args[1])"
+command["@promote"]			= "5|5|2|0|number,set|@promote <usgn> <cargo>|c_promote(v_me,t_args[1],get_args(2))"
+command["@demote"]			= "5|5|1|0|number|@demote <usgn>|c_demote(t_args[1])"
+command["@maxplayers"]		= "5|5|1|0|number|@maxplayers <jogadores>|sv_maxplayers(t_args[1])"
+
+
+function commands() 
+	cc_global.cmd_list = {}
+	local path = "sys/lua/list.txt"
+	file = io.open(path,"w")
+	file:write("Lista de comandos (ordem aleatória): \n")
+		for i,j in pairs(command) do
+			file : write(i.." \n")
+			table.insert(cc_global.cmd_list,i)
+		end
+	file : close()
+end
+commands()
+
+-- Custom commands
+--------------------------------------
+function cc_reset()
+	dofile("sys/lua/Control Core.txt")
+
+	msg(get_color("sv").."[Server] "..l42.."!")
+	if cc_config.auto_login then
+		for _,i in ipairs(player(0,"table")) do
+			c_login(i)
+		end
+	end	
+end
+
+function c_recentplayers(uid)
+	if #cc_global.recentplayers == 0 then
+		return error(l88..".")
+	end
+	for _,player in pairs(cc_global.recentplayers) do
+		msg2(uid,get_color("info")..player)
+	end
+end
+
+function c_loginduration(uid)
+	if p_validate[uid]==0 then
+		msg2(uid,get_color("sv").."[Server] "..l87..".")
+	else
+		msg2(uid,get_color("sv").."[Server] "..l11.." "..os.date("%d/%m/%Y",p_validate[uid])..".")
+	end	
+end
+
+function c_validateid(uid,days)
+	p_validate[uid]=get_days(days)
+	save_user(uid)
+end
+
+function c_unvalidate(uid)
+	p_validate[uid]=0
+	save_user(uid)	
+end
+
+function c_sayto(uid,player,message)
+	msg2(uid,get_color("info")..get_name(uid).." (PRIVATE): "..message)
+	msg2(player,get_color("info")..get_name(uid).." (PRIVATE): "..message)
+end
+
+function c_setconfig(uid,mode)
+	local path = cc_gamemodes_folder..mode..".txt"
+	if is_file(path) then
+		local file = io.open(path,"r")
+		for line in file:lines() do
+			parse(line)
+		end
+		msg3(get_color("sv").."[Server] "..l43..".",1000)
+		file:close()
+	else return error(l44..".")
+	end
+end
+
+function c_report(uid,player,reason)
+	if not reason then reason=l24 end
+	create_report('"'..get_name(uid)..'" [IP:'..get_ip(uid)..":::USGN:"..get_usgn(uid)..'] '..l_reported..' "'..get_name(player)..'" [IP:'..get_ip(player)..":::USGN:"..get_usgn(player).."] "..l14_2.." "..reason)
+end
+
+function c_clearchat()
+	for i=1,20 do
+		msg("")
+	end
+end
+
+function c_goto(uid,player)
+	if not is_alive(uid) then
+		return error(l45..".")
+	elseif not is_alive(player) then
+		return error(l46..".")
+	end
+	local x,y = get_position(player)
+	setpos(uid,x,y)
+end
+
+function c_bring(uid,player)
+	if not is_alive(uid) then
+		return error(l45..".")
+	elseif not is_alive(player) then
+		return error(l46..".")
+	end
+	local x,y=get_position(uid)
+	setpos(player,x,y)
+end
+
+function c_setrgb(uid,color)
+	if tonumber(color) == nil then
+		return error(l34..' "'..color..'" '..l36..'.')
+	elseif color:len() ~= 9 then
+		return error(l47..".")
+	end
+	p_color[uid]=color
+	save_user(uid)
+end	
+	
+function c_liststaff(uid,page)
+	local users = read_dir(cc_users_folder,true,false,true)
+	show_page(uid,users,page)
+end
+
+function c_listbanned(uid,page)
+	local users = read_dir(cc_banned_folder,true,false,true)
+	show_page(uid,users,page)
+end
+
+function c_listcolor(uid,page)
+	local colors = {}
+	for i,j in pairs(t_color) do
+		table.insert(colors," ©"..j..i.." - "..j)
+	end
+	show_page(uid,colors,page)
+end
+
+function c_listusers(uid)
+	msg2(uid,get_color("sv").."[Server] "..l48..": ")
+	for _,i in ipairs(player(0,"table")) do
+		if p_level[i] > 0 then
+			msg2(uid,get_color("info").."["..p_rank[i].."] "..get_name(i).." - ["..get_usgn(i).."]")
+		end
+	end
+end
+
+function c_say(uid,message)
+	local array={rank=p_rank[uid];color=p_color[uid];name=get_name(uid);message=message}
+	msg(string.gsub(t_say[cc_config.say_type], "%$(%w+)", array))
+end
+
+function c_sayc(uid,message)
+	local array={rank=p_rank[uid];color=p_color[uid];name=get_name(uid);message=message}
+	msg(string.gsub(t_say[cc_config.say_type], "%$(%w+)", array).."@C")
+end
+
+function c_setsay(mode)
+	if t_say[mode] then
+		cc_config.say_type = mode
+	else
+		return error(l44..".")
+	end
+end
+
+function c_hour(uid)
+	msg2(uid,get_color("sv").."[Server] "..l50.." "..os.date("%I:%M %p"))
+end
+
+function c_date(uid)
+	msg2(uid,get_color("sv").."[Server] "..l51.." "..os.date("%d/%m/%Y"))
+end	
+
+function c_promoteid(uid,player,rank)
+	local usgn = get_usgn(player)
+	if not(t_rank[rank]) then
+		return error(l52.." "..rank.." "..l53..".")
+	elseif rank == "S-Admin" then
+		return error(l54..".")
+	elseif usgn == 0 then
+		return error(l55..".")
+	elseif t_rank[rank].level >= p_level[uid] then
+		return error(l56..".")
+	end
+	create_user(usgn,rank)
+	auth_user(player)
+end
+
+function c_promote(uid,usgn,rank)
+	if not(t_rank[rank]) then
+		return error(l52.." "..rank.." "..l53..".")
+	elseif rank == "S-Admin" then
+		return error(l54..".")
+	elseif t_rank[rank].level >= p_level[uid] then
+		return error(l56..".")
+	end
+	create_user(usgn,rank)
+end
+
+function c_demoteid(uid)
+	local usgn = get_usgn(uid)
+	delete_user(usgn)
+	set_flags(uid)
+end
+
+function c_demote(usgn)
+	local my_usgn = get_usgn(v_me)
+	delete_user(usgn)
+end
+
+function c_swap()
+	local ct_team = player(0,"team2")
+	local tr_team =	player(0,"team1")
+	for _,i in ipairs(ct_team) do
+		maket(i)
+	end
+	for _,i in ipairs(tr_team) do
+		makect(i)
+	end
+end
+
+function c_help(uid,cmd)
+	page = cmd or 1
+	if cmd == "!help" then
+		return error(l83.."...")
+	elseif tonumber(page) then
+		return show_page(uid,cc_global.cmd_list,page)
+	elseif not command[cmd] then
+		cmd = "@"..cmd
+		if not command[cmd] then
+			return error(l57..".")
+		end
+	end		
+
+	local t_flag 	= string_split(command[cmd],"[^|]*")
+	local t_type 	= string_split(t_flag[5],"[^,]*")
+	local v_syntax 	= t_flag[6]
+	local example 	= ""
+	for i = 1,#t_type do
+		if t_type[i] == "id" or t_type[i] == "sid" then
+			example = example..math.random(32).." "
+		elseif t_type[i] == "number" then
+			example = example..math.random(20).." "
+		elseif t_type[i] == "integer" then
+			example = example..math.random(-10,10).." "
+		elseif t_type[i] == "set" then
+			example = example..'"'..l_example..'"'..""
+		elseif t_type[1] == "switch" then	
+			example = example.."on".." "
+		end
+	end
+	msg2(uid,get_color("info")..l_command..": "..cmd)
+	msg2(uid,get_color("info")..l_syntax..": "..v_syntax)
+	if t_type[1] == "id" or t_type[1] == "sid" then
+		msg2(uid,get_color("info")..l58..".")
+	elseif t_type[1] == "switch" then
+		msg2(uid,get_color("info")..l59..".")
+	end
+	msg2(uid,get_color("info")..l60..": "..get_color("sv")..cmd.." "..example)
+end
+
+function c_check(uid,p1)
+	msg2(p1,get_color("cmd")..get_name(uid).." "..l61..". @C")
+	msg2(uid,get_color("info").."Level: "..p_level[p1])
+	msg2(uid,get_color("info").."Nome: "..get_name(p1))
+	msg2(uid,get_color("info").."USGN: "..get_usgn(p1))
+	msg2(uid,get_color("info").."IP: "..get_ip(p1))
+	if p_mute[p1] > os.time() then
+		msg2(uid,get_color("info")..l62..".")
+	end
+	if p_cloak[p1] == 1 then
+		msg2(uid,get_color("info")..l63..".")
+	end
+	if p_god[p1] == 1 then
+		msg2(uid,get_color("info")..l64..".")
+	end
+end
+
+function c_reset(uid)
+	parse("setdeaths "..uid.." 0")
+	parse("setscore "..uid.." 0")
+	msg2(uid,get_color("sv").."[Server] "..l65..".")
+end
+
+function c_usgn(uid,p1)
+	if get_usgn(p1) ~= 0 then
+		msg3(get_color("sv").."[Server] "..l66.." "..get_name(p1)..": "..get_usgn(p1),1000)
+	else
+		msg3(get_color("sv").."[Server] "..l84.." "..get_name(p1).." "..l67..".",1000)
+	end 
+end
+
+function c_refresh()
+	local map = map("name")
+	msg3(get_color("sv").."[Server] "..l69.."!",1000)
+	timer(5000,"parse","changemap "..map)
+end
+
+function c_makespecall()
+	local players = player(0,"table")
+	for _,uid in ipairs(players) do
+		makespec(uid)
+	end
+end
+
+function c_makectall()
+	local players = player(0,"table")
+	for _,uid in ipairs(players) do
+		makect(uid)
+	end
+end
+
+function c_maketall()
+	local players = player(0,"table")
+	for _,uid in ipairs(players) do
+		maket(uid)
+	end
+end
+
+function c_color(uid,p1)
+	if t_color[p1] == nil then
+		return error(l70..".")
+	end
+	p_color[uid] = t_color[p1]
+	save_user(uid)
+end
+
+function c_disablecommand(cmd)
+	if not(command[cmd]) then
+		return error(l71..".")
+	elseif is_disabled[cmd] then
+		return error(l72..".")
+	elseif cmd == v_cmd then
+		return error(l73..".")
+	elseif cmd == "@disablecommand" or cmd == "@enablecommand" then
+		return error(l73..".")
+	end
+	is_disabled[cmd] = true
+end
+
+function c_enablecommand(cmd)
+	if not(command[cmd]) then
+		return error(l71..".")
+	elseif not(is_disabled[cmd]) then
+		return error(l74..".")
+	end
+	is_disabled[cmd] = false
+end
+
+function c_login(uid)
+	if p_level[uid] > 0 then
+		return error(l75..".")
+	end
+	auth_user(uid)
+end
+
+function c_logoff(uid)
+	if p_level[uid] == 0 then
+		return error(l76..".")
+	end
+	set_flags(uid)
+end
+
+function c_lockall(p1)
+	c_lockct(p1)
+	c_lockt(p1)
+end
+
+function c_broadcast(message)
+	msg(get_color("broadcast")..player(v_me,"name").." (BROADCAST): "..message)
+end
+
+function c_autosay(p1)
+	if p1:lower() == "off" then	cc_config.say_auto = false end
+	if p1:lower() == "on" then cc_config.say_auto = true end
+end
+
+function c_cloak(uid,p1)
+	if p1:lower() == "off" then	p_cloak[uid] = 0 end
+	if p1:lower() == "on" then p_cloak[uid] = 1 end
+	save_user(uid)
+end
+
+function c_lockt(p1)
+	if p1:lower() == "off" then	cc_global.tlock = false end
+	if p1:lower() == "on" then cc_global.tlock = true end
+end
+
+function c_lockct(p1)
+	if p1:lower() == "off" then	cc_global.ctlock = false end
+	if p1:lower() == "on" then cc_global.ctlock = true end
+end
+
+function c_teambalance(p1)
+	if p1:lower() == "off" then	switch = 0 end
+	if p1:lower() == "on" then switch = 1 end
+	parse("mp_autoteambalance "..switch)
+end
+
+function c_infammo(p1)
+	if p1:lower() == "off" then	switch = 0 end
+	if p1:lower() == "on" then switch = 1 end
+	parse("mp_infammo "..switch)
+end
+
+function c_fow(p1)
+	if p1:lower() == "off" then	switch = 0 end
+	if p1:lower() == "on" then switch = 1 end
+	parse("sv_fow "..switch)
+end
+
+function c_friendlyfire(p1)
+	if p1:lower() == "off" then	switch = 0 end
+	if p1:lower() == "on" then switch = 1 end
+	parse("sv_friendlyfire "..p1)
+end
+
+function c_mute(p1,waittime)
+	if p_mute[p1] > os.time() then
+		return error(l77..".")
+	end	
+	if waittime ~= nil then
+		p_mute[p1] = os.time() + waittime
+	else
+		p_mute[p1] = os.time() + 100
+	end
+end
+
+function c_unmute(p1)
+	if not(p_mute[p1]) then
+		return error(l78..".")
+	end
+	p_mute[p1] = 0
+end
+
+function c_unban(entry)	
+	unban_user(entry)
+end
+
+function c_banuser(entry,days,reason)
+	ban_user(entry,days,reason)
+end
+
+function c_banip(uid,days,reason)
+	local ip = get_ip(uid)
+	ban_user(ip,days,reason)
+	check_banned(uid)
+end
+
+function c_banusgn(uid,days,reason)
+	local usgn = get_usgn(uid)
+	ban_user(usgn,days,reason)
+	check_banned(uid)
+end
+
+function c_banname(uid,days,reason)
+	local name = get_name(uid)
+	ban_user(name,days,reason)
+	check_banned(uid)
+end
+
+function c_freeze(player)
+	parse("speedmod "..player.." -100")
+end
+
+function c_freezeall()
+	for i = 1,32 do
+		parse("speedmod "..i.." -100")
+	end	
+end
+
+function c_unfreeze(player)
+	parse("speedmod "..player.." 0")
+end
+
+function c_unfreezeall()
+	for i = 1,32 do
+		parse("speedmod "..i.." 0")
+	end	
+end
+-- Normal/Edited commands
+--------------------------------------
+function equip(uid,weapon)
+	if tonumber(weapon) > 91 then
+		return error(l79..".")
+	end
+	parse("equip "..uid.." "..weapon)
+end
+
+function killplayer(uid)
+	if not is_alive(uid) then
+		return error(l81..".")
+	end
+	parse("killplayer "..uid)
+end
+
+function kick(uid,player,reason)
+	if not reason then reason=l24.."." end
+	parse("kick "..player.." \""..reason.."\"")
+end
+
+function restart(delay)
+	if delay == nil then
+		parse("restart")
+	else
+		parse("restart "..delay)
+	end
+end	
+
+function spawnplayer(player,x,y)
+	if x == nil and y == nil then
+		parse("spawnplayer "..player.." -1 -1")
+	else
+		parse("spawnplayer "..player.." "..x.." "..y)
+	end
+end
+
+function sv_password(password)
+	if password == nil then
+		password = ""
+	end	
+	parse("sv_password "..password)
+end
+
+function mp_damagefactor(factor)
+	parse("mp_damagefactor "..factor)
+	msg3(get_color("sv").."[Server] "..l82..": "..factor.."x",1000)
+end
+
+function makect(player)
+	v_teamchange=true
+	parse("makect "..player)
+end
+
+function maket(player)
+	v_teamchange=true
+	parse("maket "..player)
+end
+-- Normal commands
+--------------------------------------
+function spawnitem(item,x,y)
+	parse("spawnitem "..item.." "..x.." "..y)
+end
+
+function spawnnpc(_type,x,y,rot)
+	parse("spawnnpc ".._type.." "..x.." "..y.." "..rot)
+end
+
+function bot_add()
+	parse("bot_add")
+end
+
+function bot_kill()
+	parse("bot_kill")
+end
+
+function bot_remove()
+	parse("bot_remove")
+end
+
+function bot_remove_all()
+	parse("bot_remove_all")
+end
+
+function changemap(map)
+	parse("changemap "..map)
+end
+
+function strip(player)
+	parse("strip "..player)
+end
+
+function makespec(player)
+	parse("makespec "..player)
+end
+
+function mp_roundtime(_time)
+	parse("mp_roundtime ".._time)
+end
+
+function mp_startmoney(money)
+	parse("mp_startmoney "..money)
+end
+
+function mp_wpndmg(name,damage)
+	parse("mp_wpndmg "..name.." "..damage)
+end
+
+function mp_wpndmg_z1(name,damage)
+	parse("mp_wpndmg_z1 "..name.." "..damage)
+end
+
+function mp_wpndmg_z2(name,damage)
+	parse("mp_wpndmg_z2 "..name.." "..damage)
+end
+
+function sethealth(player,health)
+	parse("sethealth "..player.." "..health)
+end
+
+function setmaxhealth(player,maxhealth)
+	parse("setmaxhealth "..player.." "..maxhealth)
+end
+
+function setmoney(player,money)
+	parse("setmoney "..player.." "..money)
+end
+
+function setname(player,name)
+	parse("setname "..player.." "..name..' "1"')
+end
+
+function setpos(player,x,y)
+	parse("setpos "..player.." "..x.." "..y)
+end
+
+function setscore(player,score)
+	parse("setscore "..player.." "..score)
+end
+
+function slap(player)
+	parse("slap "..player)
+end
+
+function speedmod(player,speedmod)
+	parse("speedmod "..player.." "..speedmod)
+end
+
+function sv_gamemode(mode)
+	parse("sv_gamemode "..mode)
+end
+
+function sv_maxplayers(players)
+	parse("sv_maxplayers "..players)
+end
+
+function sv_name(name)
+	parse("sv_name "..name)
+end
+
+function sv_sound(soundfile)
+	parse("sv_sound "..soundfile)
+end
+
+function trigger(trigger)
+	parse("trigger "..trigger)
+end
+
+function c_dispensermoney(money)
+	parse("mp_dispenser_money "..money)
+end
+
+function mp_freezetime(time)
+	parse("mp_freezetime "..time)
+end
+
+---------------------
+function bot_count(count)
+	parse("bot_count "..count)
+end
+
+function bot_jointeam(team)
+	parse("bot_jointeam "..team)
+end
+
+function bot_prefix(prefix)
+	parse("bot_prefix "..prefix)
+end
+
+function bot_remove_ct()
+	parse("bot_remove_ct")
+end
+
+function bot_remove_t()
+	parse("bot_remove_t")
+end
+
+function bot_skill(skill)
+	parse("bot_skill "..skill)
+end
+
+function bot_weapons(weapons)
+	parse("bot_weapons "..weapons)
+end
+
+function effect(effect,x,y,p1,p2,r,g,b)
+	parse("effect "..effect.." "..x.." "..y.." "..p1.." "..p2.." "..r.." "..g.." "..b)
+end
+
+function flashposition(x,y,intensity)
+	parse("flashposition "..x.." "..y.." "..intensity)
+end
+
+function hudtxtalphafade(player,id,duration,alpha)
+	parse("hudtxtalphafade "..player.." "..id.." "..duration.." "..alpha)
+end
+
+function hudtxtcolorfade(player,id,duration,red,green,blue)
+	parse("hudtxtcolorfade "..player.." "..id.." "..duration.." "..red.." "..green.." "..blue)
+end
+
+function hudtxtmove(player,id,duration,x,y)
+	parse("hudtxtmove "..player.." "..id.." "..duration.." "..x.." "..y)
+end
+
+function items()
+	parse("items")
+end
+
+function killobject(objectid)
+	parse("killobject "..objectid)
+end
+
+function killplayer(player)
+	parse("killplayer "..player)
+end
+
+function listplayers()
+	parse("listplayers")
+end
+
+function logaddress_add(address)
+	parse("logaddress_add "..address)
+end
+
+function logaddress_remove(address)
+	parse("logaddress_remove "..address)
+end
+
+function logaddress_removeall()
+	parse("logaddress_removeall")
+end
+
+function lua(script)
+	parse("lua "..script)
+end
+
+function maps()
+	parse("maps")
+end
+
+function mp_antispeeder(antispeederprotection)
+	parse("mp_antispeeder "..antispeederprotection)
+end
+
+function mp_autogamemode(autogamemode)
+	parse("mp_autogamemode "..autogamemode)
+end
+
+function mp_autoteambalance(balance)
+	parse("mp_autoteambalance "..balance)
+end
+
+function mp_building_health(building,price)
+	parse("mp_building_health "..building.." "..price)
+end
+
+function mp_building_limit(building,limit)
+	parse("mp_building_limit "..building.." "..limit)
+end
+
+function mp_building_price(building,price)
+	parse("mp_building_price "..building.." "..price)
+end
+
+function mp_buytime(_time)
+	parse("mp_buytime ".._time)
+end
+
+function mp_c4timer(_time)
+	parse("mp_c4timer ".._time)
+end
+
+function mp_curtailedexplosions(curtailed)
+	parse("mp_curtailedexplosions "..curtailed)
+end
+
+function mp_deathdrop(drop)
+	parse("mp_deathdrop "..drop)
+end
+
+function mp_dispenser_health(health)
+	parse("mp_dispenser_health "..health)
+end
+
+function mp_dispenser_money(money)
+	parse("mp_dispenser_money "..money)
+end
+
+function mp_dmspawnmoney(money)
+	parse("mp_dmspawnmoney "..money)
+end
+
+function mp_dropgrenades(drop)
+	parse("mp_dropgrenades "..drop)
+end
+
+function mp_floodprot(floodprotection)
+	parse("mp_floodprot "..floodprotection)
+end
+
+function mp_freezetime(_time)
+	parse("mp_freezetime ".._time)
+end
+
+function mp_grenaderebuy(allowed)
+	parse("mp_grenaderebuy "..allowed)
+end
+
+function mp_hostagepenalty(kills)
+	parse("mp_hostagepenalty "..kills)
+end
+
+function mp_idleaction(action)
+	parse("mp_idleaction "..action)
+end
+
+function mp_idlekick(idleaction)
+	parse("mp_idlekick "..idleaction)
+end
+
+function mp_idletime(_time)
+	parse("mp_idletime ".._time)
+end
+
+function mp_kevlar(percent)
+	parse("mp_kevlar "..percent)
+end
+
+function mp_killbuildingmoney(money)
+	parse("mp_killbuildingmoney "..money)
+end
+
+function mp_killbuildings(kill)
+	parse("mp_killbuildings "..kill)
+end
+
+function mp_killinfo(info)
+	parse("mp_killinfo "..info)
+end
+
+function mp_killteambuildings(mode)
+	parse("mp_killteambuildings "..mode)
+end
+
+function mp_lagcompensation(maxcompensationtime)
+	parse("mp_lagcompensation "..maxcompensationtime)
+end
+
+function mp_localrconoutput(output)
+	parse("mp_localrconoutput "..output)
+end
+
+function mp_luamap(use)
+	parse("mp_luamap "..use)
+end
+
+function mp_luaserver(file)
+	parse("mp_luaserver "..file)
+end
+
+function mp_mapgoalscore(score)
+	parse("mp_mapgoalscore "..score)
+end
+
+function mp_maxclientsip(clients)
+	parse("mp_maxclientsip "..clients)
+end
+
+function mp_maxrconfails(maxfails)
+	parse("mp_maxrconfails "..maxfails)
+end
+
+function mp_natholepunching(allowpunching)
+	parse("mp_natholepunching "..allowpunching)
+end
+
+function mp_pinglimit(limit)
+	parse("mp_pinglimit "..limit)
+end
+
+function mp_radar(radar)
+	parse("mp_radar "..radar)
+end
+
+function mp_randomspawn(_random)
+	parse("mp_randomspawn ".._random)
+end
+
+function mp_reservations(reservations)
+	parse("mp_reservations "..reservations)
+end
+
+function mp_respawndelay(delay)
+	parse("mp_respawndelay "..delay)
+end
+
+function mp_roundlimit(rounds)
+	parse("mp_roundlimit "..rounds)
+end
+
+function mp_startmoney(money)
+	parse("mp_startmoney "..money)
+end
+
+function mp_supply_items(itemlist)
+	parse("mp_supply_items "..itemlist)
+end
+
+function mp_teamkillpenalty(kills)
+	parse("mp_teamkillpenalty "..kills)
+end
+
+function mp_teleportreload(reloadtime)
+	parse("mp_teleportreload "..reloadtime)
+end
+
+function mp_timelimit(_time)
+	parse("mp_timelimit ".._time)
+end
+
+function mp_tkpunish(kill)
+	parse("mp_tkpunish "..kill)
+end
+
+function mp_trace(accuracy)
+	parse("mp_trace "..accuracy)
+end
+
+function mp_turretdamage(damage)
+	parse("mp_turretdamage "..damage)
+end
+
+function mp_unbuildable(buildings)
+	parse("mp_unbuildable "..buildings)
+end
+
+function mp_unbuyable(unbuyable)
+	parse("mp_unbuyable "..unbuyable)
+end
+
+function mp_vulnerablehostages(vulnerable)
+	parse("mp_vulnerablehostages "..vulnerable)
+end
+
+function mp_winlimit(wins)
+	parse("mp_winlimit "..wins)
+end
+
+function mp_zombiedmg(percentageofdamage)
+	parse("mp_zombiedmg "..percentageofdamage)
+end
+
+function mp_zombiekillequip(weapon)
+	parse("mp_zombiekillequip "..weapon)
+end
+
+function mp_zombiekillscore(killscore)
+	parse("mp_zombiekillscore "..killscore)
+end
+
+function mp_zombierecover(recover)
+	parse("mp_zombierecover "..recover)
+end
+
+function mp_zombiespeedmod(speedmod)
+	parse("mp_zombiespeedmod "..speedmod)
+end
+
+function rcon(commands)
+	parse("rcon "..commands)
+end
+
+function removeitem(item)
+	parse("removeitem "..item)
+end
+
+function reroute(player,address)
+	parse("reroute "..player.." "..address)
+end
+
+function setarmor(player,armor)
+	parse("setarmor "..player.." "..armor)
+end
+
+function setmoney(player,money)
+	parse("setmoney "..player.." "..money)
+end
+
+function setpos(player,x,y)
+	parse("setpos "..player.." "..x.." "..y)
+end
+
+function setscore(player,score)
+	parse("setscore "..player.." "..score)
+end
+
+function setweapon(player,weapon)
+	parse("setweapon "..player.." "..weapon)
+end
+
+function sv_hostport(port)
+	parse("sv_hostport "..port)
+end
+
+function sv_lan(lan)
+	parse("sv_lan "..lan)
+end
+
+function sv_maptransfer(transfer)
+	parse("sv_maptransfer "..transfer)
+end
+
+function sv_specmode(mode)
+	parse("sv_specmode "..mode)
+end
+
+function sv_spraytransfer(spraytransfer)
+	parse("sv_spraytransfer "..spraytransfer)
+end
+
+function sv_usgnonly(usgnonly)
+	parse("sv_usgnonly "..usgnonly)
+end
+
+function transfer_speed(speed)
+	parse("transfer_speed "..speed)
+end
+
+function usgn_addserver()
+	parse("usgn_addserver")
+end
+
+function usgn_info()
+	parse("usgn_info")
+end
